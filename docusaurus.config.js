@@ -10,8 +10,8 @@ const config = {
   tagline: "Chatbots Library",
   url: "https://zaroc.netlify.app",
   baseUrl: "/",
-  // onBrokenLinks: "throw",
-  // onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "Mizar", // Usually your GitHub org/user name.
   projectName: "Zaroc", // Usually your repo name.
