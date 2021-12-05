@@ -4,28 +4,102 @@ sidebar_position: 2
 
 # Create your First Intent
 
-Docusaurus is a **static-site-generator** (also called **[Jamstack](https://jamstack.org/)**).
+Its Time to create your own Intent on your backend, But....
 
-It builds your site as simple **static HTML, JavaScript and CSS files**.
+You can choose this Documentation or look a Video [**HERE**](https://google.com)
 
-## Build your site
+#### Why we create intents with Zaroc?
 
-Build your site **for production**:
+We can create Intents on Dialogflow, and thats fine but we can Enhance these Intents with some backend. With backend we can create custom responses depeding of variables like Dates, Mathematical Operations, Specific parameters and more...
 
-```bash
-npm run build
+So in order to let you know, I'll show you how to Create your Own Intent.
+
+**We are obiously Creating and Intent on Dialogflow, but you'll learn how to create in a structural way...**
+
+So lets go!
+
+## 1.- Creating an Intent on Dialogflow
+
+Creating an Intent is Really, Really Easy. At the Left Navbar, click on Intents and after that click on the big blue Button that says **Create Intent**
+
+When Creating an Intent we have to take care of some Sections, right now we are just going to use just few of them.
+
+> - **Name** your Intent, try to be specific and have a structure, for myself I tend to use 'category_name_path_variation' but for the sake of this tutorial we are going to create **basics_welcome** intent
+> - This Intent will have as **Tranining Phrases** Words or Entities Related to 'Welcome, Hello's and Byeing'
+> - As a response, I recommend you to use a default Response with a specific naming convention, this is 'intent name' with an explosion emoji 💥, we are using this because, when the intent gets executed, if the call to our backend fail, this message will be triggered, so this message help us when troubleshooting.
+> - Finally we need to click on the first button inside the Webhook Section
+
+## 2.- Creating an Intent on our Backend
+
+Keep an Eye on this part, If you see our doc files hierachy, you can see all the intents inside of the **Intents Folder**, Intents are saved per Category on document and per Users on Folders.
+
+> - So for now we are going to create a file named 'basics.php' cause this will have all the basics intents (Intents that have basics as category) example : basics_bye, basics_thanks and so on...
+>
+> - Let's go inside of the basics.php and look at this code example
+
+```php
+<?php
+
+    if(intent('basics_welcome')){
+        //if the intent is basics_welcome code here will be executed
+    }
+
+?>
 ```
 
-The static files are generated in the `build` folder.
+Cause we are using PHP as our backend we have to use Open and Close Tags to code in php, so we are using **<?php** at the begin and **?>** at the end of the file.
 
-## Deploy your site
+Also we should use a Zaroc Function called 'intent'.
+this function receives a name (name of the intent) and If you trigger that intent the code inside the brackets.
 
-Test your production build locally:
+**For more information about Intent function check documentation**
 
-```bash
-npm run serve
+Right now if the user trigger this intent, we want to prepare a response from our backend. For this case we are going to use the funcion 'wsParagraphTemplate' these function that ends in Template are Template functions and help us sending data in specific formats. For this example just copy the code below.
+
+```php
+    $context = false;
+    $contextBody;
+    $wsTitle = array("basics_welcome");
+    $wsTextArray = array("Message from the backend");
+
+    wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
 ```
 
-The `build` folder is now served at `http://localhost:3000/`.
+This code is creating some Variables and Arrays.'$context' is a variable that isnt important right now, the same with '$contextBody' just copy and paste as you see above.
 
-You can now deploy the `build` folder **almost anywhere** easily, **for free** or very small cost (read the **[Deployment Guide](https://docusaurus.io/docs/deployment)**).
+'$wsTitle' must be an Array (required), here we are going to set an specific title of the Intent Response, so I recommend here use the same name as the intent name.
+
+'$wsTextArray' must be an Array (Required) here we are going to set a message, you can use text and emojis by the moment. Put whatever you like.
+
+And at the end we have 'wsParagraphTemplate'
+
+**This function creates an Structure that dialogflow can understand (Template) and is sent as a Response to dialogflow**
+
+**All done by Zaroc behind scenes**
+
+You can think that we are done but there's at least one step to do.
+
+#### Let's connect this intent to the core chatbot file
+
+As you see in the core file, we are requiring all that makes our bot work.
+
+You will see a commented section that says 'Intents'
+
+Let's require the file basics.php
+
+```php
+require_once("intents/basics.php");
+```
+
+With this we should be able to trigger basics_intent easily
+
+Let's save the changes and lets test
+
+**Right now you should be able to test the chatbot**
+
+If you get the message that you put on your backend, you did it!
+
+If you got the error message or a default message please
+
+> - Look at the tutorial Again
+> - Check the Error sections
