@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Zaroc",
+  title: "Chatbot Library",
   tagline: "Chatbots Library",
   url: "https://zaroc.netlify.app",
   baseUrl: "/",
