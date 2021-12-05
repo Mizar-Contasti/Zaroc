@@ -1,18 +1,18 @@
 ---
-sidebar_position: 1
+sidebar_position: 7
 ---
 
-# Zaroc Intro
+# Chatbots
 
-Let's discover **how Zaroc help us with Chatbot Backends**.
+Let's discover **Chatbots that are Currently Built with Zaroc**.
 
 ## Getting Started
 
-Get started by **Creating our chatbot Throught Dialogflow and Connecting to Zaroc**.
+Get started by **creating a new site**.
 
-Or **Look at this Tutorial** with **[Mizar](youtubevideo)**.
+Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
 
-## Create a Chatbot on Dialogflow
+## Generate a new site
 
 Generate a new Docusaurus site using the **classic template**:
 
