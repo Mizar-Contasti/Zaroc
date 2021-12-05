@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Authentication
 
-Let's discover **how Zaroc help us with Chatbot Backends**.
+Let's discover **How to Authenticate Dialogflow with Zaroc**.
 
 ## Getting Started
 

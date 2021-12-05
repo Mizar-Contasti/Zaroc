@@ -1,13 +1,8 @@
 ---
 sidebar_position: 1
-slug: /
 ---
 
-# Zaroc Intro
-
-Let's discover **how Zaroc help us with Chatbot Backends**.
-
-## Getting Started
+# Setting up your Chatbot
 
 Get started by **Creating our chatbot Throught Dialogflow and Connecting to Zaroc**.
 
@@ -17,9 +12,12 @@ Or **Look at this Tutorial** with **[Mizar](https://zaroc.netlify.app)**.
 
 First Lets Create our Chatbot on Dialogflow [**HERE**](https://dialogflow.cloud.google.com/)
 
-##### INFO REQUIRED
+> - When entering you should Create an Account on Google (If you don't have), after that you'll be moved to the Dialogflow Platform
+> - If you are new in Dialogflow I recommend this Youtube Channel that have good to know Tutorials from zero to Hero [**HERE**](https://zaroc.netlify.app)
+> - Then you Should create an Agent (Chatbot)
+> - Type a Simple Hello on the Console (Right panel) and Wait for the response
 
-If you got your Chatbot connected and working as expected Let's go to the next part!
+If you got your Chatbot responded you Let's go to the next part!
 
 ## 2.- Setting Zaroc & Bot Templates
 
@@ -61,7 +59,7 @@ Once you imported successfully, right now your ChatbotExample knows how to handl
 
 > - Go to Dialogflow, and in the option **Fulfillment**
 > - Enable Webhook
-> - In the URL path you should put the Chatbot core file, this should be https://rootDomain.com/chatbots/chatbotExample/chatbot.php
+> - In the URL path you should put the Chatbot core file, this should be 'https:// rootDomain.com/chatbots/chatbotExample/chatbot.php'
 >
 > - We are going to use basicAuth so we need a Key and Password Values, move to your ChatbotExample Folder
 > - Inside of the **core folder** you should see a file named **variables.php** Open It!
@@ -107,4 +105,4 @@ If not you can:
 
 ## What's next?
 
-- > Check the Tutorials, they let you know what to Check!
+> - Check the Tutorials, they let you know what to Check!
