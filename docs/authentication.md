@@ -10,7 +10,7 @@ Let's discover **how Zaroc help us with Chatbot Backends**.
 
 Get started by **Creating our chatbot Throught Dialogflow and Connecting to Zaroc**.
 
-Or **Look at this Tutorial** with **[Mizar](youtubevideo)**.
+Or **Look at this Tutorial** with **[Mizar](https://zaroc.netlify.app)**.
 
 ## Create a Chatbot on Dialogflow
 
