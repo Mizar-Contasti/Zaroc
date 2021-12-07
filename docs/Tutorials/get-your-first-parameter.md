@@ -4,31 +4,127 @@ sidebar_position: 3
 
 # Get your First Parameter
 
-Docusaurus creates a **page for each blog post**, but also a **blog index page**, a **tag system**, an **RSS** feed...
+Its time to get our first Parameter, look at the documentation or the video [**HERE**](https://google.com)
 
-## Create your first Post
+### Why to get a Parameter?
 
-Create a file at `blog/2021-02-28-greetings.md`:
+Getting a Parameter give us a possibility to save User information, wherever that user type, we can save it in some cases. These information can help us to change to other paths or move forward in the core flow.
 
-```md title="blog/2021-02-28-greetings.md"
----
-slug: greetings
-title: Greetings!
-authors:
-  - name: Joel Marcey
-    title: Co-creator of Docusaurus 1
-    url: https://github.com/JoelMarcey
-    image_url: https://github.com/JoelMarcey.png
-  - name: Sébastien Lorber
-    title: Docusaurus maintainer
-    url: https://sebastienlorber.com
-    image_url: https://github.com/slorber.png
-tags: [greetings]
----
+Its great to know that we an save information and use it on our backend.
 
-Congratulations, you have made your first post!
+### Two types of Parameters
 
-Feel free to play around and edit this post as much you like.
+There are two types of parameters and these are clasified in the space that they reside.
+
+**Local Parameter**
+
+This parameter lives in the actual intent, can be used in the actual intent. If you go to other intent, this parameter will disappear
+
+#### In order to use it follow this example
+
+```php
+    $value = getIntentParameter()['variableName'];
 ```
 
-A new blog post is now available at `http://localhost:3000/blog/greetings`.
+As you see we are storing a variable from the intent with the nameFrom the variable. If you develop enough you will find not to much uses for this type of parameter. For most only use cases we use...
+
+**Context Parameter**
+
+This parameter lives in the contexts of the intent that is storing it. These parameters can be used in every action that uses the context. With this way we can extend the lifespan of parameters and information.
+
+#### In order to use it follow this example
+
+```php
+    $value = getContextParameter(0)['variableName'];
+```
+
+We storing a variable in $value, this variable is retrieved from a Zaroc function 'getContextParameter' after that you will see a number, this number is referencing to the index of the contexts (cause they start from 0 as an Array does), and finally insert in the single quotes the keyname(name) of the parameter
+
+So with this explanation let's do a quick tutorial over these two functions.
+
+### Getting a Intent Parameter
+
+#### In Dialogflow
+
+Create a new Intent, name it asking_coffee, set a simple training phrase and a simple response.
+Bellow training phrases you should be able to see a section called 'action an parameters' go in a blank space inside of it and type **cofee** as a name, this name will be the name of the variable, in the second part type @sys.any, you should get this entity by Dialogflow. At the third part, there will be the same name that you putted in the first part but with a dolar sign ($) at the start of it.
+
+At the left of this row there is a blank square, hitting that square you are setting this parameter as required and a new option at the right side will open. This option is a prompt. I recommend you to write a prompt like **Tell me your favorite coffee type**
+
+When the user triggers this intent, the intent will ask first the required parameters (So the bot will ask for your favorite type of coffee) and then you will get a response from it.
+
+#### In our backend
+
+Let's create an Intent on our backend as we did in the last tutorial, and inside the code lets get the Intent parameter.
+
+Your code to get the parameter of asking_coffee should look as this.
+
+```php
+    $coffee = getIntentParameter()['coffee'];
+```
+
+Then use this variable on your response function.
+
+```php
+if(intent('asking_coffee')){
+
+    $coffee = getIntentParameter()['coffee'];
+
+    $context = false;
+    $contextBody;
+    $wsTitle = array("asking_coffee");
+    $wsTextArray = array("The coffee you choose is $coffee");
+
+    wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
+}
+```
+
+#### Testing Intent Parameter
+
+With that code, when triggering the intent, first you should get the bot asking you the **type of coffee**, type for example 'expresso', after that the bot will tell you **the coffee you choose is expresso**.
+
+Be noticed that you can set more than 1 parameter, the maximun is 20.
+
+If you got this response ,Yay! if not, check the Errors section or recap again every step of the tutorial, also you can see the video at the top.
+
+### Getting a Context Parameter
+
+#### In Dialogflow
+
+Do the same steps in Dialogflow to get an Intent parameter, The only difference that you have to implement is just add a output context. Try adding a typeOfCoffee context.
+
+#### In our Backend
+
+Do the same that we did in our Backend, then use the function of
+
+```php
+    $coffee = getContextParameter(0)['coffee'];
+```
+
+Remember that the number inside the parenthesys should be the index of the context, starting from Zero, if your intent just have one context, use zero.
+
+Your code should look at this now
+
+```php
+if(intent('asking_coffee')){
+
+    $coffee = getContextParameter(0)['coffee'];
+
+    $context = false;
+    $contextBody;
+    $wsTitle = array("asking_coffee");
+    $wsTextArray = array("The coffee you choose is $coffee");
+
+    wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
+}
+```
+
+#### Testing Intent Parameter
+
+With that code, when triggering the intent, first you should get the bot asking you the **type of coffee**, type for example 'expresso', after that the bot will tell you **the coffee you choose is expresso**.
+
+This value of expresso will be available on all the intents that have the same context (typeOfCoffee). Also remmeber that you can store multiple parameters on a context, from the same or diferent intents.
+
+You can set till 20 parameters per Intent, and have multiple contexts on an intent till 8.
+
+If you got this response ,Yay! if not, check the Errors section or recap again every step of the tutorial, also you can see the video at the top.
