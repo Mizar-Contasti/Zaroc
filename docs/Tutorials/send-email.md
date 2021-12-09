@@ -3,3 +3,89 @@ sidebar_position: 4
 ---
 
 # Send your First Email
+
+Hey, are you ready to send an email? This section is more about sendingEmails with PHP, let's go!
+
+### Why sending Emails?
+
+Its just a feature that you can incorporate to your chatbots. In order to reach this goal we are going to use Email function of PHP.
+
+#### Parts of the Mail
+
+##### Headers
+
+**Headers are Important** cause these configure MetaInformation of the Email like, the destinatary, the emmisor, some language format and some more.
+
+```php
+$to = $email;
+$from = "$companyEmail";
+$subject = "Email from a Chatbot";
+
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+// Additional headers
+$headers .= 'To: ' .$to. "\r\n";
+$headers .= 'From: ' .$from. "\r\n";
+$headers .= 'Bcc: example@email.com' . "\r\n";
+$headers .= 'CC: example@email.com' . "\r\n";
+$headers .= 'Reply-To: example@email.com' . "\r\n";
+$headers .= 'X-Mailer: PHP/' . phpversion();
+```
+
+Most of the headers are optional, just take care of the first 4 declared and use the optional as much as you need/want.
+
+#### Variables
+
+In the way that I use to build the mails in PHP I created a way to change some Text inside of the email with Variables
+
+```php
+$variables = array(
+    'user_name' => "$name",
+    'user_secretCode' => "$secretCode",
+    'company_name' => "$companyName",
+    'company_description' => "$companyDescription",
+    'company_location' => "$companyLocation",
+    'company_email' => "$companyEmail",
+    'company_phone' => "$companyPhone",
+    'company_webSite' => "$webLink",
+    'company_banner' => "$img_Banner",
+    'company_facebookSite' => "$facebookLink",
+    'company_twitterSite' => "$twitterLink",
+    'company_youtubeSite' => "$youtubeLink",
+    'company_linkedinSite' => "$linkedinLink",
+    'company_instagramSite' => "$instagramLink"
+);
+
+$emailUrl = "emails/testmail.html";
+
+$message = prepareEmail($variables, $emailUrl);
+```
+
+These Variables help the structure of the email, if you want to use feel free. Then I get the email Url, this URL and the Emails that the Chatbot send (In general), should be inside of a folder called **emails** on your chatbot corefolder. After that we use a Function that help us replacing these keywords for Variagles instead, finally we got a long string called **message** which is the entire structure HTML of the mail, ready to be sent.
+
+```shell
+└───botcoreFolder
+    │   Emails
+        |   email.html
+```
+
+#### Mail Function
+
+PHP has this Mail function predefined
+
+```php
+mail($to,$subject,$message,$headers);
+```
+
+After the execution of this Mail function y recommend you to put it on a IF/ELSE statement just to check if the Email was sent.
+
+### Some Considerations
+
+This is not the only way to send Mails, there are others like
+
+> - PHP Mailer and other libraries
+> - Mail Class to send Emails
+
+#### Errors
+
+If you got some Errors, feel free to see **Errors** Article of the doc. Also you can see the Video when I show you how to send an Email or read the documentation again, probably there's something you haven't got already.

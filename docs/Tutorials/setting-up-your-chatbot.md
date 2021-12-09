@@ -97,6 +97,8 @@ In order to test we should go right now to Dialogflow and type on the console th
 
 If we got the response of **'Message from the backend'** Congratulations.
 
+#### Errors
+
 If not you can:
 
 > - Look at the Video

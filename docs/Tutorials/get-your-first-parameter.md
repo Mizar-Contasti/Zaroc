@@ -127,4 +127,6 @@ This value of expresso will be available on all the intents that have the same c
 
 You can set till 20 parameters per Intent, and have multiple contexts on an intent till 8.
 
+#### Errors
+
 If you got this response ,Yay! if not, check the Errors section or recap again every step of the tutorial, also you can see the video at the top.
