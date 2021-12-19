@@ -7,6 +7,10 @@
 # Generated files
 .docusaurus
 .cache-loader
+babel.config.js
+docosaurus.config.js
+sidebars.js
+
 
 # Misc
 .DS_Store
