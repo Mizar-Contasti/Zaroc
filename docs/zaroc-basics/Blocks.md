@@ -31,341 +31,373 @@ Core blocks are used for all Templates, these blocks represent specific little s
 
 These blocks are used to open and close structures.
 
-##### dfOpen/Close are the first and last part of our entire template.
+##### dfOpen/Close
+
+**Are the first and last part of our entire template**
 
 ```php
-function dfOpen(){
-  echo('{');
-}
-function dfClose(){
-  echo('}' . PHP_EOL);
-}
+dfOpen();
+
+dfClose();
 ```
 
-##### structureOpen/Close are the blocks that take care of the structure view or data that should be parsed as a Visual Component
+##### structureOpen/Close
+
+**Are the blocks that take care of the structure view or data that should be parsed as a Visual Component**
 
 ```php
-function structureOpen(array $title){
-  echo ('"fulfillmentText":"'.$title[0].'","fulfillmentMessages": [');
-}
-function structureClose(){
-  echo(']');
-}
+$title = array("Title");
+structureOpen($title);
+
+structureClose();
 ```
 
-##### contextOpen/Close are the blocks that take care of the context or data available behind scenes
+##### contextOpen/Close
+
+**Are the blocks that take care of the context or data available behind scenes**
 
 ```php
-function contextOpen(){
-  echo('"outputContexts":[');
-}
-function contextClose(){
-  echo(']');
-}
+contextOpen();
+
+contextClose();
 ```
 
-##### open/closePayload are used when you want to create a response that comes inside of a payload
+##### open/closePayload
+
+**Are used when you want to create a response that comes inside of a payload**
 
 ```php
-function openPayload(){
-  echo ('{"payload":');
-}
-function closePayload(){
-  echo ('}');
-}
+openPayload();
+
+closePayload();
 ```
 
-###### open/closeWeb are used for DialogflowMessenger
+###### open/closeWeb
+
+**Are used for DialogflowMessenger**
 
 ```php
-function openWeb(){
-echo('{"richContent": [[');
-}
-function closeWeb(){
-  echo(']]}');
-}
+openWeb();
+
+closeWeb();
 ```
 
 ### Separators
 
 Separators are used to separate blocks. There are multiple ways to separate, depending of the integrations one or more are allowed.
 
-##### Comma is the general separator used for all structures
+##### Comma
+
+**Is the general separator used for all structures**
 
 ```php
-function comma(){
-  echo (',');
-}
+comma();
 ```
 
-##### Basic Divider is only available for Dialogflow Messenger
+##### Basic Divider
+
+**Is only available for Dialogflow Messenger**
 
 ```php
-function basicDivider(){
-  echo ('{"type": "divider"}');
-}
+basicDivider();
 ```
 
-##### Comma Divider is only available for Dialogflow Messenger
+##### Comma Divider
+
+**Is only available for Dialogflow Messenger**
 
 ```php
-function commaDivider(){
-  echo (',{"type": "divider"},');
-}
+commaDivider();
 ```
 
-##### Super Divider is only available for Dialogflow Messenger
+##### Super Divider
+
+**Is only available for Dialogflow Messenger**
 
 ```php
-function superDivider(){
-  echo ('],[');
-}
+superDivider();
 ```
 
 ## webBlocks
 
 WebBlocks are used to build structures with **Dialogflow Messenger**
 
-### webParagraph is used to show a Paragraph.
+### webParagraph
+
+**Is used to show a Paragraph**
 
 WebParagraph can contain styles with the Span Function. To see more information check the doc.
 
 ```php
-function webParagraph(array $pTitleArray, array $pSubtitleArray)
-{
-   echo
-      ('{
-      "type": "accordion",
-      "title": "' . $pTitleArray[0] . '",
-      "subtitle": "' . $pSubtitleArray[0] . '",
-      "text": "",
-      "image": {
-        "src": {
-          "rawUrl": ""
-        }
-      }
-    }');
-}
+$pTitleArray = Array("Title1");
+$pSubtitleArray = Array("Subtitle1");
+
+webParagraph($pTitleArray, $pSubtitleArray);
 ```
 
-### webAccordeon is used to display a card
+### webAccordeon
+
+**Is used to display a card**
 
 > - webAccordeon shows a Card with Title, Subtitle and a text inside of a accordeon label.
 > - Accordeon Text can have styles with the span function.
 
 ```php
-function webAccordeon( array $aImageArray, array $aTitleArray, array $aSubtitleArray, array $aTextArray)
-{
-   echo
-      ('{
-      "type": "accordion",
-      "title": "' . $aTitleArray[0] . '",
-      "subtitle": "' . $aSubtitleArray[0] . '",
-      "text": "' . $aTextArray[0] . '",
-      "image": {
-        "src": {
-          "rawUrl": "' . $aImageArray[0] . '"
-        }
-      }
-    }');
-}
+$aImageArray = Array("https://imageurl.com");
+$aTitleArray = Array("Title");
+$aSubitleArray = Array("Subtitle");
+$aTextArray = Array("Subtitle");
+
+webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
 ```
 
-### webButton is used to display a Button
+### webButton
+
+**Is used to display a Button**
 
 > - Button works in two ways depending if you pass a link (you will get a redirection with target blank) if just text, a Event with this text as name will be triggered.
 > - Buttons can be used with a Card
 > - Buttons can be stacked indifinetely and you can separate with basicDivider.
 
 ```php
-function webButton( array $bTitleArray, array $bCustomArray, array $bIconArray, array $bColorArray)
-{
-    $raw = '';
-    for ($i = 0;$i < count($bTitleArray);$i++):
-        if (filter_var($bCustomArray[$i], FILTER_VALIDATE_URL) === false )
-        {
-            $raw .= '{
-                    "type": "button",
-                    "text": "' . $bTitleArray[$i] . '",
-                    "link": "",
-                    "style" : {
-                        "background-color": "' . $bColorArray[$i] . '"
-                    },
-                    "icon": {
-                    "type": "' . $bIconArray[$i] . '",
-                    "color": "' . $bColorArray[$i] . '"
-                    },
-                    "event": {
-                    "name": "' . $bCustomArray[$i] . '",
-                    "languageCode": "es",
-                    "parameters": {}
-                    }
-                },';
-        }
-        else
-        {
-            $raw .= '{
-                    "type": "button",
-                    "text": "' . $bTitleArray[$i] . '",
-                    "link": "' . $bCustomArray[$i] . '",
-                    "icon": {
-                        "type": "' . $bIconArray[$i] . '",
-                        "color": "' . $bColorArray[$i] . '"
-                    },
-                    "event": {
-                        "name": "",
-                        "languageCode": "es",
-                        "parameters": {}
-                    }
-                },';
-        }
-    endfor;
-    $result = rtrim($raw, ",");
-    echo $result;
-    }
+$bTitleArray = Array("Button Title 1", "Buttton with Link 2");
+$bCustomArray = Array("eventName","https://google.com");
+$bIconArray = Array("home","arrow_forward");
+$bColorArray = Array("$red","$blue");
+
+webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
 ```
 
-### webChip displays one title and multiple options to choose
+### webChip
+
+**Displays one title and multiple options to choose**
 
 > - Webchips can work on two different ways depending if you put a link (Will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on it.
 > - WebChips stacks indefinitely and are separed in a Flexbox way.
 
 ```php
-function webChips( array $cTitleArray, array $cImageArray, array $cCustomArray){
-    $raw1 = ' {
-        "type": "chips",
-        "options": [';
+$cTitleArray = Array("Chip Title1","Chips title 2");
+$cImageArray = Array("https://chipsImageURl.com","https://chipsImageURl.com");
+$cCustomArray = Array("Chip Text","https://chips.com");
 
-        $raw2 = '';
-
-        for($i = 0; $i < count($cTitleArray); $i++):
-
-        if(filter_var($cCustomArray[$i], FILTER_VALIDATE_URL) == false ){
-            $raw2 .='{
-                "text": "'.$cTitleArray[$i].'",
-                "image": {
-                  "src": {
-                    "rawUrl": "'.$cImageArray[$i].'"
-                  }
-                },
-                "link": ""
-              },';
-        } else {
-            $raw2 .='{
-                "text": "'.$cTitleArray[$i].'",
-                "image": {
-                  "src": {
-                    "rawUrl": "'.$cImageArray[$i].'"
-                  }
-                },
-                "link": "'.$cCustomArray[$i].'"
-              },';
-        }
-            endfor;
-            $raw2 = rtrim($raw2, ",");
-        $raw3 = ']}';
-        $result = $raw1.' '.$raw2.' '.$raw3;
-        echo $result;
-}
+webChips($cTitleArray, $cImageArray, $cCustomArray);
 ```
 
-### webImage displays a simple image
+### webImage
+
+**Displays a simple image**
 
 > - Images can be stacked indifinelty, but only one can be used for an Accordeon
 
 ```php
-function webImage( array $iImageArray, array $iTextArray)
-{
-    $raw = '';
-    for ($i = 0;$i < count($iImageArray);$i++):
+$iImageArray = Array("https://imageurl.com");
+$iTextArray = Array("Image Alt Text");
 
-        $raw .=
-        '{
-            "type": "image",
-            "accessibilityText": "' . $iTextArray[$i] . '",
-            "rawUrl": "' . $iImageArray[$i] . '"
-        },';
-    endfor;
-    $result = rtrim($raw, ",");
-    echo $result;
-}
+webImage($iImageArray, $iTextArray);
 ```
 
-### webList displays horizontal Cards
+### webList
+
+**Displays horizontal Cards**
 
 > - Lists can work as Buttons, if you put a link in their customPart these will work as hyperlink, if just a text, will trigger an Event with that name.
 
 ```php
-function webList( array $lTitleArray, array $lSubtitleArray, array $lImageArray, array $lCustomArray){
+$lTitleArray = Array("Title list","Title list 2");
+$lSubtitleArray = Array("Subtitle List","Subtitle list 2");
+$lImageArray = Array("https://imageurl.com","https://imageurl.com");
+$lCustomArray = Array("https://hyperlink.com","TextEvent");
 
-    $raw = '';
-
-    for($i = 0; $i <count($lTitleArray); $i ++):
-
-        if (filter_var($lCustomArray[$i], FILTER_VALIDATE_URL) === false ){
-
-          $raw .= '{
-              "type": "list",
-              "title": "' . $lTitleArray[$i] . '",
-              "subtitle": "' . $lSubtitleArray[$i] . '",
-              "image": {
-                  "src": {
-                    "rawUrl": "' . $lImageArray[$i] . '"
-                  }
-                },
-              "event": {
-                "name": "' . $lCustomArray[$i] . '",
-                "languageCode": "es",
-                "parameters": {}
-              }
-            },';
-        } else {
-          $raw .='{
-                  "type": "info",
-                  "title": "'.$lTitleArray[$i].'",
-                  "subtitle": "'.$lSubtitleArray[$i].'",
-                  "actionLink": "'.$lCustomArray[$i].'",
-                  "image": {
-                    "src": {
-                      "rawUrl": "'.$lImageArray[$i].'"
-                    }
-                  }
-                },';
-              }
-
-  endfor;
-  $result = rtrim($raw, ",");
-  echo $result;
-}
+webList($lTitleArray, $lSubtitleArray, $lImageArray, $lCustomArray);
 ```
 
 ### webDescription
+
+**Provides a simple Paragraph with no Styles**
 
 > - A Simple text with lot of Paragraphs
 > - Depending of how many text you pass as index you will get separated paragraphs.
 
 ```php
-function webDescription(array $dTitleArray, array $dTextArray){
+$dTitleArray = Array("Description Title");
+$dTextArray = Array("Description Text");
 
-    $raw1 = '';
-    $raw2 = '';
-
-    for($i1 = 0; $i1<count($dTitleArray); $i1 ++):
-
-        $raw1 .= '  {
-          "type": "description",
-          "title": "'.$dTitleArray[$i1].'",
-          "text": [';
-        for($i2 = 0; $i2 < count($dTextArray[$i1]); $i2++):
-            $raw2 .=  ' "' . $dTextArray[$i1][$i2] . '",';
-        endfor;
-        $raw1 .= rtrim($raw2, ",");
-        $raw2 = '';
-        $raw1 .= ']
-                },';
-        endfor;
-
-        $result = rtrim($raw1, ",");
-        echo $result;
-    }
+webDescription($dTitleArray, $dTextArray);
 ```
+
+## fbBlocks
+
+These Blocks are available for Facebook, some of them are native with Dialogflow and Other work in a Payload Way.
+
+To use the first you dont need to verificate your business, but for Payload Blocks you need it.
+
+### fbText
+
+**Displays a Simple Text**
+
+> - You can use multiple arrays of texts to display this like Paragraphs.
+
+```php
+$tTextArray = Array("Text/PAragraph 1","Text/Paragraph 2");
+
+fbText($tTextArray);
+```
+
+### fbImage
+
+**Displays a Simple Image**
+
+> - Images can be used indifinitely, they stack vertically.
+
+```php
+$iImageArray = Array("https://imageurl1.com","https://imageurl2.com");
+
+fbImage($iImageArray);
+```
+
+### fbReply
+
+**Display Quick Replies**
+
+> - Quick Replies can have up to 12 characters per reply and 20 replies per Quick Reply menu.
+
+```php
+$rTitleArray = Array("Reply Menu 1");
+$rTextArray = Array(
+  Array("Reply 1","Reply 2")
+);
+
+fbReplies($rTitleArray, $rTextArray);
+```
+
+### fbCard
+
+**Displays a Card with one Image and Buttons**
+
+> - Buttons can be stacked at maximum of 3 per card
+> - If you pass a Link as Custom, Button will work as Hperlink, If you pass a text, will work as postback text.
+> - You can pass multiple cards with this block, just make sure you are not using more than 3 buttons on each card.
+> - Cards are Stacked Vertically.
+
+```php
+$cImageArray = Array("https://imageCardurl1.com","https://imageCardurl1.com");
+$cTitleArray = Array("Card1","Card2");
+$cSubtitleArray = Array("card subtitile1","CardSubtitile 2");
+
+$cButtonTextArray = Array(
+Array("Card1 Button1 Title/Text","Card1 Button2 Title/Text"),
+Array("Card2 Button 1 Title/Text","Card2 Button 2 Title/Text")
+);
+$cButtonCustomArray = Array(
+Array("Card1 Button1 Custom","Card1 Button2 Custom"),
+Array("Card2 Button 1 Custom","Card2 Button 2 Custom")
+);
+
+
+fbCard($cImageArray, $cTitleArray, $cSubtitleArray, $cButtonTextArray, $cButtonCustomArray);
+```
+
+### fbExternalGeneric
+
+**Displays a Similar Card as their Native counterpart**
+
+> - Cards are Stacked Horitonzally
+> - Can handle Multiple buttons (external Buttons only)
+
+```php
+$fbTitleArray = Array("card1 intentName","card2 intentName");
+$fbImageArray = Array("https://imageCardurl1.com","https://imageCardurl2.com");
+$fbSubtitleArray = Array("subtitle for card1","subtitle for card2");
+$fbLinkArray = Array("https://cardHyperlink.com","https://cardHyperlink.com");
+$fbStyleArray = Array("$Style_Tall","$Style_Full");
+$bTitleArray = Array(
+  Array("Card1 Button1 Title","Card1 Button 2 Tittle"),
+  Array("Card2 Button1 Title","Card2 Button 2 Tittle")
+);
+$bCustomArray = Array(
+  Array("Card1 Button 1 postback","https://Card1button2url.com"),
+  Array("Card2 Button 1 postback","https://Card2button2url.com")
+);
+
+fbExternalGeneric($fbTitleArray, $fbImageArray, $fbSubtitleArray, $fbLinkArray, $fbStyleArray, $bTitleArray, $bCustomArray);
+```
+
+### fbExternalReceipt
+
+**Displays a Receipt that shows Products, Total Price, Subtotal, Taxes and More**
+
+> - You can have as many products as you want.
+
+```php
+$receiptInfo = array(
+  "order_name" => "",
+  "order_number" =>"",
+  "order_currency" => "",
+  "order_payment" => "",
+  "order_url" => "",
+  "order_timestamp" => ""
+);
+
+$receiptAddress = array(
+  "address_street1" => "",
+  "address_street2" =>"",
+  "address_city" => "",
+  "address_postalcode" => "",
+  "address_state" => "",
+  "address_country" => ""
+);
+
+$receiptSummary = array(
+  "summary_subtotal" => "",
+  "summary_shippingcost" => "",
+  "summary_tax" => "",
+  "summary_cost" => ""
+);
+
+$fbAdjustmentName = Array("10%");
+$fbAdjustmentAmount = Array("10%");
+
+$fbTitleArray = Array("Product 1 Title");
+$fbSubtitleArray = Array("Product 1 Description");
+$fbQuantityArray = Array("Product 1 Quantity");
+$fbPriceArray = Array("Price Per Product");
+$fbCurrencyArray = Array("Currency of the Product");
+$fbImageurlArray = Array("https://producturlimage.com");
+
+
+fbExternalReceipt($receiptInfo, $receiptAddress, $receiptSummary, $fbAdjustmentName, $fbAdjustmentAmount, $fbTitleArray, $fbSubtitleArray, $fbQuantityArray, $fbPriceArray, $fbCurrencyArray, $fbImageurlArray);
+```
+
+## wsBlocks (BETA)
+
+WhatsApp Blocks help us to display Information on WhatsApp
+
+Whatsapp Environment has big differences and its blocks depend of what partner you have.
+
+### wsParagraph
+
+**Displays a Simple Paragraph**
+
+> - You can use emojis and linespaces to create a space between texts
+
+```php
+$wsTextArray = Array("Paragraph1","Paragraph 2");
+
+wsParagraph($wsTextArray);
+```
+
+## tgBlocks (BETA)
+
+Telegram Blocks help us to display information on Telegram
+
+Telegram Blocks have a Native Integration with Dialogflow, and there are others that uses external Payloads
+
+### tgText
+
+### tgImage
+
+### tgReply
+
+### tgCard
+
+### tgExternalVerticalButtons
