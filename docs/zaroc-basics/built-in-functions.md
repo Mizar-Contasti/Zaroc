@@ -1,0 +1,225 @@
+---
+sidebar_position: 4
+---
+
+# Built-in Functions
+
+Zaroc has many useful Functions that can help us handle Dialogflow's Request in our backend and provide a good response.
+
+Cause this Library has been used for lot or projects, I have saved some pure functions for the library named (Zaroc Functions), at the other hand we have functions that are not necesary and just for a use case named (Custom Functions).
+
+## Zaroc Functions
+
+### Intents
+
+These Functions help us to handle Intents
+
+#### Intent
+
+> - receives the name of the intent and returns true or false, is used in IF statements to do an specific behavior for an intent in our code
+
+```php
+if(intent('intentName')){
+    //Do some code
+}
+```
+
+#### Action (BETA)
+
+> - Receives the name of an action and returns true or false, is used in IF statements to filter intents, currently is on **testing**
+
+```php
+if(action('actionName')){
+    //Do some code
+}
+```
+
+### Parameters
+
+These functions are used to handle Parameters
+
+#### getIntentParameter
+
+> - Returns the value of the specified Parameter in the living Intent
+
+```php
+$parameterValue = getIntentParameter()['parameterName'];
+```
+
+#### getContextParameter
+
+> - Returns the value of the specified Parameter and Context
+> - Receives a Number as the index of the specified Context when the variable is living
+
+```php
+$parameterValue = getContextParameter(0)['parameterName'];
+```
+
+### Triggers
+
+These functions help us to Trigger Special Behaviors on our Chatbot from the Backend
+
+#### triggerEvent
+
+> - Triggers the Intent that has the event typed as argument
+> - Receives the Event name and Params as Array
+> - Params are optional, these params helps to send data to the context from the current intent to the nextIntent that is being trigger by this Function
+
+```php
+$eventName = Array("event1");
+$params = Array();
+
+triggerEvent($eventName,$params);
+```
+
+#### triggerError
+
+> - Displays an Error, works for all the integrations.
+> - Receives as Array, the name of the intent and the message of the error to trigger.
+
+```php
+$intentName = Array("intent1");
+$errorMessage = Array("Query wasnt executed 💥");
+
+triggerError($intentName,$errorMessage);
+```
+
+#### triggerPrompt
+
+> - Triggers a Prompt when needed, has the same format as the default required parameters that dialogflow has.
+> - Its used in Addition with SlotFilling (Check Documentation for SlotFilling).
+> - context and contextBody are optional. (Remember to check Doc for Context if you wanna use it).
+
+```php
+$prompt = Array("Whats your favourite food");
+$context = false;
+$contextbody;
+
+triggerPropmt($prompt,$context,$contextBody);
+```
+
+### Context
+
+Context help us to save information, with these backend functions we can create and update variables on an specific context.
+
+> - Be noticed that we cant delete variables neither contexts. Just create and update.
+> - To have a whole picture of how Context works, check Context on Zaroc's Advanced.
+
+#### setContextParameter
+
+> - This Function allow us to add a Parameter to the Selected Context.
+
+```php
+$contextIndex = Array(0);
+$variableName = Array("fruit");
+$variableValue = Array("coco");
+
+$contextBody = setContextParameter($contextIndex,$variableName,$variableValue);
+```
+
+#### updateContextParameter
+
+> - This functions allow us to update the value of a parameter inside of the selected context.
+
+```php
+$contextIndex = Array(0);
+$variableName = Array("fruit");
+$variableValue = Array("Banana");
+
+$contextBody = updateContextParameter($contextIndex,$variableName,$variableValue);
+```
+
+#### setContextParameters
+
+> - Creates multiple values on the selected Context.
+
+```php
+$contextIndex = Array(0);
+
+$parameters = Array(
+    'color' => 'white',
+    'animal' => 'bird',
+    'coffee' => 'expresso'
+);
+
+$contextBody = setContextParameters($contextIndex, $parameters);
+```
+
+#### updateContextParameters
+
+> - Updates multiples values on the selected context.
+
+```php
+$contextIndex = Array(0);
+
+$parameters = Array(
+    'color' => 'black',
+    'fruit' => 'apple',
+    'coffee' => 'capuccinno',
+    'animal' => 'gorilla'
+);
+
+$contextBody = updateContextParameters($contextIndex, $parameters);
+```
+
+### Troubleshoot
+
+In order to Troubleshoot we can use some functions.
+
+#### getInput
+
+> - Returns the Entire input Request that Dialogflow has sent
+> - This input helps you to look at the body and troubleshoot.
+
+```php
+$input = getInput();
+```
+
+#### createInput
+
+> - This function allow us to create a file.txt on ourServer with all the Request.
+> - Receives an array with the name of the file that you would like to create.
+
+```php
+$fileName = Array("request");
+createInput($fileName);
+```
+
+### Miscelaneous
+
+These functions are not commonly used, but sometimes are helpfull.
+
+#### getSessionID
+
+> - Returns the sessionId of the current chat/session
+> - Id format changes depending of the platform/integration
+
+```php
+$sessionId = getSessionId();
+```
+
+#### getProjectName
+
+> - Retrieves the name of the project
+
+```php
+$projectName = getProjectName();
+```
+
+#### getWhatsAppPhoneNumber
+
+> - Retrieves a WhatsApp PhoneNumber if you are in Session VIA whatsApp
+> - This data is provided for mostly wWhatsApp Providers
+
+```php
+$phoneNumber = getWhatsAppPhoneNumber();
+```
+
+#### getTelegramChatId
+
+> - Returns the ChatId of a Telegram Chat
+> - Only obtainable if you are chatting via Telegram
+
+```php
+$chatID = getTelegramChatId();
+```
