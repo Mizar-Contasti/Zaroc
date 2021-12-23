@@ -1,0 +1,61 @@
+---
+sidebar_position: 2
+---
+
+# Entities
+
+Entities in Dialogflow are quite difficult at the first time. This tool help us to take important information from the user.
+
+There are 2 general types of entities, system entities, which are entities pre created by Dialogflow to handle common things like (Dates, Locations, Countries and more) at the other hand we have custom Entities, these entities are created by ourselves, and are for specific cases that we would like to implement/use.
+
+### Create an entity
+
+> - Lets go to Entities and hit thr big blue button.
+> - Assign a name that will help us recognize a variable/entity/thing, name **fruits** for this example
+> - Inside of this we should see some checkboxes that we can use to specify the type of entity. By default is a typed/synonims entity.
+
+### Types of Entities
+
+**Typed/Synonims**
+
+This type of Entities is the most common, works with synonims.
+
+Lets say that we have a Entity named fruits, this will be the name.
+
+Inside of the Entities we have rows, for each row we can specifify a fruit as a core value and for synonims we can use different ways to type the same word.
+
+For example we can have strawberry with synonyms of strawbery, strawberrys, strawberries, blueberries, black berries.
+
+**Regexp**
+
+We can also create an Entity using Regular expressions, this language help us to get information like specific numbers (bankAccount, cardNumbers, passwords...).
+
+**Allow automated expansion**
+
+Help us to expand the matches (synonymns), adding just a few of flexibility to the original text.
+
+**Fuzzy Matching**
+
+Provides an extensive flexibility to each synonim, this is more open that Automated expansion, not recommended by myself.
+
+### Implement Entities
+
+Lets go to our Intent, and as training phrases we can type a word that is recognized as an Entity, for this example, lets type **coco**, if you created the entity, you should be able to see your word now highlighted, and if you hover on it, some information will appear about the entity used.
+
+Also below the training phrases you can see all the entities used for this in a section called **Actions and Parameters**
+
+In this part you can see the original name of the entity, its entity reference and the value for referencing (the name of the entity with a $ in front).
+
+You can output these variables in the default response using a that value for referencing (**$fruits**) for example.
+
+> - An Intent can have up to 20 Parameters.
+
+### Composite Entities
+
+These entities are built with 2 or more entities. Its an Entity with more entities inside.
+
+Let's say you've created a entity of verbs (Buy Verbs), other entity of fruits (Fruits sinonyms) and finally an Entity of Quantity.
+
+We can create a Entity named **orderFruits** that can handle **@buy_verb @quantity @fruits**
+
+So if you say **I want 5 Bananas** You will be able to capture these 3 variables, but from the Intent, there should be only one parameter. A custom parameter which is an Object containing all these entities.
