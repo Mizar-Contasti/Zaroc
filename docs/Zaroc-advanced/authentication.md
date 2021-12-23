@@ -6,30 +6,33 @@ sidebar_position: 1
 
 Let's discover **How to Authenticate Dialogflow with Zaroc**.
 
-## Getting Started
+Authentication is a common process on all the Applications, for Chatbots or Webhooks isnt an exception.
 
-Get started by **Creating our chatbot Throught Dialogflow and Connecting to Zaroc**.
+Authentication gives us multiple benefits
 
-Or **Look at this Tutorial** with **[Mizar](https://zaroc.netlify.app)**.
+> - Gives us security layer, so noone more than us can access to our webhook.
+> - Gives security to the owner of the chatbot.
 
-## Create a Chatbot on Dialogflow
+#### How Authentication works?
 
-Generate a new Docusaurus site using the **classic template**:
+When Dialoglow sends a Request to our webhook, our webhook checks the headers.
 
-```shell
-npm init docusaurus@latest my-website classic
-```
+We catch headers user/password (for example) and compare with the user/password that we declared on our webhook side. If the parameters are not equal, our webhook will send an Error message and close the connection/port.
 
-## Start your site
+If the Authentication goes fine, we check the requests, goes to especific intents...
 
-Run the development server:
+#### Variables used for Authentication
 
-```shell
-cd my-website
+Currently we are using a basic and strong Authentication.
 
-npx docusaurus start
-```
+As you see in our Core Chatbot file there is a function called **auth** which received 2 parameters, a name and a password, these variables are declared inside of the variables file that is inside of our chatbot.
 
-Your site starts at `http://localhost:3000`.
+So first lets check these variables, choose the name and password that best fits to you.
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and displays your changes.
+#### Checking on Dialogflow the Variables
+
+After setting the name/password we are expecting from our Chatbot/Webhook lets go to Dialogflow, especifically in Fulfillment, right there you will see your webhook enabled and some fields named as **Basic Auth**.
+
+With that you should be able to Authenticate successfully. Hope this helps you a lot.
+
+There are other methods for Authenticate in Future but there are Alpha by the time.
