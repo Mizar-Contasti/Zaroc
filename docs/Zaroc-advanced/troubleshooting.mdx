@@ -1,0 +1,51 @@
+---
+sidebar_position: 6
+---
+
+# Troubleshooting
+
+It's time to TroubleShoot, if you have gotten Errors From Dialogflow or from our Backend. But Before we start is very important to recognize when an error is appearing and where the Errors comes from so.
+
+### Is this an Error?
+
+Mostly of the times you could recognize an error for these patterns.
+
+> - If your default message gets triggered instead of the message displayed from our backend code.
+> - If your **Fulfillment response** doesnt have the correct structure on JSON (make sure the characters are on orange/brown color)
+> - If your **Fulfillment Status** says Webhook Error/ Execution Error
+
+### Where's the Origin of the Error?
+
+> - If you get a ErrorLog in your chatbot folder, the error mostly is from our **(BACKEND)**.
+> - If your chatbot displays the default message instead of the backend output, its from the **(BACKEND)**.
+> - If in **Fulfillment Response** you see a wrong JSON format (make sure the characters are on orange/brown color) the Error is from the **(BACKEND)**.
+> - If you got any warning from the console, any orangeRed warning, its from Dialogflow.
+
+.
+:::tip Keep in Mind
+
+You have to Require all the Utilities (Intents/Classes) before, most of the time we just haven't required the files.
+
+:::
+
+<!-- :::danger Take care
+
+This action is dangerous
+
+::: -->
+
+### Fixing Errors
+
+#### Errors from the Log
+
+Mostly of these problems becomes for a fault in the code that you have developed, so I encourage you to review your code, check stack overflow, and there you will fix it.
+
+#### Errors from the Fulfillment Response
+
+Most of these Errors comes when we are not sending the correct Data in the expected format (JSON), I recommend you to check open/close brackets for your intent. If its necessary try to comment all the other intents, leave the intent you are testing. Try it and look at the format that comes from **Fullfilment Response**, also you can use a JsonFormaterOnline [**HERE**](https://jsoneditoronline.org/) to check for inconsistencies.
+
+#### Errors from Dialogflow
+
+Most of the times could be Errors that happen when you dont save correctly the changes or you have deleted some feature.
+
+Try to LogOut and LogIn again. If you get errors that are related to your GoogleCloud, Payments or specific behavior. Check at the Community for Dialogflow [**HERE**](https://groups.google.com/g/dialogflow-essentials-edition-users)

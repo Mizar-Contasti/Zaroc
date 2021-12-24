@@ -83,7 +83,11 @@ if(intent('asking_coffee')){
 
 With that code, when triggering the intent, first you should get the bot asking you the **type of coffee**, type for example 'expresso', after that the bot will tell you **the coffee you choose is expresso**.
 
+:::tip Keep In MIND
+
 Be noticed that you can set more than 1 parameter, the maximun is 20.
+
+:::
 
 If you got this response ,Yay! if not, check the Errors section or recap again every step of the tutorial, also you can see the video at the top.
 
@@ -101,7 +105,11 @@ Do the same that we did in our Backend, then use the function of
     $coffee = getContextParameter(0)['coffee'];
 ```
 
+:::tip Keep In MIND
+
 Remember that the number inside the parenthesys should be the index of the context, starting from Zero, if your intent just have one context, use zero.
+
+:::
 
 Your code should look at this now
 
@@ -129,4 +137,11 @@ You can set till 20 parameters per Intent, and have multiple contexts on an inte
 
 #### Errors
 
-If you got this response ,Yay! if not, check the Errors section or recap again every step of the tutorial, also you can see the video at the top.
+:::danger Keep an Eye
+
+If you got haven't got anything, or an Error.
+
+> - Look at the Tutorial Again or check the Video Tutorial
+> - Check the Troubleshooting Section
+
+:::
