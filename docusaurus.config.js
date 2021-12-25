@@ -16,6 +16,19 @@ const config = {
   organizationName: "Mizar", // Usually your GitHub org/user name.
   projectName: "Zaroc", // Usually your repo name.
 
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es"],
+    localeConfigs: {
+      en: {
+        label: "English",
+      },
+      es: {
+        label: "Espanol",
+      },
+    },
+  },
+
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -49,8 +62,13 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
+          // {
+          //   type: "localeDropdown",
+          //   position: "right",
+          // },
           {
             type: "docsVersionDropdown",
+            position: "right",
           },
           {
             type: "doc",
