@@ -1,0 +1,629 @@
+---
+sidebar_position: 4
+---
+
+# Built-in Functions
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Zaroc has many useful Functions that can help us handle Dialogflow's Request in our backend and provide a good response.
+
+## Zaroc Functions
+
+### Intents
+
+These Functions help us to handle Intents
+
+#### Intent
+
+> - receives the name of the intent and returns true or false, is used in IF statements to do an specific behavior for an intent in our code
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+if(intent('intentName')){
+    //Do some code
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### Action (BETA)
+
+> - Receives the name of an action and returns true or false, is used in IF statements to filter intents, currently is on **testing**
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+if(action('actionName')){
+    //Do some code
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Parameters
+
+These functions are used to handle Parameters
+
+#### getIntentParameter
+
+> - Returns the value of the specified Parameter in the living Intent
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$parameterValue = getIntentParameter()['parameterName'];
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### getContextParameter
+
+> - Returns the value of the specified Parameter and Context
+> - Receives a Number as the index of the specified Context when the variable is living
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$parameterValue = getContextParameter(0)['parameterName'];
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Triggers
+
+These functions help us to Trigger Special Behaviors on our Chatbot from the Backend
+
+#### triggerEvent
+
+> - Triggers the Intent that has the event typed as argument
+> - Receives the Event name and Params as Array
+> - Params are optional, these params helps to send data to the context from the current intent to the nextIntent that is being trigger by this Function
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$eventName = Array("event1");
+$params = Array();
+
+triggerEvent($eventName,$params);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### triggerError
+
+> - Displays an Error, works for all the integrations.
+> - Receives as Array, the name of the intent and the message of the error to trigger.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$intentName = Array("intent1");
+$errorMessage = Array("Query wasnt executed 💥");
+
+triggerError($intentName,$errorMessage);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### triggerPrompt
+
+> - Triggers a Prompt when needed, has the same format as the default required parameters that dialogflow has.
+> - Its used in Addition with SlotFilling (Check Documentation for SlotFilling).
+> - context and contextBody are optional. (Remember to check Doc for Context if you wanna use it).
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$prompt = Array("Whats your favourite food");
+$context = false;
+$contextbody;
+
+triggerPropmt($prompt,$context,$contextBody);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Context
+
+Context help us to save information, with these backend functions we can create and update variables on an specific context.
+
+> - Be noticed that we cant delete variables neither contexts. Just create and update.
+> - To have a whole picture of how Context works, check Context on Zaroc's Advanced.
+
+#### setContextParameter
+
+> - This Function allow us to add a Parameter to the Selected Context.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$contextIndex = Array(0);
+$variableName = Array("fruit");
+$variableValue = Array("coco");
+
+$contextBody = setContextParameter($contextIndex,$variableName,$variableValue);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### updateContextParameter
+
+> - This functions allow us to update the value of a parameter inside of the selected context.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$contextIndex = Array(0);
+$variableName = Array("fruit");
+$variableValue = Array("Banana");
+
+$contextBody = updateContextParameter($contextIndex,$variableName,$variableValue);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### setContextParameters
+
+> - Creates multiple values on the selected Context.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$contextIndex = Array(0);
+
+$parameters = Array(
+    'color' => 'white',
+    'animal' => 'bird',
+    'coffee' => 'expresso'
+);
+
+$contextBody = setContextParameters($contextIndex, $parameters);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### updateContextParameters
+
+> - Updates multiples values on the selected context.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$contextIndex = Array(0);
+
+$parameters = Array(
+    'color' => 'black',
+    'fruit' => 'apple',
+    'coffee' => 'capuccinno',
+    'animal' => 'gorilla'
+);
+
+$contextBody = updateContextParameters($contextIndex, $parameters);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Troubleshoot
+
+In order to Troubleshoot we can use some functions.
+
+#### getInput
+
+> - Returns the Entire input Request that Dialogflow has sent
+> - This input helps you to look at the body and troubleshoot.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$input = getInput();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### createInput
+
+> - This function allow us to create a file.txt on ourServer with all the Request.
+> - Receives an array with the name of the file that you would like to create.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$fileName = Array("request");
+createInput($fileName);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Miscelaneous
+
+These functions are not commonly used, but sometimes are helpfull.
+
+#### getSessionID
+
+> - Returns the sessionId of the current chat/session
+> - Id format changes depending of the platform/integration
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$sessionId = getSessionId();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### getProjectName
+
+> - Retrieves the name of the project
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$projectName = getProjectName();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### getWhatsAppPhoneNumber
+
+> - Retrieves a WhatsApp PhoneNumber if you are in Session VIA whatsApp
+> - This data is provided for mostly wWhatsApp Providers
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$phoneNumber = getWhatsAppPhoneNumber();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### getTelegramChatId
+
+> - Returns the ChatId of a Telegram Chat
+> - Only obtainable if you are chatting via Telegram
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$chatID = getTelegramChatId();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+<!-- ---
+sidebar_position: 1
+---
+
+# Custom Functions (CUSTOM)
+
+### Date
+
+### Text
+
+#### id
+
+> - Returns a little Random ID
+
+```php
+$id = id();
+```
+
+#### id2
+
+> - Returns a stronger Random ID
+
+```php
+$id = id2();
+```
+
+#### createSpan
+
+> - Help us to create a Span, this span works adding Styles to text on webBlocks
+
+```php
+$text = Array("Titleeee");
+$properties = Array("style='color:red';");
+
+$span = createSpan($text,$properties);
+```
+
+#### endsWith
+
+> - Checks if a String ends with an specific LEtter
+
+```php
+$result =  endsWith($haystack, $needle);
+```
+
+#### startsWith
+
+> - Checks if a String starts with specific string
+
+```php
+$string = "hello world";
+$startString = "he";
+
+$result = startsWith ($string, $startString);
+```
+
+#### reduce
+
+> - Removes blank spaces
+
+```php
+$text = "Hey There how are you   ";
+
+$newText = reduce($text);
+```
+
+#### lower
+
+> - Changes to lowerCase
+
+```php
+$text = "HEy THERE";
+
+$newText = lower($text);
+```
+
+#### reduceLower
+
+> - Chantes to lowerCase and removes blank spaces
+
+```php
+$text = "HEy THERE";
+
+$newText = reduceLower($text);
+```
+
+#### titleAdjust
+
+> - Removes blank spaces and changes to uppercase
+
+```php
+$text = "HEy THERE";
+
+$title = titleAdjust($text);
+```
+
+#### whatsAppLink
+
+> - Creates a WhatsAppLink with a Prefered Opening Text
+
+```php
+$phone = Array("XXXXXX");
+$text = Array("Hey there, welcome to my whatsapp chat");
+
+$wsLink = whatsAppLink($text,$phone)
+```
+
+#### textToUrlEncode
+
+> - Changes the Text to a Url Format
+
+```php
+$text = Array("Text ready to be encoded");
+
+$nexText = textToUrlEncode($text);
+```
+
+### Mail
+
+#### prepareEmail
+
+> - Help us to prepare a Email (Change its variables and more).
+
+```php
+$variables = Array(
+    'variable1' => 'value1',
+    'variable2' => 'value2'
+);
+
+$emailFileUrl = Array("./../email/testEmail.html");
+
+$email = prepareEmail($variables, $emailFileUrl);
+```
+
+### Api
+
+#### getJSONVariable
+
+> - Help us to retrieve information from a JSON
+
+```php
+$variableName = Array("color");
+$jsonBody;
+
+$variable = getJsonVariable($jsonBody, $variableName);
+```
+
+#### adaptJSON
+
+> - Adapts Json.Stringify format to a readable format to PHP
+
+```php
+$jsonBody = '" { "format" : "nice" } "';
+
+$newJSON = adaptJson($jsonBody);
+```
+
+#### openWeatherAPI
+
+> - Help us consume openWeatherAPI
+
+```php
+$apiKey = Array("XXXXXXXXXXXXXXXXXXXXXXXX");
+$country = Array("-MX");
+$location = Array("Mexico City");
+
+$url = openWeatherAPI($apiKey,$country,$location);
+```
+
+#### internationalNewsAPI
+
+> - Help us consume internationalNewsAPI
+
+```php
+$apiKey = Array("XXXXXXXXXXXXXXXXXXXXXXXX");
+$category = Array("Health");
+$country = Array("-MX");
+$page = Array("1");
+
+$url = internationalNewsApi($apiKey,$category,$country,$page);
+``` -->

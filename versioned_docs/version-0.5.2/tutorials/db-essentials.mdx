@@ -1,0 +1,441 @@
+---
+sidebar_position: 6
+---
+
+# DB Essentials
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Save and Use information is common in these days, so giving this feature for a chatbot, really makes it so nice ,and profesional.
+
+**Why Save and Use information From Db?**
+
+Save information from Parameters gives us a way to enhance Chatbot´s conversation. You can save the user´s name and use wherever you want to give a personal message to the user. Or in other topics, you can save information like hotel/hospital/restaurant bookings, payment information, user data to signIn, data to send letters.
+
+For the easy implementation, Im using SQL with MySQL db, if you want to use NoSQL/SQL MongoDb/PostgreSQL or other stuff, this guide will give you optional way of work, obiously you can do whatever you want, so after saying this **let´s go to DB essentials for your Chatbot**.
+
+### Connection to Database
+
+To make a connection you can read this documentation or look a Tutorial [**HERE**](https://google.com)
+
+Before doing queries we first have to be connected to database, so lets connect.
+
+In your chatbot core folder you should see a folder named **classes**, here the conection and all classes to make queries will exist.
+
+> - Open the **connection.php** file you should see a class named Conecction and inside of it a method named connect, to make a connection I recommend you just to change **host**, **db** , **user**, and **password**
+
+> - If your DB is in the same server where your bot is running, the **host** value will be **localhost**, if not check with your provider for your IP HOST
+> - **db** is related to the DB's name, whatever you created it, put the name. The same will be for the **user** users_name and the **password** the password of the user , just take care that your user should have access to the db.
+
+> - By the time we are using PDO to make a connection to a mysql server. If you are using other DB provider, you can chage the structure and keywords of the connection. But by default your code should be like this
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+Class Connection{
+
+    static public function connect(){
+
+        $host = "localhost";
+        $db = "db_name";
+        $user = "user_name";
+        $pass = "user_password";
+        $link = new PDO("mysql:host=$host;dbname=$db","$user","$pass");
+        $link->exec("set names utf8");
+        return $link;
+
+      }
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+To test the connection I recommend you to use the example commented code that we have bellow of this class.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$conn = Connection::connect();
+if($conn){
+  echo("Conection Successfull");
+} else {
+ echo("Conection Failed");
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Create a new intent, use the default code and just write some hardcoded values
+> - If your connection was fine, lets go. If not you can check the Tutorial of me connection successfully.
+
+### SELECT / READ
+
+For SELECT a record, check this documentation or look this Tutorial [**HERE**](https://google.com)
+
+SELECTING information is most of the common procedures, by the time Im using SQL language, but you can do it in the language you want.
+
+As you saw, inside of the classes folder there are 1 file named **connection.php** and other files with a naming convention of uppercase, these files are related to classes, each class has methods.
+
+If you havent work with classes let's do with this example.
+
+Lets suppose that we have a DB named **Store** with a table named **Products**, we want procedures to get all the products, get specific product by id or by category.
+
+So in a way to get our procedures with this arquitecture let's do this stepts.
+
+> - Create a file named **Products.php** remember that this file means the class with the procedures to use with all the products.
+> - Open your brackets and import the connection.php file
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+require_once("connection.php");
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Inside of the file create the class Products, do it as I shown bellow.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+Class Products {
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Lets add a **SELECT** Procedure as a static public function inside of our Products class
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+static public function getProducts(){
+    $sql =  "SELECT * FROM `Products` ";
+    $stmt = Connection::connect()->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->close();
+    $stmt =  null;
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+As you see we are using a simple **SQL SELECT** to get all the products.
+
+We create a SQL string, then we instantiate the connection and prepare it with the SQL, then we execute and return all the records in a Associative Array format. At the end we close the connection and make it null.
+
+#### Let's implement this on our chatbot
+
+> - Go to your chatbot's core file and require this class.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+require_once("classes/Products.php");
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Right now we have created a method of Products that retrieves all the products. Let's use on our chatbot!
+> - go to your preferred Intent, lets instanciate this procedure as I show you bellow
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$products = Products::getProducts();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+With this method our variable **products** has all the products. Right now Im going just to get the first element of this array for tutorial purposes. But you can create an structure that handles all the products and can be parsed for Dialogflow, To achieve this I extremely recommend you to look at Zaroc Basics/ Advanced topics about the strucures that we build and manage.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$product = $products[0];
+
+$product_name = $product['product_name'];
+$product_description = $product['product_description'];
+$product_price = $product['product_price'];
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Right now Im getting the first product, after that I got the name, description and price that we need to generate a response.
+> - You can use these variables to build a message (structure view) to the user.
+
+If you got a problem look for errors on your error.log, check again the tutorial or look a video tutorial [**HERE**](https://google.com)
+
+> - Then Create an IF/ELSE statement to check if the product was created or not.
+> - If not check your SQL statement manually or try to show it in the console, most of the times we have issues with SQL statemets, if you havent solved this, check again this tutorial or check this Tutorial video [**HERE**](https://google.com)
+> - If you got successfully inserted this new product, you are good to go :P.
+
+### INSERT / CREATE
+
+For Insert a record, check this documentation or look this Tutorial [**HERE**](https://google.com)
+
+> - Let's go to the Product class and bellow of the method that we created earlier lets create another, lets call it **createProduct** and use the example code that I show you bellow
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+static public function createProduct($product_name,$product_description,$product_price){
+    $sql =  "INSERT INTO `Products` (product_name,product_description,product_price) VALUES (:product_name,:product_description,:product_price)";
+
+    $stmt = Connection::connect()->prepare($sql);
+
+    $stmt->bindParam(":product_name",$product_name, PDO::PARAM_STR);
+    $stmt->bindParam(":product_description",$product_description, PDO::PARAM_STR);
+    $stmt->bindParam(":product_price",$product_price, PDO::PARAM_STR);
+
+    return $stmt->execute();
+
+    $stmt->close();
+    $stmt = null;
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+As you see we are creating another static public function/method to Insert a Product, we are doing in a PDO way that help us to avoid SQL inyection. We are preparing the SQL string, then we add variables to it with PDO::PARAM_STR that removes all the wrong special characters that can execute SQL by itself.
+
+Then we return the result of the execution of the SQL, if the **INSERT** was successfull we will got True
+
+#### Let's implement this on our chatbot
+
+> - Go to your preferred intent, instantiate this method as you see bellow
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$createdProduct = Products::createProduct($product_name,$product_description,$product_price);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+You can put hardcoded values or have it dinamically asking this info to the user...
+
+> - Then Create an IF/ELSE statement to check if the product was created or not.
+> - If not check your SQL statement manually or try to show it in the console, most of the times we have issues with SQL statemets, if you havent solved this, check again this tutorial or check this Tutorial video [**HERE**](https://google.com)
+> - If you got successfully inserted this new product, you are good to go :P.
+
+### UPDATE / UPDATE
+
+Let's Update our records!!! (Check SELECT and INSERT first to have enough context)
+
+> - Go to your Products class and create a new method named updateProduct, follow the code I show you bellow.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+  static public function updateProduct($product_name, $product_description){
+    $sql =  "UPDATE `Products` SET product_description = :product_description WHERE product_name LIKE :product_name";
+    $stmt = Connection::connect()->prepare($sql);
+    $stmt->bindParam(":product_description",$product_description, PDO::PARAM_STR);
+    $stmt->bindParam(":product_name",$product_name, PDO::PARAM_STR);
+    return $stmt->execute();
+    $stmt->close();
+    $stmt =  null;
+  }
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+With this Query we are updating a product's description where its name is equal to "example", we are using PDO way to avoid SQL inyection
+
+#### Let's implement this on our chatbot
+
+> - Go to your preferred intent, instantiate this method as you see bellow
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$updatedProduct = Products::updateProduct($product_name,$product_description);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+You can put hardcoded values or have it dinamically asking this info to the user...
+
+> - Then Create an IF/ELSE statement to check if the product was created or not.
+> - If not check your SQL statement manually or try to show it in the console, most of the times we have issues with SQL statemets, if you havent solved this, check again this tutorial or check this Tutorial video [**HERE**](https://google.com)
+> - If you got successfully updated this new product, you are good to go :P.
+
+### DELETE / DELETE
+
+Let's Delete records! (Check SELECT and INSERT first to have enough context)
+
+> - Go to your Products class and create a new method named deleteProduct, follow the code I show you bellow.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+  static public function deleteProduct($product_name){
+    $sql =  "DELETE FROM `Products` WHERE product_name LIKE :product_name";
+    $stmt = Connection::connect()->prepare($sql);
+    $stmt->bindParam(":product_name",$product_name, PDO::PARAM_STR);
+    return $stmt->execute();
+    $stmt->close();
+    $stmt =  null;
+  }
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+With this Query we are deleting a product where its name is equal to "example", we are using PDO way to avoid SQL inyection
+
+#### Let's implement this on our chatbot
+
+> - Go to your preferred intent, instantiate this method as you see bellow
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$deletedProduct = Products::deleteProduct($product_name);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+You can put hardcoded values or have it dinamically asking this info to the user...
+
+> - Then Create an IF/ELSE statement to check if the product was created or not.
+> - If not check your SQL statement manually or try to show it in the console, most of the times we have issues with SQL statemets, if you havent solved this, check again this tutorial or check this Tutorial video [**HERE**](https://google.com)
+> - If you got successfully deleted this product, you are good to go :P.
+
+:::danger Keep an Eye
+
+If you got haven't got anything, or an Error.
+
+> - Check from SQL, try your Query, If you got it working, lets try with the next two steps.
+> - Look at the Tutorial Again or check the Video Tutorial
+> - Check the Troubleshooting Section
+
+:::

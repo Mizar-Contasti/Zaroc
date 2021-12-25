@@ -1,0 +1,145 @@
+---
+sidebar_position: 5
+---
+
+# Consume your First API
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Let's consume our first Api from our Chatbot
+
+**Why Apis?**
+
+Apis makes Applications better, faster and its a common requirement on common days. Your chatbot can Use Apis to get helpfull information, make Payments, book tables or schedule with a Professional.
+
+### Calling APIS
+
+In order to call APIs we are going to use a package from composer(php package manager) called GuzzleHTTP, this package is like Axios(for Node.js/npm) but with other structure.
+
+When downloading guzzle http, you should have a folder named **vendor** when all the composer packages are in. My suggestion is to put this folder at the same level that your chatbot Folder. but you can put it wherever you like.
+
+First take care of require this on our coreChatbot file.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+require_once("../vendor/autoload.php");
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Using Guzzle HTTP
+
+Right now we are going to call a simple api. For more information about GuzzleHTTP look [**HERE**](https://docs.guzzlephp.org/en/stable/)
+
+For this example we are going to call ipify API, you can login and read docs [**HERE**](https://geo.ipify.org/docs)
+
+**Inicializing Guzzle**
+
+To initialize the Client I recommend you to put this at the top of the Intent file when you are going to call the API
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+Then, create an Instance of the Client
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$client = new Client();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+After that we have to use a method of the GuzzleHTTP instance to retrieve Data.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$handler = $client->get(
+      "https://geo.ipify.org/api/v1?apiKey=YOURAPIKEY",
+      [
+          RequestOptions::HEADERS => [
+              'Accept' => 'application/json',
+          ]
+      ]
+  );
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+At the top we are using a method **GET** then we are setting the endpoint of API(url), As you see we are requesting with a header a response type of **application/json**
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$result = $handler->getBody()->getContents();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+Right here we are saving the content of the API call, the format should be a JSON, so you can parse it with **json_decode** to convert it into an associative/native array
+
+After getting the variables that we need, you can output in your chatbot response to display whatever you like.
+
+:::danger Keep an Eye
+
+If you got haven't got anything, or an Error.
+
+> - Check at the Documentation and try to emulate its execusion outside of the bot. If you got it work, lets check two options above.
+> - Look at the Tutorial Again or check the Video Tutorial
+> - Check the Troubleshooting Section
+
+:::

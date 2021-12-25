@@ -1,0 +1,124 @@
+---
+sidebar_position: 4
+---
+
+# Slotfilling
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Slotfilling help us to interrupt prompts when asking a value for a Variable. Is uncommonly used but there isn't information about this behavior on Dialogflow, so thats why here we have an special part to show you how this tool could enhance our chatbots.
+
+SlotFilling is an option that can be enabled when we are using fulfillment with our chatbot. This option makes our Chatbot not to complete the request/response behavior. It makes the bot to wait until all the parameters are fulfilled.
+
+Is the **backend way** to require a parameter and trigger its own prompt.
+
+#### Recomendations
+
+> - Slotfilling works for Defined Entities, either custom or system. We dont recommend you to try this with **@sys.any** entities, or entities not declared as entities.
+> - Use this feature when you want to incorporate more than one language for your bot, if not, you can use the requiredParameter option that Dialogflow allow us to use.
+> - In order to use Slotfilling perfectly I encourage you to check Entities.
+
+### Implementing SlotFilling
+
+> - First lets create an Entity called **fruits** and add some examples as coco, banana, and strawberry.
+>   -Then create an intent, name it **choice_fruits** and type in the Training Phrases a name of a fruit that you created before as an Entity.
+> - Your phrase should be able to become hightlighted and recognized as part of **@fruits** entity.
+> - Create another phrase as hardcoded text. **my fruit is**, **fruit**
+> - Enable fulfillment and Slotfilling.
+> - Right now try from your console and say a hardcoded text that we have written before.
+> - Our intent **choice_fruits** should be triggered but for some reason, the entity **@fruits** is blank. This is because we havent passed a fruit, and this is the case that we want to test slotfilling.
+> - On our backend lets create the Intent structure as shown bellow, remember also to require from our Chatbot core file.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+if(intent('choice_fruits')){
+// Do whatever you want
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+Right now lets do the backend side
+
+> - In order to use slotfilling we need first to use our function to retrieve a parameter, I recommend you to use getContextParameter(Remember to leave an outputContext in this intent or an Intent before).
+> - Let's get this parameter as shown below
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$fruitType = getContextParameter(0)['fruit'];
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+Remember to put the name specificed of the variable, this is the value of the parameter that has the $(dollar sign), put it without that sign.
+
+> - Then let's do a check for the existence of this variable
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+if($fruitType){
+// the variable exists so we can execute code
+} else {
+    // we dont get the value so its time to trigger a Prompt
+}
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - If we dont get any value we can use the function triggerPrompt to ask the user for a Fruit
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$prompt = Array("Tell me your favourite fruit");
+$context = false;
+$contextbody;
+
+triggerPropmt($prompt,$context,$contextBody);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+With this implementation if the user dont provides a fruit and this intent is triggered, the bot will ask for the fruit, if the user dont respond with a available or recognized fruit this question will be done again and again, so make sure you have defined enough of your entities and your question is pretty clear.
+
+If you got your fruit you are good to go.
