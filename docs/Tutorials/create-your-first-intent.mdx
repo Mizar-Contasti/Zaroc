@@ -4,6 +4,9 @@ sidebar_position: 2
 
 # Create your First Intent
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Its Time to create your own Intent on your backend, But....
 
 You can choose this Documentation or look a Video [**HERE**](https://google.com)
@@ -44,6 +47,9 @@ See our doc files hierachy, you can see all the intents inside of the **Intents 
 >
 > - Let's go inside of the basics.php and look at this code example
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 <?php
 
@@ -54,6 +60,16 @@ See our doc files hierachy, you can see all the intents inside of the **Intents 
 ?>
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 Cause we are using PHP as our backend we have to use Open and Close Tags to code in php, so we are using **<?php** at the begin and **?>** at the end of the file.
 
 Also we should use a Zaroc Function called 'intent'.
@@ -63,14 +79,27 @@ this function receives a name (name of the intent) and If you trigger that inten
 
 Right now if the user trigger this intent, we want to prepare a response from our backend. For this case we are going to use the funcion 'wsParagraphTemplate' these function that ends in Template are Template functions and help us sending data in specific formats. For this example just copy the code below.
 
-```php
-    $context = false;
-    $contextBody;
-    $wsTitle = array("basics_welcome");
-    $wsTextArray = array("Message from the backend");
+<Tabs>
+<TabItem value="php" label="PHP">
 
-    wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
+```php
+$context = false;
+$contextBody;
+$wsTitle = array("basics_welcome");
+$wsTextArray = array("Message from the backend");
+
+wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 This code is creating some Variables and Arrays.'$context' is a variable that isnt important right now, the same with '$contextBody' just copy and paste as you see above.
 
@@ -94,9 +123,22 @@ You will see a commented section that says 'Intents'
 
 Let's require the file basics.php
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 require_once("intents/basics.php");
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 With this we should be able to trigger basics_intent easily
 

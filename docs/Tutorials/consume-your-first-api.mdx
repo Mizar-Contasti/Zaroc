@@ -4,6 +4,9 @@ sidebar_position: 5
 
 # Consume your First API
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Let's consume our first Api from our Chatbot
 
 **Why Apis?**
@@ -18,9 +21,22 @@ When downloading guzzle http, you should have a folder named **vendor** when all
 
 First take care of require this on our coreChatbot file.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 require_once("../vendor/autoload.php");
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ### Using Guzzle HTTP
 
@@ -32,18 +48,47 @@ For this example we are going to call ipify API, you can login and read docs [**
 
 To initialize the Client I recommend you to put this at the top of the Intent file when you are going to call the API
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 Then, create an Instance of the Client
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $client = new Client();
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 After that we have to use a method of the GuzzleHTTP instance to retrieve Data.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $handler = $client->get(
@@ -56,11 +101,34 @@ $handler = $client->get(
   );
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 At the top we are using a method **GET** then we are setting the endpoint of API(url), As you see we are requesting with a header a response type of **application/json**
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $result = $handler->getBody()->getContents();
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 Right here we are saving the content of the API call, the format should be a JSON, so you can parse it with **json_decode** to convert it into an associative/native array
 

@@ -4,6 +4,9 @@ sidebar_position: 3
 
 # Context
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Context will be our friend, if you know how to handle and use it.
 
 Contexts helps us to maintain information throught the entire session that we have with the user.
@@ -53,15 +56,31 @@ In order to Achieve this you can look this documentation or check a tutorial [**
 > - First lets create an Intent, name as you want. I'll name **start**, remember to create an outputContext, ill name **init**
 > - Create it on our backend and let's open a sample structure
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 if(intent('start')){
     //do whatever you like for this context
 }
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 Right now lets think that we want to store some information on the context that we created, I want to use a function to get a sessionId and then store on the context inside of a variable named **config**
 
 > - Inside of our intent brackets use the function shown bellow.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $sessionId = getSessionId();
@@ -76,9 +95,22 @@ $parameters = Array(
 $contextBody = setContextParameters($contextIndex, $parameters);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 With this code we would be able to get the sessionID and store in an associative array named config, this array is saved as contextBody.
 
 > - Use a simple structure as show bellow to display an structure and apply changes.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = true;
@@ -89,6 +121,16 @@ $pSubtitleArray = Array("Subtitle1");
 
 webParagraphTemplate($context,$contextBody,$webTitle,$pTitleArray,$pSubtitleArray);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 We are using this simple structure to send a Paragraph and our new context that has the sessionId, try triggering this intent and then look at the response, you should be able to see that our context has been changed to the values we setted.
 

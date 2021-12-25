@@ -4,6 +4,9 @@ sidebar_position: 6
 
 # DB Essentials
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Save and Use information is common in these days, so giving this feature for a chatbot, really makes it so nice ,and profesional.
 
 **Why Save and Use information From Db?**
@@ -27,6 +30,9 @@ In your chatbot core folder you should see a folder named **classes**, here the 
 
 > - By the time we are using PDO to make a connection to a mysql server. If you are using other DB provider, you can chage the structure and keywords of the connection. But by default your code should be like this
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 Class Connection{
 
@@ -44,7 +50,20 @@ Class Connection{
 }
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 To test the connection I recommend you to use the example commented code that we have bellow of this class.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $conn = Connection::connect();
@@ -54,6 +73,16 @@ if($conn){
  echo("Conection Failed");
 }
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 > - Create a new intent, use the default code and just write some hardcoded values
 > - If your connection was fine, lets go. If not you can check the Tutorial of me connection successfully.
@@ -75,18 +104,47 @@ So in a way to get our procedures with this arquitecture let's do this stepts.
 > - Create a file named **Products.php** remember that this file means the class with the procedures to use with all the products.
 > - Open your brackets and import the connection.php file
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 require_once("connection.php");
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 > - Inside of the file create the class Products, do it as I shown bellow.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 Class Products {
 }
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 > - Lets add a **SELECT** Procedure as a static public function inside of our Products class
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 static public function getProducts(){
@@ -99,6 +157,16 @@ static public function getProducts(){
 }
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 As you see we are using a simple **SQL SELECT** to get all the products.
 
 We create a SQL string, then we instantiate the connection and prepare it with the SQL, then we execute and return all the records in a Associative Array format. At the end we close the connection and make it null.
@@ -107,18 +175,47 @@ We create a SQL string, then we instantiate the connection and prepare it with t
 
 > - Go to your chatbot's core file and require this class.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 require_once("classes/Products.php");
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 > - Right now we have created a method of Products that retrieves all the products. Let's use on our chatbot!
 > - go to your preferred Intent, lets instanciate this procedure as I show you bellow
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $products = Products::getProducts();
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 With this method our variable **products** has all the products. Right now Im going just to get the first element of this array for tutorial purposes. But you can create an structure that handles all the products and can be parsed for Dialogflow, To achieve this I extremely recommend you to look at Zaroc Basics/ Advanced topics about the strucures that we build and manage.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $product = $products[0];
@@ -127,6 +224,16 @@ $product_name = $product['product_name'];
 $product_description = $product['product_description'];
 $product_price = $product['product_price'];
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 > - Right now Im getting the first product, after that I got the name, description and price that we need to generate a response.
 > - You can use these variables to build a message (structure view) to the user.
@@ -142,6 +249,9 @@ If you got a problem look for errors on your error.log, check again the tutorial
 For Insert a record, check this documentation or look this Tutorial [**HERE**](https://google.com)
 
 > - Let's go to the Product class and bellow of the method that we created earlier lets create another, lets call it **createProduct** and use the example code that I show you bellow
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 static public function createProduct($product_name,$product_description,$product_price){
@@ -160,6 +270,16 @@ static public function createProduct($product_name,$product_description,$product
 }
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 As you see we are creating another static public function/method to Insert a Product, we are doing in a PDO way that help us to avoid SQL inyection. We are preparing the SQL string, then we add variables to it with PDO::PARAM_STR that removes all the wrong special characters that can execute SQL by itself.
 
 Then we return the result of the execution of the SQL, if the **INSERT** was successfull we will got True
@@ -168,9 +288,22 @@ Then we return the result of the execution of the SQL, if the **INSERT** was suc
 
 > - Go to your preferred intent, instantiate this method as you see bellow
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $createdProduct = Products::createProduct($product_name,$product_description,$product_price);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 You can put hardcoded values or have it dinamically asking this info to the user...
 
@@ -184,6 +317,9 @@ Let's Update our records!!! (Check SELECT and INSERT first to have enough contex
 
 > - Go to your Products class and create a new method named updateProduct, follow the code I show you bellow.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
   static public function updateProduct($product_name, $product_description){
     $sql =  "UPDATE `Products` SET product_description = :product_description WHERE product_name LIKE :product_name";
@@ -196,15 +332,38 @@ Let's Update our records!!! (Check SELECT and INSERT first to have enough contex
   }
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 With this Query we are updating a product's description where its name is equal to "example", we are using PDO way to avoid SQL inyection
 
 #### Let's implement this on our chatbot
 
 > - Go to your preferred intent, instantiate this method as you see bellow
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $updatedProduct = Products::updateProduct($product_name,$product_description);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 You can put hardcoded values or have it dinamically asking this info to the user...
 
@@ -218,6 +377,9 @@ Let's Delete records! (Check SELECT and INSERT first to have enough context)
 
 > - Go to your Products class and create a new method named deleteProduct, follow the code I show you bellow.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
   static public function deleteProduct($product_name){
     $sql =  "DELETE FROM `Products` WHERE product_name LIKE :product_name";
@@ -229,15 +391,38 @@ Let's Delete records! (Check SELECT and INSERT first to have enough context)
   }
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 With this Query we are deleting a product where its name is equal to "example", we are using PDO way to avoid SQL inyection
 
 #### Let's implement this on our chatbot
 
 > - Go to your preferred intent, instantiate this method as you see bellow
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $deletedProduct = Products::deleteProduct($product_name);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 You can put hardcoded values or have it dinamically asking this info to the user...
 

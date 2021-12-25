@@ -4,6 +4,9 @@ sidebar_position: 4
 
 # Send your First Email
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Hey, are you ready to send an email? This section is more about sendingEmails with PHP, let's go!
 
 ## Why sending Emails?
@@ -15,6 +18,9 @@ Its just a feature that you can incorporate to your chatbots. In order to reach 
 #### Headers
 
 **Headers are Important** cause these configure MetaInformation of the Email like, the destinatary, the emmisor, some language format and some more.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $to = $email;
@@ -32,11 +38,24 @@ $headers .= 'Reply-To: example@email.com' . "\r\n";
 $headers .= 'X-Mailer: PHP/' . phpversion();
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 Most of the headers are optional, just take care of the first 4 declared and use the optional as much as you need/want.
 
 #### Variables
 
 In the way that I use to build the mails in PHP I created a way to change some Text inside of the email with Variables
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $variables = array(
@@ -61,6 +80,16 @@ $emailUrl = "emails/testmail.html";
 $message = prepareEmail($variables, $emailUrl);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 These Variables help the structure of the email, if you want to use feel free. Then I get the email Url, this URL and the Emails that the Chatbot send (In general), should be inside of a folder called **emails** on your chatbot corefolder. After that we use a Function that help us replacing these keywords for Variagles instead, finally we got a long string called **message** which is the entire structure HTML of the mail, ready to be sent.
 
 ```shell
@@ -73,9 +102,22 @@ These Variables help the structure of the email, if you want to use feel free. T
 
 PHP has this Mail function predefined
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 mail($to,$subject,$message,$headers);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 After the execution of this Mail function y recommend you to put it on a IF/ELSE statement just to check if the Email was sent.
 

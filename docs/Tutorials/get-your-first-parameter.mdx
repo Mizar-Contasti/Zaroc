@@ -4,6 +4,9 @@ sidebar_position: 3
 
 # Get your First Parameter
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Its time to get our first Parameter, look at the documentation or the video [**HERE**](https://google.com)
 
 ### Why to get a Parameter?
@@ -22,9 +25,22 @@ This parameter lives in the actual intent, can be used in the actual intent. If 
 
 #### In order to use it follow this example
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
-    $value = getIntentParameter()['variableName'];
+$value = getIntentParameter()['variableName'];
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 As you see we are storing a variable from the intent with the nameFrom the variable. If you develop enough you will find not to much uses for this type of parameter. For most only use cases we use...
 
@@ -34,9 +50,22 @@ This parameter lives in the contexts of the intent that is storing it. These par
 
 #### In order to use it follow this example
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
-    $value = getContextParameter(0)['variableName'];
+$value = getContextParameter(0)['variableName'];
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 We storing a variable in $value, this variable is retrieved from a Zaroc function 'getContextParameter' after that you will see a number, this number is referencing to the index of the contexts (cause they start from 0 as an Array does), and finally insert in the single quotes the keyname(name) of the parameter
 
@@ -59,11 +88,8 @@ Let's create an Intent on our backend as we did in the last tutorial, and inside
 
 Your code to get the parameter of asking_coffee should look as this.
 
-```php
-    $coffee = getIntentParameter()['coffee'];
-```
-
-Then use this variable on your response function.
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 if(intent('asking_coffee')){
@@ -78,6 +104,35 @@ if(intent('asking_coffee')){
     wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
 }
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+Then use this variable on your response function.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$coffee = getIntentParameter()['coffee'];
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 #### Testing Intent Parameter
 
@@ -101,9 +156,22 @@ Do the same steps in Dialogflow to get an Intent parameter, The only difference 
 
 Do the same that we did in our Backend, then use the function of
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
-    $coffee = getContextParameter(0)['coffee'];
+$coffee = getContextParameter(0)['coffee'];
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 :::tip Keep In MIND
 
@@ -112,6 +180,9 @@ Remember that the number inside the parenthesys should be the index of the conte
 :::
 
 Your code should look at this now
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 if(intent('asking_coffee')){
@@ -126,6 +197,16 @@ if(intent('asking_coffee')){
     wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
 }
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 #### Testing Intent Parameter
 

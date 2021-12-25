@@ -4,6 +4,9 @@ sidebar_position: 3
 
 # Templates
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Templates are used to show amazing UI/UX components build with strong blocks and patterns.
 
 Please check first Blocks and let's go.
@@ -32,6 +35,9 @@ WebTemplates are used to build nice structures in a Web Environment. These templ
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $context = false;
 $contextBody;
@@ -49,11 +55,24 @@ $components = Array(
 webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webDescriptionTemplate
 
 **Description template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -66,11 +85,24 @@ $dTextArray = Array("Description text 1");
 webDescriptionTemplate($context,$contextBody,$webTitle,$dTitleArray,$dTextArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webParagraphTemplate
 
 **Paragraph template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -83,11 +115,24 @@ $pSubtitleArray = Array("Subtitle1");
 webParagraphTemplate($context,$contextBody,$webTitle,$pTitleArray,$pSubtitleArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webChipsTemplate
 
 **Chip template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -101,11 +146,24 @@ $cCustomArray = Array("chip1Custom","https://chipurl.com");
 webChipsTemplate($context,$contextBody,$webTitle,$cTitleArray,$cImageArray,$cCustomArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webAccordeonTemplate
 
 **Accordeon template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -120,11 +178,24 @@ $aTextArray = Array("Text");
 webAccordeonTemplate($context,$contextBody,$webTitle,$aImageArray,$aTitleArray,$aSubtitleArray,$aTextArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webButtonTemplate
 
 **Button template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -139,11 +210,24 @@ $bColorArray = Array("$red","#fff");
 webButtonTemplate($context,$contextBody,$webTitle,$bTitleArray,$bCustomArray,$bIconArray,$bColorArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webImageTemplate
 
 **Image template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -156,11 +240,24 @@ $iImageArray = Array("https://imageurl.com");
 webImageTemplate($context,$contextBody,$webTitle,$iImageArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webListTemplate
 
 **List template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -175,11 +272,24 @@ $lCustomArray = Array("listEvent","https://google.com");
 webListTemplate($context,$contextBody,$webTitle,$lTitleArray,$lSubtitleArray,$lImageArray,$lCustomArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webImageAccordeonButtonTemplate
 
 **Card template for web**
 
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $context = false;
@@ -199,6 +309,16 @@ $bColorArray = Array("$red","#fff");
 webImageAccordeonButtonTemplate($context,$contextBody,$webTitle,$aImageArray,$aTitleArray,$aSubtitleArray,$aTextArray,$bTitleArray,$bCustomArray,$bIconArray,$bColorArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ## fbTemplates
 
 fbTemplates are used to build nice structures in a Facebook Messenger Environment. These templates are created to work with Facebook Messenger.
@@ -212,8 +332,10 @@ fbTemplates are used to build nice structures in a Facebook Messenger Environmen
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
 > - External or Generic Blocks should be used inside of open/close Payloads
 
-```php
+<Tabs>
+<TabItem value="php" label="PHP">
 
+```php
 $context = false;
 $contextBody;
 
@@ -241,6 +363,16 @@ $components = Array(
 fbStructureTemplate($context,$contextBody,$fbTitle,$structure,$elements);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ## wsTemplates (BETA)
 
 wsTemplates are used to build nice structures in a WhatsApp Environment. These templates are created to work with WhatsApp.
@@ -254,6 +386,9 @@ wsTemplates are used to build nice structures in a WhatsApp Environment. These t
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
 > - wsBlocks just works with Text
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $context = false;
 $contextBody;
@@ -263,6 +398,16 @@ $wsTextArray =  Array();
 
 wsParagraphTemplate($context, $contextBody, $wsTitle, $wsTextArray);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ## tgTemplates (ALPHA)
 

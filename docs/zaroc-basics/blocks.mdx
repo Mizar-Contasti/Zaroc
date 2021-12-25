@@ -4,6 +4,9 @@ sidebar_position: 2
 
 # Blocks
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 In order to build responses we need to create an Specific JSON structure, Zaroc has take care of this process in detail so thats why built structures.
 
 These structures or Templates are build with Blocks, right now we are just going to give you a look about the blocks and what these look like.
@@ -35,15 +38,31 @@ These blocks are used to open and close structures.
 
 **Are the first and last part of our entire template**
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 dfOpen();
 
 dfClose();
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ##### structureOpen/Close
 
 **Are the blocks that take care of the structure view or data that should be parsed as a Visual Component**
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $title = array("Title");
@@ -52,9 +71,22 @@ structureOpen($title);
 structureClose();
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ##### contextOpen/Close
 
 **Are the blocks that take care of the context or data available behind scenes**
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 contextOpen();
@@ -62,9 +94,22 @@ contextOpen();
 contextClose();
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ##### open/closePayload
 
 **Are used when you want to create a response that comes inside of a payload**
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 openPayload();
@@ -72,15 +117,38 @@ openPayload();
 closePayload();
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ###### open/closeWeb
 
 **Are used for DialogflowMessenger**
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 openWeb();
 
 closeWeb();
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ### Separators
 
@@ -90,33 +158,85 @@ Separators are used to separate blocks. There are multiple ways to separate, dep
 
 **Is the general separator used for all structures**
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 comma();
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ##### Basic Divider
 
 **Is only available for Dialogflow Messenger**
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 basicDivider();
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ##### Comma Divider
 
 **Is only available for Dialogflow Messenger**
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 commaDivider();
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ##### Super Divider
 
 **Is only available for Dialogflow Messenger**
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 superDivider();
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ## webBlocks
 
@@ -128,6 +248,9 @@ WebBlocks are used to build structures with **Dialogflow Messenger**
 
 WebParagraph can contain styles with the Span Function. To see more information check the doc.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $pTitleArray = Array("Title1");
 $pSubtitleArray = Array("Subtitle1");
@@ -135,12 +258,25 @@ $pSubtitleArray = Array("Subtitle1");
 webParagraph($pTitleArray, $pSubtitleArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webAccordeon
 
 **Is used to display a card**
 
 > - webAccordeon shows a Card with Title, Subtitle and a text inside of a accordeon label.
 > - Accordeon Text can have styles with the span function.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $aImageArray = Array("https://imageurl.com");
@@ -151,6 +287,16 @@ $aTextArray = Array("Subtitle");
 webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webButton
 
 **Is used to display a Button**
@@ -158,6 +304,9 @@ webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
 > - Button works in two ways depending if you pass a link (you will get a redirection with target blank) if just text, a Event with this text as name will be triggered.
 > - Buttons can be used with a Card
 > - Buttons can be stacked indifinetely and you can separate with basicDivider.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $bTitleArray = Array("Button Title 1", "Buttton with Link 2");
@@ -168,12 +317,25 @@ $bColorArray = Array("$red","$blue");
 webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webChip
 
 **Displays one title and multiple options to choose**
 
 > - Webchips can work on two different ways depending if you put a link (Will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on it.
 > - WebChips stacks indefinitely and are separed in a Flexbox way.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $cTitleArray = Array("Chip Title1","Chips title 2");
@@ -183,11 +345,24 @@ $cCustomArray = Array("Chip Text","https://chips.com");
 webChips($cTitleArray, $cImageArray, $cCustomArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webImage
 
 **Displays a simple image**
 
 > - Images can be stacked indifinelty, but only one can be used for an Accordeon
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $iImageArray = Array("https://imageurl.com");
@@ -196,11 +371,24 @@ $iTextArray = Array("Image Alt Text");
 webImage($iImageArray, $iTextArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webList
 
 **Displays horizontal Cards**
 
 > - Lists can work as Buttons, if you put a link in their customPart these will work as hyperlink, if just a text, will trigger an Event with that name.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $lTitleArray = Array("Title list","Title list 2");
@@ -211,6 +399,16 @@ $lCustomArray = Array("https://hyperlink.com","TextEvent");
 webList($lTitleArray, $lSubtitleArray, $lImageArray, $lCustomArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### webDescription
 
 **Provides a simple Paragraph with no Styles**
@@ -218,12 +416,25 @@ webList($lTitleArray, $lSubtitleArray, $lImageArray, $lCustomArray);
 > - A Simple text with lot of Paragraphs
 > - Depending of how many text you pass as index you will get separated paragraphs.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $dTitleArray = Array("Description Title");
 $dTextArray = Array("Description Text");
 
 webDescription($dTitleArray, $dTextArray);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ## fbBlocks
 
@@ -237,11 +448,24 @@ To use the first you dont need to verificate your business, but for Payload Bloc
 
 > - You can use multiple arrays of texts to display this like Paragraphs.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $tTextArray = Array("Text/PAragraph 1","Text/Paragraph 2");
 
 fbText($tTextArray);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ### fbImage
 
@@ -249,17 +473,33 @@ fbText($tTextArray);
 
 > - Images can be used indifinitely, they stack vertically.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $iImageArray = Array("https://imageurl1.com","https://imageurl2.com");
 
 fbImage($iImageArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### fbReply
 
 **Display Quick Replies**
 
 > - Quick Replies can have up to 12 characters per reply and 20 replies per Quick Reply menu.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $rTitleArray = Array("Reply Menu 1");
@@ -270,6 +510,16 @@ $rTextArray = Array(
 fbReplies($rTitleArray, $rTextArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### fbCard
 
 **Displays a Card with one Image and Buttons**
@@ -278,6 +528,9 @@ fbReplies($rTitleArray, $rTextArray);
 > - If you pass a Link as Custom, Button will work as Hperlink, If you pass a text, will work as postback text.
 > - You can pass multiple cards with this block, just make sure you are not using more than 3 buttons on each card.
 > - Cards are Stacked Vertically.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $cImageArray = Array("https://imageCardurl1.com","https://imageCardurl1.com");
@@ -297,12 +550,25 @@ Array("Card2 Button 1 Custom","Card2 Button 2 Custom")
 fbCard($cImageArray, $cTitleArray, $cSubtitleArray, $cButtonTextArray, $cButtonCustomArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### fbExternalGeneric
 
 **Displays a Similar Card as their Native counterpart**
 
 > - Cards are Stacked Horitonzally
 > - Can handle Multiple buttons (external Buttons only)
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $fbTitleArray = Array("card1 intentName","card2 intentName");
@@ -322,11 +588,24 @@ $bCustomArray = Array(
 fbExternalGeneric($fbTitleArray, $fbImageArray, $fbSubtitleArray, $fbLinkArray, $fbStyleArray, $bTitleArray, $bCustomArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### fbExternalReceipt
 
 **Displays a Receipt that shows Products, Total Price, Subtotal, Taxes and More**
 
 > - You can have as many products as you want.
+
+<Tabs>
+<TabItem value="php" label="PHP">
 
 ```php
 $receiptInfo = array(
@@ -368,6 +647,16 @@ $fbImageurlArray = Array("https://producturlimage.com");
 fbExternalReceipt($receiptInfo, $receiptAddress, $receiptSummary, $fbAdjustmentName, $fbAdjustmentAmount, $fbTitleArray, $fbSubtitleArray, $fbQuantityArray, $fbPriceArray, $fbCurrencyArray, $fbImageurlArray);
 ```
 
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ## wsBlocks (BETA)
 
 WhatsApp Blocks help us to display Information on WhatsApp
@@ -380,11 +669,24 @@ Whatsapp Environment has big differences and its blocks depend of what partner y
 
 > - You can use emojis and linespaces to create a space between texts
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 $wsTextArray = Array("Paragraph1","Paragraph 2");
 
 wsParagraph($wsTextArray);
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ## tgBlocks (ALPHA)
 

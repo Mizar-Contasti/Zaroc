@@ -4,6 +4,9 @@ sidebar_position: 1
 
 # Setting up your Chatbot
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 Get started by **Creating our chatbot Throught Dialogflow and Connecting to Zaroc**.
 
 Or **Look at this Tutorial** with **[Mizar](https://zaroc.netlify.app)**.
@@ -49,9 +52,22 @@ Inside of the Folder of your ChatbotExample you should see some folders and some
 
 If you imported successfully Zaroc and ordered as shown before, you should see that this Chatbot is requiring Zaroc, if you changed the routers/folders hierarchy, remember to change the path.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 require_once("../zaroc/zaroc.php");
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ## 3.- Connecting Chatbot with Dialogflow
 
@@ -83,6 +99,9 @@ Right now Zaroc is connected to our Chatbot that is connected to Dialogflow, we 
 > - Right here we should have all the Intents ordered by Category and other stuff that you can check on Documentation 😉
 > - Open the file named test.php, you should be able to see some code like this.
 
+<Tabs>
+<TabItem value="php" label="PHP">
+
 ```php
 <?php
 if(intent('test')){
@@ -90,6 +109,16 @@ if(intent('test')){
 }
 ?>
 ```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ###### Testing on Dialogflow
 
