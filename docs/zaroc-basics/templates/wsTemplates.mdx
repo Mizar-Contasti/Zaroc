@@ -1,0 +1,42 @@
+---
+sidebar_position: 4
+---
+
+# wsTemplates (BETA)
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+wsTemplates are used to build nice structures in a WhatsApp Environment. These templates are created to work with WhatsApp.
+
+### wsParagraphTemplate
+
+**wsParagraphTemplate help us to create a custom Structure**
+
+> - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
+> - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
+> - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+> - wsBlocks just works with Text
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$context = false;
+$contextBody;
+
+$wsTitle = Array();
+$wsTextArray =  Array();
+
+wsParagraphTemplate($context, $contextBody, $wsTitle, $wsTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>

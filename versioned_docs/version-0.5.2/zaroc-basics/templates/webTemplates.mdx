@@ -1,29 +1,11 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Templates
+# webTemplates
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-
-Templates are used to show amazing UI/UX components build with strong blocks and patterns.
-
-Please check first Blocks and let's go.
-
-Zaroc by itself has many templates, divided in some categories.
-
-```shell
-Zaroc
-└─── templates
-    │   webTemplates
-    │   fbTemplates
-    │   wsTemplates
-    │   tgTemplates
-    │   templates
-```
-
-## webTemplates
 
 WebTemplates are used to build nice structures in a Web Environment. These templates are created to work with Dialogflow Messenger.
 
@@ -318,99 +300,3 @@ ALPHA
 
 </TabItem>
 </Tabs>
-
-## fbTemplates
-
-fbTemplates are used to build nice structures in a Facebook Messenger Environment. These templates are created to work with Facebook Messenger.
-
-### fbStructureTemplate
-
-**fbStructureTemplate help us to create a custom Structure**
-
-> - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
-> - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
-> - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
-> - External or Generic Blocks should be used inside of open/close Payloads
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$context = false;
-$contextBody;
-
-$fbTitleArray = Array("card1 intentName","card2 intentName");
-$fbImageArray = Array("https://imageCardurl1.com","https://imageCardurl2.com");
-$fbSubtitleArray = Array("subtitle for card1","subtitle for card2");
-$fbLinkArray = Array("https://cardHyperlink.com","https://cardHyperlink.com");
-$fbStyleArray = Array("$Style_Tall","$Style_Full");
-$bTitleArray = Array(
-  Array("Card1 Button1 Title","Card1 Button 2 Tittle"),
-  Array("Card2 Button1 Title","Card2 Button 2 Tittle")
-);
-$bCustomArray = Array(
-  Array("Card1 Button 1 postback","https://Card1button2url.com"),
-  Array("Card2 Button 1 postback","https://Card2button2url.com")
-);
-
-$structure = Array('openPayload','generic','closePayload');
-$components = Array(
-    Array(),
-    Array($fbTitleArray,  $fbImageArray,  $fbSubtitleArray,  $fbLinkArray,  $fbStyleArray   , $bTitleArray, $bCustomArray),
-    Array()
-);
-
-fbStructureTemplate($context,$contextBody,$fbTitle,$structure,$elements);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
-</Tabs>
-
-## wsTemplates (BETA)
-
-wsTemplates are used to build nice structures in a WhatsApp Environment. These templates are created to work with WhatsApp.
-
-### wsParagraphTemplate
-
-**wsParagraphTemplate help us to create a custom Structure**
-
-> - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
-> - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
-> - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
-> - wsBlocks just works with Text
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$context = false;
-$contextBody;
-
-$wsTitle = Array();
-$wsTextArray =  Array();
-
-wsParagraphTemplate($context, $contextBody, $wsTitle, $wsTextArray);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
-</Tabs>
-
-## tgTemplates (ALPHA)
-
-tgTemplates are used to build nice structures in a Telegram Environment. These templates are created to work with Telegram.
-
-### tgStructureTemplate

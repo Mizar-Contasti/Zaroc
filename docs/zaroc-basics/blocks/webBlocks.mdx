@@ -1,0 +1,204 @@
+---
+sidebar_position: 3
+---
+
+# webBlocks
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+WebBlocks are used to build structures with **Dialogflow Messenger**
+
+### webParagraph
+
+**Is used to show a Paragraph**
+
+WebParagraph can contain styles with the Span Function. To see more information check the doc.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$pTitleArray = Array("Title1");
+$pSubtitleArray = Array("Subtitle1");
+
+webParagraph($pTitleArray, $pSubtitleArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### webAccordeon
+
+**Is used to display a card**
+
+> - webAccordeon shows a Card with Title, Subtitle and a text inside of a accordeon label.
+> - Accordeon Text can have styles with the span function.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$aImageArray = Array("https://imageurl.com");
+$aTitleArray = Array("Title");
+$aSubitleArray = Array("Subtitle");
+$aTextArray = Array("Subtitle");
+
+webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### webButton
+
+**Is used to display a Button**
+
+> - Button works in two ways depending if you pass a link (you will get a redirection with target blank) if just text, a Event with this text as name will be triggered.
+> - Buttons can be used with a Card
+> - Buttons can be stacked indifinetely and you can separate with basicDivider.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$bTitleArray = Array("Button Title 1", "Buttton with Link 2");
+$bCustomArray = Array("eventName","https://google.com");
+$bIconArray = Array("home","arrow_forward");
+$bColorArray = Array("$red","$blue");
+
+webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### webChip
+
+**Displays one title and multiple options to choose**
+
+> - Webchips can work on two different ways depending if you put a link (Will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on it.
+> - WebChips stacks indefinitely and are separed in a Flexbox way.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$cTitleArray = Array("Chip Title1","Chips title 2");
+$cImageArray = Array("https://chipsImageURl.com","https://chipsImageURl.com");
+$cCustomArray = Array("Chip Text","https://chips.com");
+
+webChips($cTitleArray, $cImageArray, $cCustomArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### webImage
+
+**Displays a simple image**
+
+> - Images can be stacked indifinelty, but only one can be used for an Accordeon
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$iImageArray = Array("https://imageurl.com");
+$iTextArray = Array("Image Alt Text");
+
+webImage($iImageArray, $iTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### webList
+
+**Displays horizontal Cards**
+
+> - Lists can work as Buttons, if you put a link in their customPart these will work as hyperlink, if just a text, will trigger an Event with that name.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$lTitleArray = Array("Title list","Title list 2");
+$lSubtitleArray = Array("Subtitle List","Subtitle list 2");
+$lImageArray = Array("https://imageurl.com","https://imageurl.com");
+$lCustomArray = Array("https://hyperlink.com","TextEvent");
+
+webList($lTitleArray, $lSubtitleArray, $lImageArray, $lCustomArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### webDescription
+
+**Provides a simple Paragraph with no Styles**
+
+> - A Simple text with lot of Paragraphs
+> - Depending of how many text you pass as index you will get separated paragraphs.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$dTitleArray = Array("Description Title");
+$dTextArray = Array("Description Text");
+
+webDescription($dTitleArray, $dTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
