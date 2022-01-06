@@ -115,17 +115,18 @@ These functions help us to Trigger Special Behaviors on our Chatbot from the Bac
 #### triggerEvent
 
 > - Triggers the Intent that has the event typed as argument
-> - Receives the Event name and Params as Array
+> - Receives the IntentName,  Event name and Params as Array
 > - Params are optional, these params helps to send data to the context from the current intent to the nextIntent that is being trigger by this Function
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+$intentName = Array("intent1")
 $eventName = Array("event1");
 $params = Array();
 
-triggerEvent($eventName,$params);
+triggerEvent($intentName,$eventName,$params);
 ```
 
 </TabItem>
