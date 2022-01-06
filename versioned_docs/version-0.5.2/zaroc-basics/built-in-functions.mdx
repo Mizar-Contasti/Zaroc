@@ -147,10 +147,13 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
+$context = false;
+$contextBody = array();
 $intentName = array("intent1");
 $errorMessage = array("Query wasnt executed 💥");
+$params = array();
 
-triggerError($intentName,$errorMessage);
+triggerError($context,$contextBody,$intentName,$errorMessage,$params);
 ```
 
 </TabItem>
