@@ -16,22 +16,24 @@ WebTemplates are used to build nice structures in a Web Environment. These templ
 > - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+> - Available webBlocks are **accordeon button chips description image list paragraph**
+> - Available separators are **comma basicDivider commaDivider superDivider**
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$structure = Array('image','comma','accordeon','superDivider','button');
-$components = Array(
-    Array($imageArray,$webTitle),
-    Array(),
-    Array($imageArray,$titleArray,$aSubtitleArray,$aTextArray),
-    Array(),
-    Array($bTitleArray,$bCustomArray,$bIconArray,$bColorArray)
+$structure = array('image','comma','accordeon','superDivider','button');
+$components = array(
+    array($imageArray,$webTitle),
+    array(),
+    array($imageArray,$titleArray,$aSubtitleArray,$aTextArray),
+    array(),
+    array($bTitleArray,$bCustomArray,$bIconArray,$bColorArray)
 );
 
 webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
@@ -58,11 +60,11 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$dTitleArray = Array("Description Title 1");
-$dTextArray = Array("Description text 1");
+$dTitleArray = array("Description Title 1");
+$dTextArray = array("Description text 1");
 
 webDescriptionTemplate($context,$contextBody,$webTitle,$dTitleArray,$dTextArray);
 ```
@@ -88,11 +90,11 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$pTitleArray = Array("Title1");
-$pSubtitleArray = Array("Subtitle1");
+$pTitleArray = array("Title1");
+$pSubtitleArray = array("Subtitle1");
 
 webParagraphTemplate($context,$contextBody,$webTitle,$pTitleArray,$pSubtitleArray);
 ```
@@ -118,12 +120,12 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$cTitleArray = Array("Chip 1 Title","Chip 2 Title");
-$cImageArray = Array("https://chip1urlimage.com","https://chip2urlimage.com");
-$cCustomArray = Array("chip1Custom","https://chipurl.com");
+$cTitleArray = array("Chip 1 Title","Chip 2 Title");
+$cImageArray = array("https://chip1urlimage.com","https://chip2urlimage.com");
+$cCustomArray = array("chip1Custom","https://chipurl.com");
 
 webChipsTemplate($context,$contextBody,$webTitle,$cTitleArray,$cImageArray,$cCustomArray);
 ```
@@ -149,13 +151,13 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$aImageArray = Array("https://chip1urlimage.com");
-$aTitleArray = Array("Title");
-$aSubtitleArray = Array("Subtitle");
-$aTextArray = Array("Text");
+$aImageArray = array("https://chip1urlimage.com");
+$aTitleArray = array("Title");
+$aSubtitleArray = array("Subtitle");
+$aTextArray = array("Text");
 
 webAccordeonTemplate($context,$contextBody,$webTitle,$aImageArray,$aTitleArray,$aSubtitleArray,$aTextArray);
 ```
@@ -181,13 +183,13 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$bTitleArray = Array("Button 1 Title","Button 2 Title");
-$bCustomArray = Array("Button 1 Custom","https://buttonurl.com");
-$bIconArray = Array("button1Icon","home");
-$bColorArray = Array("$red","#fff");
+$bTitleArray = array("Button 1 Title","Button 2 Title");
+$bCustomArray = array("Button 1 Custom","https://buttonurl.com");
+$bIconArray = array("button1Icon","home");
+$bColorArray = array("$red","#fff");
 
 webButtonTemplate($context,$contextBody,$webTitle,$bTitleArray,$bCustomArray,$bIconArray,$bColorArray);
 ```
@@ -213,10 +215,10 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$iImageArray = Array("https://imageurl.com");
+$iImageArray = array("https://imageurl.com");
 
 
 webImageTemplate($context,$contextBody,$webTitle,$iImageArray);
@@ -243,13 +245,13 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$lTitleArray = Array("List Title Array","List Title Array");
-$lSubtitleArray = Array("List Subtitle Array","List Subtitle Array");
-$lImageArray = Array("https://listimageurl.com","https://listimageurl.com");
-$lCustomArray = Array("listEvent","https://google.com");
+$lTitleArray = array("List Title Array","List Title Array");
+$lSubtitleArray = array("List Subtitle Array","List Subtitle Array");
+$lImageArray = array("https://listimageurl.com","https://listimageurl.com");
+$lCustomArray = array("listEvent","https://google.com");
 
 webListTemplate($context,$contextBody,$webTitle,$lTitleArray,$lSubtitleArray,$lImageArray,$lCustomArray);
 ```
@@ -275,18 +277,18 @@ ALPHA
 
 ```php
 $context = false;
-$contextBody;
-$webTitle = Array("intentName");
+$contextBody = array();
+$webTitle = array("intentName");
 
-$aImageArray = Array("https://chip1urlimage.com");
-$aTitleArray = Array("Title");
-$aSubtitleArray = Array("Subtitle");
-$aTextArray = Array("Text");
+$aImageArray = array("https://chip1urlimage.com");
+$aTitleArray = array("Title");
+$aSubtitleArray = array("Subtitle");
+$aTextArray = array("Text");
 
-$bTitleArray = Array("Button 1 Title","Button 2 Title");
-$bCustomArray = Array("Button 1 Custom","https://buttonurl.com");
-$bIconArray = Array("button1Icon","home");
-$bColorArray = Array("$red","#fff");
+$bTitleArray = array("Button 1 Title","Button 2 Title");
+$bCustomArray = array("Button 1 Custom","https://buttonurl.com");
+$bIconArray = array("button1Icon","home");
+$bColorArray = array("$red","#fff");
 
 webImageAccordeonButtonTemplate($context,$contextBody,$webTitle,$aImageArray,$aTitleArray,$aSubtitleArray,$aTextArray,$bTitleArray,$bCustomArray,$bIconArray,$bColorArray);
 ```

@@ -122,8 +122,8 @@ These functions help us to Trigger Special Behaviors on our Chatbot from the Bac
 <TabItem value="php" label="PHP">
 
 ```php
-$eventName = Array("event1");
-$params = Array();
+$eventName = array("event1");
+$params = array();
 
 triggerEvent($eventName,$params);
 ```
@@ -147,8 +147,8 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$intentName = Array("intent1");
-$errorMessage = Array("Query wasnt executed 💥");
+$intentName = array("intent1");
+$errorMessage = array("Query wasnt executed 💥");
 
 triggerError($intentName,$errorMessage);
 ```
@@ -173,9 +173,9 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$prompt = Array("Whats your favourite food");
+$prompt = array("Whats your favourite food");
 $context = false;
-$contextbody;
+$contextbody = array();
 
 triggerPropmt($prompt,$context,$contextBody);
 ```
@@ -205,9 +205,9 @@ Context help us to save information, with these backend functions we can create 
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = Array(0);
-$variableName = Array("fruit");
-$variableValue = Array("coco");
+$contextIndex = array(0);
+$variableName = array("fruit");
+$variableValue = array("coco");
 
 $contextBody = setContextParameter($contextIndex,$variableName,$variableValue);
 ```
@@ -230,9 +230,9 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = Array(0);
-$variableName = Array("fruit");
-$variableValue = Array("Banana");
+$contextIndex = array(0);
+$variableName = array("fruit");
+$variableValue = array("Banana");
 
 $contextBody = updateContextParameter($contextIndex,$variableName,$variableValue);
 ```
@@ -255,9 +255,9 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = Array(0);
+$contextIndex = array(0);
 
-$parameters = Array(
+$parameters = array(
     'color' => 'white',
     'animal' => 'bird',
     'coffee' => 'expresso'
@@ -284,9 +284,9 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = Array(0);
+$contextIndex = array(0);
 
-$parameters = Array(
+$parameters = array(
     'color' => 'black',
     'fruit' => 'apple',
     'coffee' => 'capuccinno',
@@ -341,7 +341,7 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$fileName = Array("request");
+$fileName = array("request");
 createInput($fileName);
 ```
 
@@ -477,8 +477,8 @@ $id = id2();
 > - Help us to create a Span, this span works adding Styles to text on webBlocks
 
 ```php
-$text = Array("Titleeee");
-$properties = Array("style='color:red';");
+$text = array("Titleeee");
+$properties = array("style='color:red';");
 
 $span = createSpan($text,$properties);
 ```
@@ -547,8 +547,8 @@ $title = titleAdjust($text);
 > - Creates a WhatsAppLink with a Prefered Opening Text
 
 ```php
-$phone = Array("XXXXXX");
-$text = Array("Hey there, welcome to my whatsapp chat");
+$phone = array("XXXXXX");
+$text = array("Hey there, welcome to my whatsapp chat");
 
 $wsLink = whatsAppLink($text,$phone)
 ```
@@ -558,7 +558,7 @@ $wsLink = whatsAppLink($text,$phone)
 > - Changes the Text to a Url Format
 
 ```php
-$text = Array("Text ready to be encoded");
+$text = array("Text ready to be encoded");
 
 $nexText = textToUrlEncode($text);
 ```
@@ -570,12 +570,12 @@ $nexText = textToUrlEncode($text);
 > - Help us to prepare a Email (Change its variables and more).
 
 ```php
-$variables = Array(
+$variables = array(
     'variable1' => 'value1',
     'variable2' => 'value2'
 );
 
-$emailFileUrl = Array("./../email/testEmail.html");
+$emailFileUrl = array("./../email/testEmail.html");
 
 $email = prepareEmail($variables, $emailFileUrl);
 ```
@@ -587,7 +587,7 @@ $email = prepareEmail($variables, $emailFileUrl);
 > - Help us to retrieve information from a JSON
 
 ```php
-$variableName = Array("color");
+$variableName = array("color");
 $jsonBody;
 
 $variable = getJsonVariable($jsonBody, $variableName);
@@ -608,9 +608,9 @@ $newJSON = adaptJson($jsonBody);
 > - Help us consume openWeatherAPI
 
 ```php
-$apiKey = Array("XXXXXXXXXXXXXXXXXXXXXXXX");
-$country = Array("-MX");
-$location = Array("Mexico City");
+$apiKey = array("XXXXXXXXXXXXXXXXXXXXXXXX");
+$country = array("-MX");
+$location = array("Mexico City");
 
 $url = openWeatherAPI($apiKey,$country,$location);
 ```
@@ -620,10 +620,10 @@ $url = openWeatherAPI($apiKey,$country,$location);
 > - Help us consume internationalNewsAPI
 
 ```php
-$apiKey = Array("XXXXXXXXXXXXXXXXXXXXXXXX");
-$category = Array("Health");
-$country = Array("-MX");
-$page = Array("1");
+$apiKey = array("XXXXXXXXXXXXXXXXXXXXXXXX");
+$category = array("Health");
+$country = array("-MX");
+$page = array("1");
 
 $url = internationalNewsApi($apiKey,$category,$country,$page);
 ``` -->

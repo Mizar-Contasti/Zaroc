@@ -23,27 +23,27 @@ fbTemplates are used to build nice structures in a Facebook Messenger Environmen
 
 ```php
 $context = false;
-$contextBody;
+$contextBody = array();
 
-$fbTitleArray = Array("card1 intentName","card2 intentName");
-$fbImageArray = Array("https://imageCardurl1.com","https://imageCardurl2.com");
-$fbSubtitleArray = Array("subtitle for card1","subtitle for card2");
-$fbLinkArray = Array("https://cardHyperlink.com","https://cardHyperlink.com");
-$fbStyleArray = Array("$Style_Tall","$Style_Full");
-$bTitleArray = Array(
-  Array("Card1 Button1 Title","Card1 Button 2 Tittle"),
-  Array("Card2 Button1 Title","Card2 Button 2 Tittle")
+$fbTitleArray = array("card1 intentName","card2 intentName");
+$fbImageArray = array("https://imageCardurl1.com","https://imageCardurl2.com");
+$fbSubtitleArray = array("subtitle for card1","subtitle for card2");
+$fbLinkArray = array("https://cardHyperlink.com","https://cardHyperlink.com");
+$fbStyleArray = array("$Style_Tall","$Style_Full");
+$bTitleArray = array(
+  array("Card1 Button1 Title","Card1 Button 2 Tittle"),
+  array("Card2 Button1 Title","Card2 Button 2 Tittle")
 );
-$bCustomArray = Array(
-  Array("Card1 Button 1 postback","https://Card1button2url.com"),
-  Array("Card2 Button 1 postback","https://Card2button2url.com")
+$bCustomArray = array(
+  array("Card1 Button 1 postback","https://Card1button2url.com"),
+  array("Card2 Button 1 postback","https://Card2button2url.com")
 );
 
-$structure = Array('openPayload','generic','closePayload');
-$components = Array(
-    Array(),
-    Array($fbTitleArray,  $fbImageArray,  $fbSubtitleArray,  $fbLinkArray,  $fbStyleArray   , $bTitleArray, $bCustomArray),
-    Array()
+$structure = array('openPayload','generic','closePayload');
+$components = array(
+    array(),
+    array($fbTitleArray,  $fbImageArray,  $fbSubtitleArray,  $fbLinkArray,  $fbStyleArray   , $bTitleArray, $bCustomArray),
+    array()
 );
 
 fbStructureTemplate($context,$contextBody,$fbTitle,$structure,$elements);

@@ -24,6 +24,7 @@ slug: "/"
     <a href="https://github.com/Mizar-Contasti/zaroc/issues">Report Bug</a>
     -  -  -
     <a href="https://github.com/Mizar-Contasti/zaroc/issues">Request Feature</a>
+
   </p>
 </p>
 
