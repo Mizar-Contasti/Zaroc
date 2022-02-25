@@ -147,10 +147,13 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
+$context = false;
+$contextBody = array();
 $intentName = array("intent1");
 $errorMessage = array("Query wasnt executed 💥");
+$params = array();
 
-triggerError($intentName,$errorMessage);
+triggerError($context,$contextBody,$intentName,$errorMessage,$params);
 ```
 
 </TabItem>
@@ -359,6 +362,27 @@ ALPHA
 
 These functions are not commonly used, but sometimes are helpfull.
 
+#### getUserInput
+
+> - Returns the Input from the user that Triggered the intent
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$userInput = getUserInput();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 #### getSessionID
 
 > - Returns the sessionId of the current chat/session
@@ -445,185 +469,3 @@ ALPHA
 
 </TabItem>
 </Tabs>
-
-<!-- ---
-sidebar_position: 1
----
-
-# Custom Functions (CUSTOM)
-
-### Date
-
-### Text
-
-#### id
-
-> - Returns a little Random ID
-
-```php
-$id = id();
-```
-
-#### id2
-
-> - Returns a stronger Random ID
-
-```php
-$id = id2();
-```
-
-#### createSpan
-
-> - Help us to create a Span, this span works adding Styles to text on webBlocks
-
-```php
-$text = array("Titleeee");
-$properties = array("style='color:red';");
-
-$span = createSpan($text,$properties);
-```
-
-#### endsWith
-
-> - Checks if a String ends with an specific LEtter
-
-```php
-$result =  endsWith($haystack, $needle);
-```
-
-#### startsWith
-
-> - Checks if a String starts with specific string
-
-```php
-$string = "hello world";
-$startString = "he";
-
-$result = startsWith ($string, $startString);
-```
-
-#### reduce
-
-> - Removes blank spaces
-
-```php
-$text = "Hey There how are you   ";
-
-$newText = reduce($text);
-```
-
-#### lower
-
-> - Changes to lowerCase
-
-```php
-$text = "HEy THERE";
-
-$newText = lower($text);
-```
-
-#### reduceLower
-
-> - Chantes to lowerCase and removes blank spaces
-
-```php
-$text = "HEy THERE";
-
-$newText = reduceLower($text);
-```
-
-#### titleAdjust
-
-> - Removes blank spaces and changes to uppercase
-
-```php
-$text = "HEy THERE";
-
-$title = titleAdjust($text);
-```
-
-#### whatsAppLink
-
-> - Creates a WhatsAppLink with a Prefered Opening Text
-
-```php
-$phone = array("XXXXXX");
-$text = array("Hey there, welcome to my whatsapp chat");
-
-$wsLink = whatsAppLink($text,$phone)
-```
-
-#### textToUrlEncode
-
-> - Changes the Text to a Url Format
-
-```php
-$text = array("Text ready to be encoded");
-
-$nexText = textToUrlEncode($text);
-```
-
-### Mail
-
-#### prepareEmail
-
-> - Help us to prepare a Email (Change its variables and more).
-
-```php
-$variables = array(
-    'variable1' => 'value1',
-    'variable2' => 'value2'
-);
-
-$emailFileUrl = array("./../email/testEmail.html");
-
-$email = prepareEmail($variables, $emailFileUrl);
-```
-
-### Api
-
-#### getJSONVariable
-
-> - Help us to retrieve information from a JSON
-
-```php
-$variableName = array("color");
-$jsonBody;
-
-$variable = getJsonVariable($jsonBody, $variableName);
-```
-
-#### adaptJSON
-
-> - Adapts Json.Stringify format to a readable format to PHP
-
-```php
-$jsonBody = '" { "format" : "nice" } "';
-
-$newJSON = adaptJson($jsonBody);
-```
-
-#### openWeatherAPI
-
-> - Help us consume openWeatherAPI
-
-```php
-$apiKey = array("XXXXXXXXXXXXXXXXXXXXXXXX");
-$country = array("-MX");
-$location = array("Mexico City");
-
-$url = openWeatherAPI($apiKey,$country,$location);
-```
-
-#### internationalNewsAPI
-
-> - Help us consume internationalNewsAPI
-
-```php
-$apiKey = array("XXXXXXXXXXXXXXXXXXXXXXXX");
-$category = array("Health");
-$country = array("-MX");
-$page = array("1");
-
-$url = internationalNewsApi($apiKey,$category,$country,$page);
-``` -->

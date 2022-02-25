@@ -1,0 +1,728 @@
+---
+sidebar_position: 3
+---
+
+# Functions
+
+These functions are helpers that do not really make differences on Zaroc, these just help us to achieve certain result eficiently.
+
+Feel free (Just in Functions) to add, edit, delete functions as you want.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+### Date
+
+##### getAge
+
+> - Put Date time in quotes and in DD-MM-YYYY
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$datetime;
+$age = getAge($datetime);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getDay
+
+> - Receives a Date, retrieves the day number of the month
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$currentDate;
+$today = getDay($currentDate);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getFormatDate
+
+> - Receives a Date, a format in string format and outputs that Date in the specified format.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$date;
+$formatedDate = getFormatDate($date,'d-m-Y');
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### addDaysWithDate
+
+> - Receives a number of Days, the specified date, returns the date plus the days added.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$date;
+$days = 3;
+$newDate =  addDaysWithDate($date,$days);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### addDaysWithDateSpanish
+
+> - Does the same that the function listed before, just changes the format.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$date;
+$days = 3;
+$newDate = addDaysWithDateSpanish($date,$days);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getSpanishDays
+
+> - Receives a Date and returns a day in String and Spanish Language.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$date;
+$dia = getSpanishDays($date);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getNextDays
+
+> - Receives a number of days, returns the current day plus the number of days.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$number = 5;
+$newDay = getNextDays($number);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getNextMonths
+
+> - Receives a number of months, returns the current month plus the number of days.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$number;
+$newMonth = getNextMonths($number);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getNextTimes
+
+> - Receives a number of days, returns the current date plus the number of days.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$number = 4;
+$newDate = getNextTimes($number);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getCompositeTime
+
+> - Receives a Day and returns in a specific format.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$day;
+$newtime = getCompositeTime($day);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### changeDateOrder
+
+> - String Example $3-$2-$1 to DD-MM-YYYY
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$originalDate;
+$order = 'DD-MM-YYYY';
+$newDate = changeDateOrder($originalDate,$order);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getIntegerNextDays
+
+> - Returns a single day with plus numbers of days added
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$number = 4;
+$newDay = getIntegerNextDays($number);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getSpanishNextDays
+
+> - Returns a complete format of Spanish Date
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$number = 5;
+$newDate = getSpanishNextDays($number);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### getSpanishCompositeTime
+
+> - Get composite Time in Spanish
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$day;
+$newDate = getSpanishCompositeTime($day);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+##### tsToDateTime
+
+> - Converts TS format to a Y-m-d H:i A format
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$ts;
+$dateTime = tsToDateTime($ts)
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Text
+
+#### id
+
+> - Returns a little Random ID
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$id = id();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### id2
+
+> - Returns a stronger Random ID
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$id = id2();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### createSpan
+
+> - Help us to create a Span, this span works adding Styles to text on webBlocks
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$text = array("Title");
+$properties = array("style='color:red';");
+$span = createSpan($text,$properties);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### endsWith
+
+> - Checks if a String ends with an specific Letter
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$result =  endsWith($haystack, $needle);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### startsWith
+
+> - Checks if a String starts with specific string
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$string = "hello world";
+$startString = "he";
+
+$result = startsWith ($string, $startString);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### reduce
+
+> - Removes blank spaces
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$text = "Hey There how are you   ";
+
+$newText = reduce($text);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### lower
+
+> - Changes to lowerCase
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$text = "HEy THERE";
+
+$newText = lower($text);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### reduceLower
+
+> - Chantes to lowerCase and removes blank spaces
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$text = "HEy THERE";
+
+$newText = reduceLower($text);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### titleAdjust
+
+> - Removes blank spaces and changes to uppercase
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$text = "HEy THERE";
+
+$title = titleAdjust($text);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### whatsAppLink
+
+> - Creates a WhatsAppLink with a Prefered Opening Text
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$phone = array("XXXXXX");
+$text = array("Hey there, welcome to my whatsapp chat");
+
+$wsLink = whatsAppLink($text,$phone)
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### textToUrlEncode
+
+> - Changes the Text to a Url Format
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$text = array("Text ready to be encoded");
+
+$nexText = textToUrlEncode($text);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Mail
+
+#### prepareEmail
+
+> - Help us to prepare a Email (Change its variables and more).
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$variables = array(
+    'variable1' => 'value1',
+    'variable2' => 'value2'
+);
+
+$emailFileUrl = array("./../email/testEmail.html");
+
+$email = prepareEmail($variables, $emailFileUrl);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+### Api
+
+#### getJSONVariable
+
+> - Help us to retrieve information from a JSON
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$variableName = array("color");
+$jsonBody;
+
+$variable = getJsonVariable($jsonBody, $variableName);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### adaptJSON
+
+> - Adapts Json.Stringify format to a readable format to PHP
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$jsonBody = '" { "format" : "nice" } "';
+
+$newJSON = adaptJson($jsonBody);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### openWeatherAPI
+
+> - Help us consume openWeatherAPI
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$apiKey = array("XXXXXXXXXXXXXXXXXXXXXXXX");
+$country = array("-MX");
+$location = array("Mexico City");
+
+$url = openWeatherAPI($apiKey,$country,$location);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+#### internationalNewsAPI
+
+> - Help us consume internationalNewsAPI
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$apiKey = array("XXXXXXXXXXXXXXXXXXXXXXXX");
+$category = array("Health");
+$country = array("-MX");
+$page = array("1");
+
+$url = internationalNewsApi($apiKey,$category,$country,$page);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
