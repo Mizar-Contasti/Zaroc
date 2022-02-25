@@ -66,10 +66,10 @@ const config = {
           //   type: "localeDropdown",
           //   position: "right",
           // },
-          {
-            type: "docsVersionDropdown",
-            position: "right",
-          },
+          // {
+          //   type: "docsVersionDropdown",
+          //   position: "right",
+          // },
           {
             type: "doc",
             docId: "intro",
