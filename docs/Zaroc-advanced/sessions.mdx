@@ -1,0 +1,166 @@
+---
+sidebar_position: 5
+---
+
+# Sessions
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Sessions help us to manage features on User Conversations. By itself sessions functionalities doesn't exist inside Zaroc, but can be managed from External Sources. These sources can be achieved with some examples shown below.
+
+### Why to use/store a Session
+
+> - Sessions can help us to prepare Transcripts
+> - Sessions can help us to debug info and provide Analytics
+> - Its an optional added value
+
+.
+
+:::tip Keep in Mind
+
+> - Sessions are implemented on your Chatbot not on Zaroc.
+> - Sessions can be implemented with Classes and Methods.
+> - These Classes and Methods are inside of Chatbot Core folder.
+> - Sessions are stored on Engagement Class
+
+:::
+
+.
+
+## Implementing Session
+
+### Adding Engagement class to Chatbot
+
+> - Download Engagement Class File [**HERE**](https://google.com). (If you dont have it already on your Chatbot Classes folder...)
+> - Add to your Classes Folder inside of your Chatbot Template Folder.
+
+```shell
+ChatbotTemplate
+    └─── classes
+          | Transcripts
+```
+
+> - Make sure you are requiring correctly these files.
+> - Check the file and require the connection to db.
+
+### DB Connection and Table Preparation
+
+> - Firstly we should have a Database already connected to our bot. If not, check DB Essentials on Tutorials Section.
+> - Download [**engagements.sql**](https://google.com) and Import it on your db to create the Transcripts Table.
+> - Then, we should have our Table with the following structure.
+
+## IMG
+
+If the format doesn't fit, make sure you are importing correctly, or create the table with the structure/schema shown.
+
+### Creating an ID and Setting it on our Context
+
+> - Choose the intent you prefer to start the session, in my case, most of the times I prefer to setting on the first intent, **basics_welcome**.
+> - Go to the intent and use a character as unique ID, for these purposes, Zaroc has on utils a function that provides us with a Unique ID.
+> - Save this Id as **sessionId**.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$sessionId = id2();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Then we have to use a method located in our Engagement class, use createEngage and give the sessionId we have already created as a parameter.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$engagement = Engages::createEngage($sessionId);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Check if the Engagement was inserted successfully on our DB with an If Statement, if the engagement wasn't added, check your SQL query.
+> - Create a non-required parameter on Dialogflow console inside of the intent which is starting the conversation, this parameter has to be a array named config.
+
+## IMG
+
+> - Inicialize the corresponding parameters to set inside of the context, we are going to create an Associative array where our sessionId will be used, with the following format.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$parameters = array("config" => array("sessionId" => "$sessionId"));
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Set in what context Index we are going to set these parameters and use the setContextParameters function to create a brand new contextBody.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$contextIndex = array(0);
+$contextBody = setContextParameters($contextIndex, $parameters);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - create the actual context with a true value and pass in into a template that receives context.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$context = true;
+
+webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+With these stepts our sessionId should be stored in a config parameter of the selected context.
+
+##### For each user who starts the conversation a brand new sessionId will be created.

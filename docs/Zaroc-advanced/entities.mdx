@@ -19,46 +19,47 @@ There are 2 general types of entities, system entities, which are entities pre c
 
 ### Types of Entities
 
-**Typed/Synonims**
+<Tabs>
+<TabItem value="synonims" label="Typed / Synonims">
 
-This type of Entities is the most common, works with synonims.
+> - This type of Entities is the most common, works with synonims.
+> - Lets say that we have a Entity named fruits, this will be the name.
+> - Inside of the Entities we have rows, for each row we can specifify a fruit as a core value and for synonims we can use different ways to type the same word.
+> - For example we can have strawberry with synonyms of strawbery, strawberrys, strawberries, blueberries, black berries.
 
-Lets say that we have a Entity named fruits, this will be the name.
+</TabItem>
+<TabItem value="regexp" label="Regexp">
 
-Inside of the Entities we have rows, for each row we can specifify a fruit as a core value and for synonims we can use different ways to type the same word.
+> - We can also create an Entity using Regular expressions, this language help us to get information like specific numbers (bankAccount, cardNumbers, passwords...).
+> - To create Regular Exp we can take a look at this Regexp Generator [**HERE**](https://google.com).
 
-For example we can have strawberry with synonyms of strawbery, strawberrys, strawberries, blueberries, black berries.
+</TabItem>
 
-**Regexp**
+<TabItem value="expansion" label="Automated Expansion">
 
-We can also create an Entity using Regular expressions, this language help us to get information like specific numbers (bankAccount, cardNumbers, passwords...).
+> - Help us to expand the matches (synonymns), adding just a few of flexibility to the original text.
 
-**Allow automated expansion**
+</TabItem>
 
-Help us to expand the matches (synonymns), adding just a few of flexibility to the original text.
+<TabItem value="fuzzy" label="Fuzzy Matching">
 
-**Fuzzy Matching**
+> - Provides an extensive flexibility to each synonim, this is more open that Automated expansion, not recommended by myself.
 
-Provides an extensive flexibility to each synonim, this is more open that Automated expansion, not recommended by myself.
+</TabItem>
+
+</Tabs>
 
 ### Implement Entities
 
-Lets go to our Intent, and as training phrases we can type a word that is recognized as an Entity, for this example, lets type **coco**, if you created the entity, you should be able to see your word now highlighted, and if you hover on it, some information will appear about the entity used.
-
-Also below the training phrases you can see all the entities used for this in a section called **Actions and Parameters**
-
-In this part you can see the original name of the entity, its entity reference and the value for referencing (the name of the entity with a $ in front).
-
-You can output these variables in the default response using a that value for referencing (**$fruits**) for example.
-
+> - Lets go to our Intent, and as training phrases we can type a word that is recognized as an Entity, for this example, lets type **coco**, if you created the entity, you should be able to see your word now highlighted, and if you hover on it, some information will appear about the entity used.
+> - Also below the training phrases you can see all the entities used for this in a section called **Actions and Parameters**
+> - In this part you can see the original name of the entity, its entity reference and the value for referencing (the name of the entity with a $ in front).
+> - You can output these variables in the default response using a that value for referencing (**$fruits**) for example.
 > - An Intent can have up to 20 Parameters.
 
 ### Composite Entities
 
-These entities are built with 2 or more entities. Its an Entity with more entities inside.
-
-Let's say you've created a entity of verbs (Buy Verbs), other entity of fruits (Fruits sinonyms) and finally an Entity of Quantity.
-
-We can create a Entity named **orderFruits** that can handle **@buy_verb @quantity @fruits**
-
-So if you say **I want 5 Bananas** You will be able to capture these 3 variables, but from the Intent, there should be only one parameter. A custom parameter which is an Object containing all these entities.
+> - These entities are built with 2 or more entities. Its an Entity with more entities inside.
+> - Let's say you've created a entity of verbs (Buy Verbs), other entity of fruits (Fruits sinonyms) and finally an Entity of Quantity.
+> - We can create a Entity named **orderFruits** that can handle **@buy_verb @quantity @fruits** entities.
+> - So if you say **I want 5 Bananas** You will be able to capture these 3 variables, but from the Intent, there should be only one parameter. A custom parameter which is an Object containing all these entities.

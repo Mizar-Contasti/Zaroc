@@ -1,0 +1,117 @@
+---
+sidebar_position: 6
+---
+
+# Transcripts
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Transcripts correspond to the stored conversation between the user and the bot. Transcript provides, example of the raw code, what intent was triggered, what bot and user said, when was said, and some more.
+
+### Why Transcripts?
+
+> - Transcripts help us to recreate the entire conversation between the user and the bot.
+> - Transcripts can offer us information to create analytic models.
+
+.
+
+:::tip Keep in Mind
+
+> - Transcripts are implemented on your Chatbot not on Zaroc.
+> - Transcripts can be implemented with Classes and Methods.
+> - These Classes and Methods are inside of Chatbot Core folder.
+> - Transcripts needs a session to be created and set in the current bot context, so check Sessions section first before this.
+
+:::
+
+.
+
+## Implementing Transcripts
+
+### Adding Transcript class to Chatbot
+
+> - Download Transcript Class File [**HERE**](https://google.com). (If you dont have it already on your Chatbot Classes folder...)
+> - Add to your Classes Folder inside of your Chatbot Template Folder.
+
+```shell
+ChatbotTemplate
+    └─── classes
+          | Engagements
+```
+
+> - Make sure you are requiring correctly these files.
+> - Check the file and require the connection to db.
+
+### DB Connection and Table Preparation
+
+> - Firstly we should have a Database already connected to our bot. If not, check DB Essentials on Tutorials Section.
+> - Download [**engagements.sql**](https://google.com) and Import it on your db to create the Sessions Table.
+> - Then, we should have our Table with the following structure.
+
+## IMG
+
+If the format doesn't fit, make sure you are importing correctly, or create the table with the structure/schema shown.
+
+### Creating a Transcript
+
+> - Choose the intent you prefer to create the Transcript, in my case, Ill do with the first intent so, **basics_welcome**.
+> - Go to the intent and use a method located on Transcript to create a Transcript, look at the code below.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$createdTranscript = Transcripts::createTranscript($sessionId,$source,$userInput,$intentName,$input);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - As you see we are storing the result of the createTranscript method, this method requires some variables.
+> - For **sessionId** most of the time, we have to retrieve from the context, but in this case, we can obtain it, cause we are on the same intent where this sessionId is obtained. Remember that at this point this sessionId isnt existing on the context, it exists after this flows shows a response.
+> - For **source** we can specific if the source of the message is the bot, the user or an error.
+> - For **userInput** we currently are referring to what the user said that triggered this intent. To achieve this use getUserInput function, check built-in Functions.
+> - For **intentName** we just set the name of the intent being triggered
+> - For **input** we just have to put the current request that Dialogflow sends. To achieve this use getInput function, check built-in functions section, on troubleshoot part.
+
+For the values and formats check this example below.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+// Getting sessionId from basics_welcome
+$sessionId = id2();                                             --string
+// Getting sessionId from other intents
+$sessionId = getContextParameter(0)['config']['sessionId'];     --string
+
+$source = 'user';                                               --string
+$userInput = getUserInput();                                    --string
+$intentName = array("basics_welcome");                          --array
+$input = getInput();                                            --string
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+> - Check if the Transcript was inserted successfully on our DB with an If Statement, if the Transcript wasn't added, check your SQL query.
+> - Remember to use this Transcript function for each intent, when there are errors and correct responses from your Chatbot.
+
+## IMG
+
+##### For each message that the user sends a new Transcript will be added with the current sessionId from the user.
