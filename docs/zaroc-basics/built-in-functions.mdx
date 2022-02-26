@@ -38,9 +38,10 @@ ALPHA
 </TabItem>
 </Tabs>
 
-#### Action (BETA)
+#### Action
 
-> - Receives the name of an action and returns true or false, is used in IF statements to filter intents, currently is on **testing**
+> - Receives the name of an action and returns true or false, is used in IF statements to filter intents.
+> - You can use action as other filter to work with specific rules for some intents.
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -60,6 +61,8 @@ ALPHA
 
 </TabItem>
 </Tabs>
+
+.
 
 ### Parameters
 
@@ -107,6 +110,8 @@ ALPHA
 
 </TabItem>
 </Tabs>
+
+.
 
 ### Triggers
 
@@ -192,6 +197,8 @@ ALPHA
 
 </TabItem>
 </Tabs>
+
+.
 
 ### Context
 
@@ -309,6 +316,8 @@ ALPHA
 </TabItem>
 </Tabs>
 
+.
+
 ### Troubleshoot
 
 In order to Troubleshoot we can use some functions.
@@ -357,6 +366,30 @@ ALPHA
 
 </TabItem>
 </Tabs>
+
+#### getTimeOut
+
+> - Returns the time in ms that took all code execution to be done.
+> - getTimeOut can't take ms that cost the request in being proccesed by Dialogflow.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$time = getTimeOut();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+.
 
 ### Miscelaneous
 

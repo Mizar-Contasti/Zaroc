@@ -13,10 +13,19 @@ fbTemplates are used to build nice structures in a Facebook Messenger Environmen
 
 **fbStructureTemplate help us to create a custom Structure**
 
-> - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
-> - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
-> - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
-> - External or Generic Blocks should be used inside of open/close Payloads
+> - You can use whatever block you want but take in mind that you have to separate it with a separator (comma).
+> - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array.
+> - If you dont know already what to do with context please make it false and just declare contextBody as null. (You can find Context in doc).
+> - External or Generic Blocks should be used inside of open/close Payloads.
+> - Available fbBlocks are **image text reply card** for native, and **generic media receipt** for external. These can be located in blocks -> fbBlocks.
+
+.
+
+:::tip Keep in Mind
+
+Native and External Blocks cant be used in the same structure, if so, Native Blocks will have priority and external won't appear even if they are inside of the structure.
+
+:::
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -24,6 +33,7 @@ fbTemplates are used to build nice structures in a Facebook Messenger Environmen
 ```php
 $context = false;
 $contextBody = array();
+$fbTitle = array("test");
 
 $fbTitleArray = array("card1 intentName","card2 intentName");
 $fbImageArray = array("https://imageCardurl1.com","https://imageCardurl2.com");

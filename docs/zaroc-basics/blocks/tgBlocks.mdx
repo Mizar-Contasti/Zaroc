@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# tgBlocks (ALPHA)
+# tgBlocks (BETA)
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -13,10 +13,106 @@ Telegram Blocks have a Native Integration with Dialogflow, and there are others 
 
 ### tgText
 
+**Is used to show Texts**
+
+Multiple texts are stacked as paragraphs.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$tTextArray = array("Text1","Text2");
+
+tgText($tTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### tgImage
+
+**Is used to show Images**
+
+Images can be stacked indifinelty in a Vertical Way.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$iImageArray = array("https://img.jpg");
+
+tgImage($iImageArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 ### tgReply
 
+**Is used to show Replies/Chips**
+
+> - Chips are stacked horizontaly up to 7.
+> - Chips functions as a common text input.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$rTitleArray = array("Title");
+$rTextArray = array("option1","option2");
+
+tgReplies($rTitleArray, $rTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 ### tgCard
 
-### tgExternalVerticalButtons
+**Is used to show Cards**
+
+> - Cards are Stacked vertically.
+> - Button Cards support Links and Text.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$rTitleArray = array("Title");
+$rTextArray = array("option1","option2");
+
+tgReplies($rTitleArray, $rTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+<!-- ### tgExternalVerticalButtons -->
