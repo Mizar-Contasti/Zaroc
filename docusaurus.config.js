@@ -85,7 +85,7 @@ const config = {
           },
 
           {
-            href: "https://github.com/Mizar-Contasti/Zaroc.php",
+            href: "https://github.com/Mizar-Contasti",
             label: "GitHub",
             position: "right",
           },
