@@ -181,18 +181,24 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$prompt = array("Whats your favourite food");
 $context = false;
 $contextbody = array();
+$prompt = array("Whats your favourite food");
 
-triggerPropmt($prompt,$context,$contextBody);
+triggerPropmt($context,$contextBody,$prompt);
 ```
 
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
 ```nodejs
-ALPHA
+context = false;
+contextbody = false;
+prompt = ["Whats your favourite food"];
+
+result = triggerPropmt(context, contextBody, prompt);
+
+return result;
 ```
 
 </TabItem>
