@@ -6,6 +6,14 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  plugins: ["./src/components/chatbot"],
+  scripts: [
+    {
+      src: "https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1",
+      async: true,
+    },
+  ],
+
   title: "Chatbot Library",
   tagline: "Chatbots Library",
   url: "https://zaroc.netlify.app",

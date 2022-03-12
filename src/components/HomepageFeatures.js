@@ -2,9 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./HomepageFeatures.module.css";
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
 const FeatureList = [
   {
     title: "Easy to Use",
@@ -52,14 +49,16 @@ function Feature({ Svg, title, description }) {
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
+    <>
+      <section className={styles.features}>
+        <div className="container">
+          <div className="row">
+            {FeatureList.map((props, idx) => (
+              <Feature key={idx} {...props} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

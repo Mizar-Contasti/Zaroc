@@ -26,3 +26,27 @@
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+df-messenger {
+  --df-messenger-bot-message: #6c63ff; /* El color de fondo de la burbuja para los mensajes del agente */
+
+  --df-messenger-user-message: #6c63ff; /* El color de fondo de la burbuja para los mensajes del usuario */
+
+  --df-messenger-font-color: #ffffff; /* El color de fuente para los mensajes */
+
+  --df-messenger-send-icon: #6c63ff; /* El color del ícono de envío en la casilla de entrada de texto */
+
+  --df-messenger-button-titlebar-color: #6c63ff; /* El color del botón flotante y de la barra de título del cuadro de chat */
+
+  --df-messenger-button-titlebar-font-color: #ffffff; /* El color de fuente del título "NOMBRE DEL BOT" en la barra de título */
+
+  --df-messenger-chat-background-color: #ffffff; /* El color de fondo del cuadro de chat */
+
+  --df-messenger-input-box-color: #ffffff; /* El color de fondo de la casilla de entrada de texto */
+
+  --df-messenger-input-font-color: #000000; /* El color de fuente para la casilla de entrada de texto */
+
+  --df-messenger-input-placeholder-font-color: #1a1a1a; /* El color de fuente para el texto del marcador de posición en la casilla de entrada de texto */
+
+  --df-messenger-minimized-chat-close-icon-color: #ffffff; /* El color del ícono de cierre en la vista del chat cerrado */
+}
