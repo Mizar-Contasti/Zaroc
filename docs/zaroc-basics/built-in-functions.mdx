@@ -17,10 +17,10 @@ These Functions help us to handle Intents
 
 #### Intent
 
-> - receives the name of the intent and returns true or false, is used in IF statements to do an specific behavior for an intent in our code
-
 <Tabs>
 <TabItem value="php" label="PHP">
+
+- Receives the name of the intent and returns true or false, is used in IF statements to do an specific behavior for an intent in our code
 
 ```php
 if(intent('intentName')){
@@ -31,8 +31,35 @@ if(intent('intentName')){
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+- Js works in a different Way, so we need to use a different workaround to handle it.
+- In App.js we got the current intentName and then we use it on our basics handler function.
+
+```js
+const intentName = getIntentName(body);
+
+if (basics(body, intentName) && basics(body, intentName)?.trim !== "") {
+  res.send(basics(body, intentName));
+}
+```
+
+> - Basics file will receive these two params and will switch depending if the intent name is inside here, if that happens a case will be triggered
+> - If the intent is not inside here, it will return false and the code will be skipped next to the other handler function like (info, test)
+> - Inside of the case of every intent the dialog will be implemented.
+
+```js
+const basics = (body, intentName) => {
+  lang = getContextParameter(body, 0)["basics_language"];
+
+  switch (intentName) {
+    case "basics_fallback":
+      result = triggerEvent("basics_start");
+      return result;
+
+    default:
+      // return `basics module break, ${intentName} was expected 💥`;
+      break;
+  }
+};
 ```
 
 </TabItem>
@@ -55,8 +82,8 @@ if(action('actionName')){
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+ALPHA;
 ```
 
 </TabItem>
@@ -82,8 +109,8 @@ $parameterValue = getIntentParameter()['parameterName'];
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+parameterValue = getIntentParameter(body)["parameterName"];
 ```
 
 </TabItem>
@@ -104,8 +131,8 @@ $parameterValue = getContextParameter(0)['parameterName'];
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+parameterValue = getContextParameter(body, 0)["parameterName"];
 ```
 
 </TabItem>
@@ -119,9 +146,9 @@ These functions help us to Trigger Special Behaviors on our Chatbot from the Bac
 
 #### triggerEvent
 
-> - Triggers the Intent that has the event typed as argument
-> - Receives the Event name and Params as Array
-> - Params are optional, these params helps to send data to the context from the current intent to the nextIntent that is being trigger by this Function
+- Triggers the Intent that has the event typed as argument
+- Receives the Event name and Params as Array
+- Params are optional, these params helps to send data to the context from the current intent to the nextIntent that is being trigger by this Function
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -136,8 +163,13 @@ triggerEvent($eventName,$params);
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+> - Result statement have to be returned in the current switch case
+
+```js
+eventName = ["event1"];
+params = [];
+
+result = triggerEvent(eventName, params);
 ```
 
 </TabItem>
@@ -164,8 +196,16 @@ triggerError($context,$contextBody,$intentName,$errorMessage,$params);
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+- Result statement have to be returned in the current switch case
+
+```js
+context = false;
+contextBody = [];
+intentName = ["intent1"];
+errorMessage = ["Query wasnt executed 💥"];
+params = [];
+
+result = triggerError(context, contextBody, intentName, errorMessage, params);
 ```
 
 </TabItem>
@@ -191,14 +231,14 @@ triggerPropmt($context,$contextBody,$prompt);
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
+- Remember to Return the result in the current switch case
+
+```js
 context = false;
 contextbody = false;
 prompt = ["Whats your favourite food"];
 
 result = triggerPropmt(context, contextBody, prompt);
-
-return result;
 ```
 
 </TabItem>
@@ -231,8 +271,17 @@ $contextBody = setContextParameter($contextIndex,$variableName,$variableValue);
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+contextIndex = [0];
+variableName = ["fruit"];
+variableValue = ["coco"];
+
+contextBody = setContextParameter(
+  body,
+  variableName,
+  variableValue
+  contextIndex,
+);
 ```
 
 </TabItem>
@@ -256,8 +305,17 @@ $contextBody = updateContextParameter($contextIndex,$variableName,$variableValue
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+contextIndex = [0];
+variableName = ["fruit"];
+variableValue = ["Banana"];
+
+contextBody = updateContextParameter(
+  body,
+  variableName,
+  variableValue,
+  contextIndex
+);
 ```
 
 </TabItem>
@@ -285,8 +343,16 @@ $contextBody = setContextParameters($contextIndex, $parameters);
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+contextIndex = [0];
+
+parameters = [
+    'color' => 'white',
+    'animal' => 'bird',
+    'coffee' => 'expresso'
+];
+
+contextBody = setContextParameters(body,parameters,contextIndex);
 ```
 
 </TabItem>
@@ -315,8 +381,17 @@ $contextBody = updateContextParameters($contextIndex, $parameters);
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+contextIndex = [0];
+
+parameters = [
+    'color' => 'black',
+    'fruit' => 'apple',
+    'coffee' => 'capuccinno',
+    'animal' => 'gorilla'
+];
+
+contextBody = updateContextParameters(body,parameters,contextIndex);
 ```
 
 </TabItem>
@@ -343,8 +418,10 @@ $input = getInput();
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+- Result statement have to be returned in the current switch case
+
+```js
+result = getInput(data);
 ```
 
 </TabItem>
@@ -366,8 +443,37 @@ createInput($fileName);
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+- This function doesnt need to be returned or catched, just do this in case you would like to see if worked
+
+```js
+fileName = ["request"];
+createInput(data, fileName);
+```
+
+</TabItem>
+</Tabs>
+
+#### getSourceData
+
+> - This function allow us to create file with the data that comes from a Different Source that isnt Dialogflow.
+> - Receives an array with the name of the file that you would like to create.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$fileName = array("request");
+getSourceData($fileName);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+- This function doesnt need to be returned or catched, just do this in case you would like to see if worked
+
+```js
+fileName = ["request"];
+getSourceData(data, fileName);
 ```
 
 </TabItem>
@@ -388,8 +494,8 @@ $time = getTimeOut();
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+ALPHA;
 ```
 
 </TabItem>
@@ -415,8 +521,8 @@ $userInput = getUserInput();
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+ALPHA;
 ```
 
 </TabItem>
@@ -437,8 +543,8 @@ $sessionId = getSessionId();
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+sessionId = getSessionId(body);
 ```
 
 </TabItem>
@@ -458,8 +564,8 @@ $projectName = getProjectName();
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+ALPHA;
 ```
 
 </TabItem>
@@ -480,8 +586,8 @@ $phoneNumber = getWhatsAppPhoneNumber();
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+ALPHA;
 ```
 
 </TabItem>
@@ -502,8 +608,30 @@ $chatID = getTelegramChatId();
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
-```nodejs
-ALPHA
+```js
+ALPHA;
+```
+
+</TabItem>
+</Tabs>
+
+#### getTelegramCallbackQueryId
+
+> - Returns callbackqueryId of Telegram if exists
+> - Only obtainable if you are chatting via Telegram
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$callbackQueryId = getTelegramCallbackQueryId();
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```js
+callbackQueryId = getTelegramCallbackQueryId(body);
 ```
 
 </TabItem>
