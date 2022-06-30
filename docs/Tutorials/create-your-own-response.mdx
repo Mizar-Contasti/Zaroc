@@ -69,7 +69,7 @@ $context = false;
 $contextBody = array();
 $webTitle = array("intentName");
 
-$structure = array('image','comma','accordeon','superDivider','button');
+$structure = array('image','comma','accordeon','comma','button');
 $components = array(
     array($imageArray,$webTitle),
     array(),
@@ -89,15 +89,22 @@ context = false;
 contextBody = [];
 webTitle = ["intentName"];
 
-structure = ["image", "comma", "accordeon", "superDivider", "button"];
+structure = ["image", "comma", "accordeon", "comma", "button"];
 components = [
   [imageArray, webTitle],
   [],
   [imageArray, titleArray, aSubtitleArray, aTextArray],
   [],
-  [bTitleArray, bCustomArray, bIconArray, bColorArray];
+  [bTitleArray, bCustomArray, bIconArray, bColorArray],
+];
 
-result = webStructureTemplate(context, contextBody, webTitle, structure, components);
+result = webStructureTemplate(
+  context,
+  contextBody,
+  webTitle,
+  structure,
+  components
+);
 ```
 
 </TabItem>
@@ -106,14 +113,162 @@ result = webStructureTemplate(context, contextBody, webTitle, structure, compone
 As you see we have 5 arrays, the first three are not too much important but the last two.
 
 **context** can be true or false depending if you are looking to change something inside context with code.
-**contextBody** will be the change that we are going to implement if context is true, if not, leave as a blank array
-**webTitle** references the name of the intent
 
-Last two are
-**Structure** which is an Array that contains the order of the element that the structure will have, the structure follow the order of Element + Separator + Element.
+**contextBody** will be the change that we are going to implement if context is true, if not, leave as a blank array.
+
+**webTitle** references the name of the intent.
+
+Last two are:
+
+**Structure** which is an Array that contains the order of the element that the structure will have, the structure follow the order of **Element + Separator + Element**.
 
 > - For webStructureTemplate just webBlocks are available, as facebookBlocks works for facebookTemplate etc...
 > - For almost all the integrations with Exception of web, the only separator available is comma, so, most of the time you will see or use this comma. Separators are in the ZBasics/Blocks/CoreBlocks section
 > - The name used in this array to refer the blocks is an specific name, you can see all the block names in the respective Template Section.
 
 **Components** is an Multidimensional Array that contain all the parameters for each block.
+
+> - Each Array refers to data parameters that have to be fulfilled, for example a button needs (bTitleArray, bCustomArray, bIconArray, bColorArray) parameters to be created.
+> - Components Parameters are the same that block uses, also with the same order and hierarchy.
+> - The array that refers a separator will be a empty array.
+
+### Lets Build a Template
+
+> - First we have to take care of what we are going to build, in this case, the most common pattern is **image + accordeon + button**
+
+![Download this document](./../../static/img/templates/imageAccordeonButtonTemplate.jpg)
+
+> - After getting the Idea of theTemplate we are going to build, lets initialize the parameters needed for a Template.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$context = false;
+$contextBody = array();
+$webTitle = array();
+
+$structure = array();
+$components = array();
+
+webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```js
+context = false;
+contextBody = [];
+webTitle = [];
+
+structure = [];
+components = [];
+
+result = webStructureTemplate(
+  context,
+  contextBody,
+  webTitle,
+  structure,
+  components
+);
+```
+
+</TabItem>
+</Tabs>
+
+.
+
+:::tip Keep in Mind
+
+You can Copy Code Snipets just by hovering in the up right corner of the code Snipet.
+
+:::
+
+.
+
+> - Then we have to fill webTitle (or Integration title), also do it with structure array with the structure we are doing to have.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$webTitle = array("exampleIntentName");
+
+$structure = array('image','comma','accordeon','comma','button');
+
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```js
+webTitle = ["intentName"];
+
+structure = ["image", "comma", "accordeon", "comma", "button"];
+```
+
+</TabItem>
+</Tabs>
+
+> - Now fill Components array with the arrays needed, in this case we are going to have just 5 elements so will be an array containing 5 arrays.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$components = array(
+    array(),
+    array(),
+    array(),
+    array(),
+    array()
+);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```js
+components = [[], [], [], [], []];
+```
+
+</TabItem>
+</Tabs>
+
+> - Now fill each component array with their respective needed data, remember that separators as comma, superDivider etc have its component array empty.
+> - Remember that each component parameters can be found in their respective block. For example: Image have imageArray and webTitle, this data has been found into webBlocks section.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$components = array(
+    array($imageArray,$webTitle),
+    array(),
+    array($imageArray,$titleArray,$aSubtitleArray,$aTextArray),
+    array(),
+    array($bTitleArray,$bCustomArray,$bIconArray,$bColorArray)
+);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```js
+components = [
+  [imageArray, webTitle],
+  [],
+  [imageArray, titleArray, aSubtitleArray, aTextArray],
+  [],
+  [bTitleArray, bCustomArray, bIconArray, bColorArray],
+];
+```
+
+</TabItem>
+</Tabs>
+
+> - Make sure all the data is provided correctly.
+> - For context/contextBody, if you havent check context section you can leave it false/empty as shown in the first code snipet.
+
+With this guide you will be able to reproduce common templates and do your own custom templates. Hope this helps you a lot... Mizar.
