@@ -21,7 +21,7 @@ To use the first you dont need to verificate your business, but for Payload Bloc
 <TabItem value="php" label="PHP">
 
 ```php
-$tTextArray = Array("Text/PAragraph 1","Text/Paragraph 2");
+$tTextArray = array("Text/PAragraph 1","Text/Paragraph 2");
 
 fbText($tTextArray);
 ```
@@ -46,7 +46,7 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$iImageArray = Array("https://imageurl1.com","https://imageurl2.com");
+$iImageArray = array("https://imageurl1.com","https://imageurl2.com");
 
 fbImage($iImageArray);
 ```
@@ -71,9 +71,9 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$rTitleArray = Array("Reply Menu 1");
-$rTextArray = Array(
-  Array("Reply 1","Reply 2")
+$rTitleArray = array("Reply Menu 1");
+$rTextArray = array(
+  array("Reply 1","Reply 2")
 );
 
 fbReplies($rTitleArray, $rTextArray);
@@ -102,17 +102,17 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$cImageArray = Array("https://imageCardurl1.com","https://imageCardurl1.com");
-$cTitleArray = Array("Card1","Card2");
-$cSubtitleArray = Array("card subtitile1","CardSubtitile 2");
+$cImageArray = array("https://imageCardurl1.com","https://imageCardurl1.com");
+$cTitleArray = array("Card1","Card2");
+$cSubtitleArray = array("card subtitile1","CardSubtitile 2");
 
-$cButtonTextArray = Array(
-Array("Card1 Button1 Title/Text","Card1 Button2 Title/Text"),
-Array("Card2 Button 1 Title/Text","Card2 Button 2 Title/Text")
+$cButtonTextArray = array(
+  array("Card1 Button1 Title/Text","Card1 Button2 Title/Text"),
+  array("Card2 Button 1 Title/Text","Card2 Button 2 Title/Text")
 );
-$cButtonCustomArray = Array(
-Array("Card1 Button1 Custom","Card1 Button2 Custom"),
-Array("Card2 Button 1 Custom","Card2 Button 2 Custom")
+$cButtonCustomArray = array(
+  array("Card1 Button1 Custom","Card1 Button2 Custom"),
+  array("Card2 Button 1 Custom","Card2 Button 2 Custom")
 );
 
 
@@ -140,18 +140,18 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$fbTitleArray = Array("card1 intentName","card2 intentName");
-$fbImageArray = Array("https://imageCardurl1.com","https://imageCardurl2.com");
-$fbSubtitleArray = Array("subtitle for card1","subtitle for card2");
-$fbLinkArray = Array("https://cardHyperlink.com","https://cardHyperlink.com");
-$fbStyleArray = Array("$Style_Tall","$Style_Full");
-$bTitleArray = Array(
-  Array("Card1 Button1 Title","Card1 Button 2 Tittle"),
-  Array("Card2 Button1 Title","Card2 Button 2 Tittle")
+$fbTitleArray = array("card1 intentName","card2 intentName");
+$fbImageArray = array("https://imageCardurl1.com","https://imageCardurl2.com");
+$fbSubtitleArray = array("subtitle for card1","subtitle for card2");
+$fbLinkArray = array("https://cardHyperlink.com","https://cardHyperlink.com");
+$fbStyleArray = array("$Style_Tall","$Style_Full");
+$bTitleArray = array(
+  array("Card1 Button1 Title","Card1 Button 2 Tittle"),
+  array("Card2 Button1 Title","Card2 Button 2 Tittle")
 );
-$bCustomArray = Array(
-  Array("Card1 Button 1 postback","https://Card1button2url.com"),
-  Array("Card2 Button 1 postback","https://Card2button2url.com")
+$bCustomArray = array(
+  array("Card1 Button 1 postback","https://Card1button2url.com"),
+  array("Card2 Button 1 postback","https://Card2button2url.com")
 );
 
 fbExternalGeneric($fbTitleArray, $fbImageArray, $fbSubtitleArray, $fbLinkArray, $fbStyleArray, $bTitleArray, $bCustomArray);
@@ -202,15 +202,15 @@ $receiptSummary = array(
   "summary_cost" => ""
 );
 
-$fbAdjustmentName = Array("10%");
-$fbAdjustmentAmount = Array("10%");
+$fbAdjustmentName = array("10%");
+$fbAdjustmentAmount = array("10%");
 
-$fbTitleArray = Array("Product 1 Title");
-$fbSubtitleArray = Array("Product 1 Description");
-$fbQuantityArray = Array("Product 1 Quantity");
-$fbPriceArray = Array("Price Per Product");
-$fbCurrencyArray = Array("Currency of the Product");
-$fbImageurlArray = Array("https://producturlimage.com");
+$fbTitleArray = array("Product 1 Title");
+$fbSubtitleArray = array("Product 1 Description");
+$fbQuantityArray = array("Product 1 Quantity");
+$fbPriceArray = array("Price Per Product");
+$fbCurrencyArray = array("Currency of the Product");
+$fbImageurlArray = array("https://producturlimage.com");
 
 
 fbExternalReceipt($receiptInfo, $receiptAddress, $receiptSummary, $fbAdjustmentName, $fbAdjustmentAmount, $fbTitleArray, $fbSubtitleArray, $fbQuantityArray, $fbPriceArray, $fbCurrencyArray, $fbImageurlArray);
