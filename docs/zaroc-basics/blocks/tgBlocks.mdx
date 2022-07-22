@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# tgBlocks (BETA)
+# tgBlocks
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -15,7 +15,9 @@ Telegram Blocks have a Native Integration with Dialogflow, and there are others 
 
 **Is used to show Texts**
 
-Multiple texts are stacked as paragraphs.
+> Multiple texts are stacked as paragraphs.
+
+![Download this document](./../../../static/img/blocks/tg/text.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -40,13 +42,15 @@ ALPHA
 
 **Is used to show Images**
 
-Images can be stacked indifinelty in a Vertical Way.
+> Images can be stacked indifinelty in a Vertical Way.
+
+![Download this document](./../../../static/img/blocks/tg/image.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$iImageArray = array("https://img.jpg");
+$iImageArray = array("https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg");
 
 tgImage($iImageArray);
 ```
@@ -67,6 +71,8 @@ ALPHA
 
 > - Chips are stacked horizontaly up to 7.
 > - Chips functions as a common text input.
+
+![Download this document](./../../../static/img/blocks/tg/reply.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -95,14 +101,19 @@ ALPHA
 > - Cards are Stacked vertically.
 > - Button Cards support Links and Text.
 
+![Download this document](./../../../static/img/blocks/tg/card.jpg)
+
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$rTitleArray = array("Title");
-$rTextArray = array("option1","option2");
+$cImageArray = array("https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg");
+$cTitleArray = array("CardTitle1");
+$cSubtitleArray = array("Card subtitle1");
+$cButtonTextArray = array(array("button1","button2"));
+$cButtonCustomArray = array(array("button1","button2"));
 
-tgReplies($rTitleArray, $rTextArray);
+tgCard($cImageArray,$cTitleArray,$cSubtitleArray,$cButtonTextArray,$cButtonCustomArray);
 ```
 
 </TabItem>
