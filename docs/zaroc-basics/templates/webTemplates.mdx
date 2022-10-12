@@ -29,11 +29,22 @@ $context = false;
 $contextBody = array();
 $webTitle = array("intentName");
 
+$imageArray = array("imageurl");
+$aTitleArray = array("Card Title");
+$aSubtitleArray = array("Card Subtitle");
+$aTextArray = array("Card Accordeon Text");
+
+$bTitleArray = array("Button Title 1","ButtonTitle2");
+$bCustomArray = array("button Custom 1","button Custom 2");
+$bIconArray = array("Button Icon","Button Icon 2");
+$bColorArray = array("#00efff","#000fff");
+
+
 $structure = array('image','comma','accordeon','superDivider','button');
 $components = array(
     array($imageArray,$webTitle),
     array(),
-    array($imageArray,$titleArray,$aSubtitleArray,$aTextArray),
+    array($imageArray,$aTitleArray,$aSubtitleArray,$aTextArray),
     array(),
     array($bTitleArray,$bCustomArray,$bIconArray,$bColorArray)
 );
