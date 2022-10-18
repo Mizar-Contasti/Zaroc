@@ -4,6 +4,20 @@ sidebar_position: 3
 
 # webBlocks
 
+export const Highlight = ({ children, color, fontColor = "#fff" }) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: "4px",
+      color: fontColor,
+      padding: "0.4rem",
+      marginTop: "0.3rem",
+    }}
+  >
+    {children}
+  </span>
+);
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -11,18 +25,19 @@ WebBlocks are used to build structures with **Dialogflow Messenger**
 
 ### webParagraph
 
-**Is used to show a Paragraph**
+> Display texts that doesn't have any behaviors or something special that differences it from other blocks
 
-> - Just a Paragraph
+<Tabs>
+<TabItem value="simple" label="One Paragraph">
 
-![Download this document](./../../../static/img/blocks/paragraph.jpg)
+![Example of One Paragraph](./../../../static/img/blocks/wb/paragraph.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$pTitleArray = array("Title1");
-$pSubtitleArray = array("Subtitle1");
+$pTitleArray = ["Title1"];
+$pSubtitleArray = ["Subtitle1"];
 
 webParagraph($pTitleArray, $pSubtitleArray);
 ```
@@ -37,23 +52,55 @@ ALPHA
 </TabItem>
 </Tabs>
 
-### webAccordeon
+</TabItem>
+<TabItem value="complex" label="Two or More Paragraphs">
 
-**Is used to display a card**
-
-> - webAccordeon shows a Card with Title, Subtitle and a text inside of a accordeon label.
-> - Accordeon Text can have styles with the span function.
-
-![Download this document](./../../../static/img/blocks/accordeon.jpg)
+![Example of Two Paragraph](./../../../static/img/blocks/wb/paragraph.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$aImageArray = array("https://imageurl.com");
-$aTitleArray = array("Title");
-$aSubitleArray = array("Subtitle");
-$aTextArray = array("Subtitle");
+$pTitleArray = ["Title1"];
+$pSubtitleArray = ["Subtitle1"];
+
+webParagraph($pTitleArray, $pSubtitleArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+### webCard
+
+> Displays a Card and doesnt have any behavior like triggering events, texts or links. This block is strongly recommended to use with webImage in order to provide a image.
+
+> In addition, this block is the most usefull to combine with other actionBlocks (blocks that perform and action and arent just informational) like webButton, webReply and webList.
+
+> Accordeon Text inse the card can have styles (different Color, font being Bold, Italic or Underline) with the span function (look at the example below).
+
+<Tabs>
+<TabItem value="simple" label="One Card">
+
+![Example of One Card](./../../../static/img/blocks/wb/card.jpg)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$aImageArray = ["https://imageurl.com"];
+$aTitleArray = ["Title"];
+$aSubitleArray = ["Subtitle"];
+$aTextArray = ["Subtitle"];
 
 webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
 ```
@@ -68,24 +115,59 @@ ALPHA
 </TabItem>
 </Tabs>
 
-### webButton
+</TabItem>
+<TabItem value="complex" label="Two or More Cards">
 
-**Is used to display a Button**
-
-> - Button works in two ways depending if you pass a link (you will get a redirection with target blank) if just text, a Event with this text as name will be triggered.
-> - Buttons can be used with a Card
-> - Buttons can be stacked indifinetely and you can separate with basicDivider.
-
-![Download this document](./../../../static/img/blocks/button.jpg)
+![Example of Two Cards](./../../../static/img/blocks/wb/card.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$bTitleArray = array("Button Title 1", "Buttton with Link 2");
-$bCustomArray = array("eventName","https://google.com");
-$bIconArray = array("home","arrow_forward");
-$bColorArray = array("$red","$blue");
+$aImageArray = ["https://imageurl.com"];
+$aTitleArray = ["Title"];
+$aSubitleArray = ["Subtitle"];
+$aTextArray = ["Subtitle"];
+
+webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+### webButton
+
+<!-- **Is used to display a Button** -->
+
+> - Displays a Button that can be stacked indefinitely with other buttons.
+> - Button works in two ways depending what you pass on **customArray** if you pass a link (you will get a redirection with target blank) if just text, a Event with this text as name will be triggered.
+> - Buttons can be used with all blocks but the most recommended is the webCard block
+> - Button Icons can be found [**HERE**](https://material.io/resources/icons/?style=baseline), in order to use one of them you have just to paste the name of the choosed icon.
+> - Button Color correspond to a HEX color Format (Example : <Highlight color="#F08080">#F08080</Highlight> )
+
+<Tabs>
+<TabItem value="simple" label="One Button">
+
+![Example of One Button](./../../../static/img/blocks/wb/button.jpg);
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$bTitleArray = ["Button Title 1", "Buttton with Link 2"];
+$bCustomArray = ["eventName","https://google.com"];
+$bIconArray = ["home","arrow_forward"];
+$bColorArray = ["$red","$blue"];
 
 webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
 ```
@@ -100,14 +182,43 @@ ALPHA
 </TabItem>
 </Tabs>
 
-### webChip
+</TabItem>
+<TabItem value="complex" label="Two or More Buttons">
 
-**Displays one title and multiple options to choose**
+![Example of One Button](./../../../static/img/blocks/wb/button.jpg);
 
-> - Webchips can work on two different ways depending if you put a link (Will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on it.
-> - WebChips stacks indefinitely and are separed in a Flexbox way.
+<Tabs>
+<TabItem value="php" label="PHP">
 
-![Download this document](./../../../static/img/blocks/chips.jpg)
+```php
+$bTitleArray = ["Button Title 1", "Buttton with Link 2"];
+$bCustomArray = ["eventName","https://google.com"];
+$bIconArray = ["home","arrow_forward"];
+$bColorArray = ["$red","$blue"];
+
+webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+### webReply
+
+> Displays one title and multiple options to choose
+> They can work on two different ways depending what you put on their customArray, if you put a link (They will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on that specific chip.
+> Replies Stacks indefinitely and are separed in a Flexbox Css way.
+
+![Example of One Reply](./../../../static/img/blocks/wb/chips.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -136,7 +247,7 @@ ALPHA
 
 > - Images can be stacked indifinelty, but only one can be used for an Accordeon
 
-![Download this document](./../../../static/img/blocks/image.jpg)
+![Download this document](./../../../static/img/blocks/wb/image.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -164,7 +275,7 @@ ALPHA
 
 > - Lists can work as Buttons, if you put a link in their customPart these will work as hyperlink, if just a text, will trigger an Event with that name.
 
-![Download this document](./../../../static/img/blocks/list.jpg)
+![Download this document](./../../../static/img/blocks/wb/list.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -195,16 +306,15 @@ ALPHA
 > - A Simple text with lot of Paragraphs
 > - Depending of how many text you pass as index you will get separated paragraphs.
 
-![Download this document](./../../../static/img/blocks/description.jpg)
+![Download this document](./../../../static/img/blocks/wb/description.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$dTitleArray = array("Description Title 1","Description title 2");
+$dTitleArray = array("Title");
 $dTextArray = array(
-    array("Description Text 1 for title 1","Description Text 2 for title 1"),
-    array("Description Text 1 for title 2","Description Text 2 for title 2")
+    array("Text1","Text2"),
 );
 
 webDescription($dTitleArray, $dTextArray);
