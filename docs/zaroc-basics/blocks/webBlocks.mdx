@@ -218,15 +218,18 @@ ALPHA
 > They can work on two different ways depending what you put on their customArray, if you put a link (They will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on that specific chip.
 > Replies Stacks indefinitely and are separed in a Flexbox Css way.
 
+<Tabs>
+<TabItem value="simple" label="One Reply">
+
 ![Example of One Reply](./../../../static/img/blocks/wb/chips.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$cTitleArray = array("Chip Title1","Chips title 2");
-$cImageArray = array("https://chipsImageURl.com","https://chipsImageURl.com");
-$cCustomArray = array("Chip Text","https://chips.com");
+$cTitleArray = ["Chip Title1","Chips title 2"];
+$cImageArray = ["https://chipsImageURl.com","https://chipsImageURl.com"];
+$cCustomArray = ["Chip Text","https://chips.com"];
 
 webChips($cTitleArray, $cImageArray, $cCustomArray);
 ```
@@ -241,11 +244,43 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Replies">
+
+![Example of One Reply](./../../../static/img/blocks/wb/chips.jpg)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$cTitleArray = ["Chip Title1","Chips title 2"];
+$cImageArray = ["https://chipsImageURl.com","https://chipsImageURl.com"];
+$cCustomArray = ["Chip Text","https://chips.com"];
+
+webChips($cTitleArray, $cImageArray, $cCustomArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
 ### webImage
 
 **Displays a simple image**
 
 > - Images can be stacked indifinelty, but only one can be used for an Accordeon
+
+<Tabs>
+<TabItem value="simple" label="One Image">
 
 ![Download this document](./../../../static/img/blocks/wb/image.jpg)
 
@@ -253,8 +288,8 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$iImageArray = array("https://imageurl.com");
-$iTextArray = array("Image Alt Text");
+$iImageArray = ["https://imageurl.com"];
+$iTextArray = ["Image Alt Text"];
 
 webImage($iImageArray, $iTextArray);
 ```
@@ -269,11 +304,20 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Images">
+
+</TabItem>
+</Tabs>
+
 ### webList
 
 **Displays horizontal Cards**
 
 > - Lists can work as Buttons, if you put a link in their customPart these will work as hyperlink, if just a text, will trigger an Event with that name.
+
+<Tabs>
+<TabItem value="simple" label="One List">
 
 ![Download this document](./../../../static/img/blocks/wb/list.jpg)
 
@@ -281,10 +325,10 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$lTitleArray = array("Title list","Title list 2");
-$lSubtitleArray = array("Subtitle List","Subtitle list 2");
-$lImageArray = array("https://imageurl.com","https://imageurl.com");
-$lCustomArray = array("https://hyperlink.com","TextEvent");
+$lTitleArray = ["Title list","Title list 2"];
+$lSubtitleArray = ["Subtitle List","Subtitle list 2"];
+$lImageArray = ["https://imageurl.com","https://imageurl.com"];
+$lCustomArray = ["https://hyperlink.com","TextEvent"];
 
 webList($lTitleArray, $lSubtitleArray, $lImageArray, $lCustomArray);
 ```
@@ -299,6 +343,12 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Lists">
+
+</TabItem>
+</Tabs>
+
 ### webDescription
 
 **Provides a simple Paragraph with no Styles**
@@ -306,16 +356,17 @@ ALPHA
 > - A Simple text with lot of Paragraphs
 > - Depending of how many text you pass as index you will get separated paragraphs.
 
+<Tabs>
+<TabItem value="simple" label="One Description">
+
 ![Download this document](./../../../static/img/blocks/wb/description.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$dTitleArray = array("Title");
-$dTextArray = array(
-    array("Text1","Text2"),
-);
+$dTitleArray = ["Title"];
+$dTextArray = [["Text1","Text2"]];
 
 webDescription($dTitleArray, $dTextArray);
 ```
@@ -326,6 +377,12 @@ webDescription($dTitleArray, $dTextArray);
 ```nodejs
 ALPHA
 ```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="complex" label="Two or More Descriptions">
 
 </TabItem>
 </Tabs>
