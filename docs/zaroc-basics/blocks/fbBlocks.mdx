@@ -11,17 +11,18 @@ These Blocks are available for Facebook, some of them are native with Dialogflow
 
 To use the first you dont need to verificate your business, but for Payload Blocks you need it.
 
-### fbText
+### fbParagraph
 
-**Displays a Simple Text**
-
-> - You can use multiple arrays of texts to display this like Paragraphs.
+> You can use multiple arrays of texts to display this like Paragraphs.
 
 <Tabs>
+<TabItem value="simple" label="One Paragraph">
+
+  <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$tTextArray = array("Text/PAragraph 1","Text/Paragraph 2");
+$tTextArray = ["Text/Paragraph 1","Text/Paragraph 2"];
 
 fbText($tTextArray);
 ```
@@ -36,17 +37,24 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Paragraph">
+
+</TabItem>
+</Tabs>
+
 ### fbImage
 
-**Displays a Simple Image**
-
-> - Images can be used indifinitely, they stack vertically.
+> Images can be used indifinitely, they stack vertically.
 
 <Tabs>
+<TabItem value="simple" label="One Image">
+
+  <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$iImageArray = array("https://imageurl1.com","https://imageurl2.com");
+$iImageArray = ["https://imageurl1.com","https://imageurl2.com"];
 
 fbImage($iImageArray);
 ```
@@ -61,18 +69,25 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Images">
+
+</TabItem>
+</Tabs>
+
 ### fbReply
 
-**Display Quick Replies**
+> Quick Replies can have up to 12 characters per reply and 20 replies per Quick Reply menu.
 
-> - Quick Replies can have up to 12 characters per reply and 20 replies per Quick Reply menu.
+<Tabs>
+<TabItem value="simple" label="One Reply">
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$rTitleArray = array("Reply Menu 1");
-$rTextArray = array("Reply 1","Reply 2");
+$rTitleArray = ["Reply Menu 1"];
+$rTextArray = ["Reply 1","Reply 2"];
 
 fbReplies($rTitleArray, $rTextArray);
 ```
@@ -87,32 +102,38 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Replies">
+
+</TabItem>
+</Tabs>
+
 ### fbCard
 
-**Displays a Card with one Image and Buttons**
-
-> - Buttons can be stacked at maximum of 3 per card
-> - If you pass a Link as Custom, Button will work as Hperlink, If you pass a text, will work as postback text.
-> - You can pass multiple cards with this block, just make sure you are not using more than 3 buttons on each card.
-> - Cards are Stacked Vertically.
+> Buttons can be stacked at maximum of 3 per card
+> If you pass a Link as Custom, Button will work as Hperlink, If you pass a text, will work as postback text.
+> You can pass multiple cards with this block, just make sure you are not using more than 3 buttons on each card.
+> Cards are Stacked Vertically.
 
 <Tabs>
+<TabItem value="simple" label="One Card">
+
+  <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$cImageArray = array("https://imageCardurl1.com","https://imageCardurl1.com");
-$cTitleArray = array("Card1","Card2");
-$cSubtitleArray = array("card subtitile1","CardSubtitile 2");
+$cImageArray = ["https://imageCardurl1.com","https://imageCardurl1.com"];
+$cTitleArray = ["Card1","Card2"];
+$cSubtitleArray = ["card subtitile1","CardSubtitile 2"];
 
-$cButtonTextArray = array(
-  array("Card1 Button1 Title/Text","Card1 Button2 Title/Text"),
-  array("Card2 Button 1 Title/Text","Card2 Button 2 Title/Text")
-);
-$cButtonCustomArray = array(
-  array("Card1 Button1 Custom","Card1 Button2 Custom"),
-  array("Card2 Button 1 Custom","Card2 Button 2 Custom")
-);
-
+$cButtonTextArray = [
+  ["Card1 Button1 Title/Text","Card1 Button2 Title/Text"],
+  ["Card2 Button 1 Title/Text","Card2 Button 2 Title/Text"]
+];
+$cButtonCustomArray = [
+  ["Card1 Button1 Custom","Card1 Button2 Custom"],
+  ["Card2 Button 1 Custom","Card2 Button 2 Custom"]
+];
 
 fbCard($cImageArray, $cTitleArray, $cSubtitleArray, $cButtonTextArray, $cButtonCustomArray);
 ```
@@ -127,30 +148,37 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Card">
+
+</TabItem>
+</Tabs>
+
 ### fbExternalGeneric
 
-**Displays a Similar Card as their Native counterpart**
-
-> - Cards are Stacked Horitonzally
-> - Can handle Multiple buttons (external Buttons only)
+> Cards are Stacked Horitonzally
+> Can handle Multiple buttons (external Buttons only)
 
 <Tabs>
+<TabItem value="simple" label="One Generic">
+
+  <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$fbTitleArray = array("card1 intentName","card2 intentName");
-$fbImageArray = array("https://imageCardurl1.com","https://imageCardurl2.com");
-$fbSubtitleArray = array("subtitle for card1","subtitle for card2");
-$fbLinkArray = array("https://cardHyperlink.com","https://cardHyperlink.com");
-$fbStyleArray = array("$Style_Tall","$Style_Full");
-$bTitleArray = array(
-  array("Card1 Button1 Title","Card1 Button 2 Tittle"),
-  array("Card2 Button1 Title","Card2 Button 2 Tittle")
-);
-$bCustomArray = array(
-  array("Card1 Button 1 postback","https://Card1button2url.com"),
-  array("Card2 Button 1 postback","https://Card2button2url.com")
-);
+$fbTitleArray = ["card1 intentName","card2 intentName"];
+$fbImageArray = ["https://imageCardurl1.com","https://imageCardurl2.com"];
+$fbSubtitleArray = ["subtitle for card1","subtitle for card2"];
+$fbLinkArray = ["https://cardHyperlink.com","https://cardHyperlink.com"];
+$fbStyleArray = ["$Style_Tall","$Style_Full"];
+$bTitleArray = [
+  ["Card1 Button1 Title","Card1 Button 2 Tittle"],
+  ["Card2 Button1 Title","Card2 Button 2 Tittle"]
+];
+$bCustomArray = [
+  ["Card1 Button 1 postback","https://Card1button2url.com"],
+  ["Card2 Button 1 postback","https://Card2button2url.com"]
+];
 
 fbExternalGeneric($fbTitleArray, $fbImageArray, $fbSubtitleArray, $fbLinkArray, $fbStyleArray, $bTitleArray, $bCustomArray);
 ```
@@ -165,50 +193,57 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Generic">
+
+</TabItem>
+</Tabs>
+
 ### fbExternalReceipt
 
-**Displays a Receipt that shows Products, Total Price, Subtotal, Taxes and More**
-
-> - You can have as many products as you want.
+> You can have as many products as you want.
 
 <Tabs>
+<TabItem value="simple" label="One Receipt">
+
+  <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$receiptInfo = array(
+$receiptInfo = [
   "order_name" => "",
   "order_number" =>"",
   "order_currency" => "",
   "order_payment" => "",
   "order_url" => "",
   "order_timestamp" => ""
-);
+];
 
-$receiptAddress = array(
+$receiptAddress = [
   "address_street1" => "",
   "address_street2" =>"",
   "address_city" => "",
   "address_postalcode" => "",
   "address_state" => "",
   "address_country" => ""
-);
+];
 
-$receiptSummary = array(
+$receiptSummary = [
   "summary_subtotal" => "",
   "summary_shippingcost" => "",
   "summary_tax" => "",
   "summary_cost" => ""
-);
+];
 
-$fbAdjustmentName = array("10%");
-$fbAdjustmentAmount = array("10%");
+$fbAdjustmentName = ["10%"];
+$fbAdjustmentAmount = ["10%"];
 
-$fbTitleArray = array("Product 1 Title");
-$fbSubtitleArray = array("Product 1 Description");
-$fbQuantityArray = array("Product 1 Quantity");
-$fbPriceArray = array("Price Per Product");
-$fbCurrencyArray = array("Currency of the Product");
-$fbImageurlArray = array("https://producturlimage.com");
+$fbTitleArray = ["Product 1 Title"];
+$fbSubtitleArray = ["Product 1 Description"];
+$fbQuantityArray = ["Product 1 Quantity"];
+$fbPriceArray = ["Price Per Product"];
+$fbCurrencyArray = ["Currency of the Product"];
+$fbImageurlArray = ["https://producturlimage.com"];
 
 
 fbExternalReceipt($receiptInfo, $receiptAddress, $receiptSummary, $fbAdjustmentName, $fbAdjustmentAmount, $fbTitleArray, $fbSubtitleArray, $fbQuantityArray, $fbPriceArray, $fbCurrencyArray, $fbImageurlArray);
@@ -220,6 +255,12 @@ fbExternalReceipt($receiptInfo, $receiptAddress, $receiptSummary, $fbAdjustmentN
 ```nodejs
 ALPHA
 ```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="complex" label="Two or More Receipt">
 
 </TabItem>
 </Tabs>

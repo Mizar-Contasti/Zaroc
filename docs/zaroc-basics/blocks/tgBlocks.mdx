@@ -11,11 +11,12 @@ Telegram Blocks help us to display information on Telegram
 
 Telegram Blocks have a Native Integration with Dialogflow, and there are others that uses external Payloads
 
-### tgText
-
-**Is used to show Texts**
+### tgParagraph
 
 > Multiple texts are stacked as paragraphs.
+
+<Tabs>
+<TabItem value="simple" label="One Paragraph">
 
 ![Download this document](./../../../static/img/blocks/tg/text.jpg)
 
@@ -23,7 +24,7 @@ Telegram Blocks have a Native Integration with Dialogflow, and there are others 
 <TabItem value="php" label="PHP">
 
 ```php
-$tTextArray = array("Text1","Text2");
+$tTextArray = ["Text1","Text2"];
 
 tgText($tTextArray);
 ```
@@ -38,11 +39,18 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Paragraphs">
+
+</TabItem>
+</Tabs>
+
 ### tgImage
 
-**Is used to show Images**
-
 > Images can be stacked indifinelty in a Vertical Way.
+
+<Tabs>
+<TabItem value="simple" label="One Image">
 
 ![Download this document](./../../../static/img/blocks/tg/image.jpg)
 
@@ -50,7 +58,7 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$iImageArray = array("https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg");
+$iImageArray = ["https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg"];
 
 tgImage($iImageArray);
 ```
@@ -65,12 +73,19 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Images">
+
+</TabItem>
+</Tabs>
+
 ### tgReply
 
-**Is used to show Replies/Chips**
+> Reply are stacked horizontaly up to 7.
+> Reply functions as a common text input.
 
-> - Chips are stacked horizontaly up to 7.
-> - Chips functions as a common text input.
+<Tabs>
+<TabItem value="simple" label="One Reply">
 
 ![Download this document](./../../../static/img/blocks/tg/reply.jpg)
 
@@ -78,8 +93,8 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$rTitleArray = array("Title");
-$rTextArray = array("option1","option2");
+$rTitleArray = ["Title"];
+$rTextArray = ["option1","option2"];
 
 tgReplies($rTitleArray, $rTextArray);
 ```
@@ -94,12 +109,19 @@ ALPHA
 </TabItem>
 </Tabs>
 
+</TabItem>
+<TabItem value="complex" label="Two or More Replies">
+
+</TabItem>
+</Tabs>
+
 ### tgCard
 
-**Is used to show Cards**
+> Cards are Stacked vertically.
+> Button Cards support Links and Text.
 
-> - Cards are Stacked vertically.
-> - Button Cards support Links and Text.
+<Tabs>
+<TabItem value="simple" label="One Card">
 
 ![Download this document](./../../../static/img/blocks/tg/card.jpg)
 
@@ -107,11 +129,11 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$cImageArray = array("https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg");
-$cTitleArray = array("CardTitle1");
-$cSubtitleArray = array("Card subtitle1");
-$cButtonTextArray = array(array("button1","button2"));
-$cButtonCustomArray = array(array("button1","button2"));
+$cImageArray = ["https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg"];
+$cTitleArray = ["CardTitle1"];
+$cSubtitleArray = ["Card subtitle1"];
+$cButtonTextArray = [["button1","button2"]];
+$cButtonCustomArray = [["button1","button2"]];
 
 tgCard($cImageArray,$cTitleArray,$cSubtitleArray,$cButtonTextArray,$cButtonCustomArray);
 ```
@@ -122,6 +144,12 @@ tgCard($cImageArray,$cTitleArray,$cSubtitleArray,$cButtonTextArray,$cButtonCusto
 ```nodejs
 ALPHA
 ```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="complex" label="Two or More Cards">
 
 </TabItem>
 </Tabs>
