@@ -100,8 +100,8 @@ if(intent('asking_coffee')){
 
     $context = false;
     $contextBody;
-    $wsTitle = array("asking_coffee");
-    $wsTextArray = array("The coffee you choose is $coffee");
+    $wsTitle = ["asking_coffee"];
+    $wsTextArray = ["The coffee you choose is $coffee"];
 
     wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
 }
@@ -192,9 +192,9 @@ if(intent('asking_coffee')){
     $coffee = getContextParameter(0)['coffee'];
 
     $context = false;
-    $contextBody;
-    $wsTitle = array("asking_coffee");
-    $wsTextArray = array("The coffee you choose is $coffee");
+    $contextBody = [];
+    $wsTitle = ["asking_coffee"];
+    $wsTextArray = ["The coffee you choose is $coffee"];
 
     wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
 }
