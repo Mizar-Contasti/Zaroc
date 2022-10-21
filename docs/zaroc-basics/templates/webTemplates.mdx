@@ -16,7 +16,7 @@ WebTemplates are used to build nice structures in a Web Environment. These templ
 > - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
-> - Available webBlocks are **accordeon button chips description image list paragraph** These can be located in blocks -> webBlocks
+> - Available webBlocks are **card button reply description image list paragraph** These can be located in blocks -> webBlocks
 > - Available separators are **comma basicDivider commaDivider superDivider**
 
 > - You can build a structure with the blocks or use this Structure Template Tool [**HERE**](https://github.com/)
@@ -26,28 +26,28 @@ WebTemplates are used to build nice structures in a Web Environment. These templ
 
 ```php
 $context = false;
-$contextBody = array();
-$webTitle = array("intentName");
+$contextBody = [];
+$webTitle = ["intentName"];
 
-$imageArray = array("imageurl");
-$aTitleArray = array("Card Title");
-$aSubtitleArray = array("Card Subtitle");
-$aTextArray = array("Card Accordeon Text");
+$imageArray = ["imageurl"];
+$aTitleArray = ["Card Title"];
+$aSubtitleArray = ["Card Subtitle"];
+$aTextArray = ["Card Accordeon Text"];
 
-$bTitleArray = array("Button Title 1","ButtonTitle2");
-$bCustomArray = array("button Custom 1","button Custom 2");
-$bIconArray = array("Button Icon","Button Icon 2");
-$bColorArray = array("#00efff","#000fff");
+$bTitleArray = ["Button Title 1","ButtonTitle2"];
+$bCustomArray = ["button Custom 1","button Custom 2"];
+$bIconArray = ["Button Icon","Button Icon 2"];
+$bColorArray = ["#00efff","#000fff"];
 
 
-$structure = array('image','comma','accordeon','superDivider','button');
-$components = array(
-    array($imageArray,$webTitle),
-    array(),
-    array($imageArray,$aTitleArray,$aSubtitleArray,$aTextArray),
-    array(),
-    array($bTitleArray,$bCustomArray,$bIconArray,$bColorArray)
-);
+$structure = ['image','comma','card','superDivider','button'];
+$components = [
+    [$imageArray,$webTitle],
+    [],
+    [$imageArray,$aTitleArray,$aSubtitleArray,$aTextArray],
+    [],
+    [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
+];
 
 webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
 ```
@@ -60,7 +60,7 @@ context = false;
 contextBody = [];
 webTitle = ["intentName"];
 
-structure = ["image", "comma", "accordeon", "superDivider", "button"];
+structure = ["image", "comma", "card", "superDivider", "button"];
 components = [
   [imageArray, webTitle],
   [],

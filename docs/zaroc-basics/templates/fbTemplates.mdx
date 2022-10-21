@@ -17,7 +17,7 @@ fbTemplates are used to build nice structures in a Facebook Messenger Environmen
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array.
 > - If you dont know already what to do with context please make it false and just declare contextBody as null. (You can find Context in doc).
 > - External or Generic Blocks should be used inside of open/close Payloads.
-> - Available fbBlocks are **image text reply card** for native, and **generic media receipt** for external. These can be located in blocks -> fbBlocks.
+> - Available fbBlocks are **image paragraph reply card** for native, and **generic media receipt** for external. These can be located in blocks -> fbBlocks.
 
 .
 
@@ -32,29 +32,29 @@ Native and External Blocks cant be used in the same structure, if so, Native Blo
 
 ```php
 $context = false;
-$contextBody = array();
-$fbTitle = array("test");
+$contextBody = [];
+$fbTitle = ["test"];
 
-$fbTitleArray = array("card1 intentName","card2 intentName");
-$fbImageArray = array("https://imageCardurl1.com","https://imageCardurl2.com");
-$fbSubtitleArray = array("subtitle for card1","subtitle for card2");
-$fbLinkArray = array("https://cardHyperlink.com","https://cardHyperlink.com");
-$fbStyleArray = array("$style_Tall","$Style_Full");
-$bTitleArray = array(
-  array("Card1 Button1 Title","Card1 Button 2 Tittle"),
-  array("Card2 Button1 Title","Card2 Button 2 Tittle")
-);
-$bCustomArray = array(
-  array("Card1 Button 1 postback","https://Card1button2url.com"),
-  array("Card2 Button 1 postback","https://Card2button2url.com")
-);
+$fbTitleArray = ["card1 intentName","card2 intentName"];
+$fbImageArray = ["https://imageCardurl1.com","https://imageCardurl2.com"];
+$fbSubtitleArray = ["subtitle for card1","subtitle for card2"];
+$fbLinkArray = ["https://cardHyperlink.com","https://cardHyperlink.com"];
+$fbStyleArray = ["$style_Tall","$Style_Full"];
+$bTitleArray = [
+  ["Card1 Button1 Title","Card1 Button 2 Tittle"],
+  ["Card2 Button1 Title","Card2 Button 2 Tittle"]
+];
+$bCustomArray = [
+  ["Card1 Button 1 postback","https://Card1button2url.com"],
+  ["Card2 Button 1 postback","https://Card2button2url.com"]
+];
 
-$structure = array('openPayload','generic','closePayload');
-$components = array(
-    array(),
-    array($fbTitleArray,  $fbImageArray,  $fbSubtitleArray,  $fbLinkArray,  $fbStyleArray   , $bTitleArray, $bCustomArray),
-    array()
-);
+$structure = ['openPayload','generic','closePayload'];
+$components = [
+    [],
+    [$fbTitleArray,  $fbImageArray,  $fbSubtitleArray,  $fbLinkArray,  $fbStyleArray   , $bTitleArray, $bCustomArray],
+    []
+];
 
 fbStructureTemplate($context,$contextBody,$fbTitle,$structure,$components);
 ```

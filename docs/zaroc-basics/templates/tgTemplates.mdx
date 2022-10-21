@@ -17,30 +17,34 @@ tgTemplates are used to build nice structures in a Telegram Environment. These t
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array.
 > - If you dont know already what to do with context please make it false and just declare contextBody as null. (You can find Context in doc).
 > - External or Generic Blocks should be used inside of open/close Payloads.
-> - Available tgBlocks are **image text reply card** These can be located in blocks -> tgBlocks.
+> - Available tgBlocks are **image paragraph reply card** These can be located in blocks -> tgBlocks.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
 $context = false;
-$contextBody = null;
-$tgTitle = array("test");
+$contextBody = [];
+$tgTitle = ["test"];
 
-$tgTextArray = array("Text Title 1");
+$tgTextArray = ["Text Title 1"];
 
-$cImageArray = array("https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg");
-$cTitleArray = array("CardTitle");
-$cSubtitleArray = array("Card subtitle");
-$cButtonTextArray = array(array("button1","button2"));
-$cButtonCustomArray = array(array("button1","button2"));
+$cImageArray = ["https://ramenparados.com/wp-content/uploads/2018/06/Barakamon-destacado-1000x600.jpg"];
+$cTitleArray = ["CardTitle"];
+$cSubtitleArray = ["Card subtitle"];
+$cButtonTextArray = [
+    ["button1","button2"]
+];
+$cButtonCustomArray = [
+    ["button1","button2"]
+];
 
-$structure = array('text','comma','card');
-$components = array(
-    array($tgTextArray),
-    array(),
-    array($cImageArray,  $cTitleArray,  $cSubtitleArray,  $cButtonTextArray,  $cButtonCustomArray)
-);
+$structure = ['paragraph','comma','card'];
+$components = [
+    [$tgTextArray],
+    [],
+    [$cImageArray,  $cTitleArray,  $cSubtitleArray,  $cButtonTextArray,  $cButtonCustomArray]
+];
 
 tgStructureTemplate($context,$contextBody,$tgTitle,$structure,$components);
 ```
