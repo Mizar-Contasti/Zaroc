@@ -55,14 +55,14 @@ ALPHA
 </TabItem>
 <TabItem value="complex" label="Two or More Paragraphs">
 
-![Example of Two Paragraph](./../../../static/img/blocks/wb/paragraph.jpg)
+![Example of Two Paragraph](./../../../static/img/blocks/wb/paragraphs.png)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$pTitleArray = ["Title1"];
-$pSubtitleArray = ["Subtitle1"];
+$pTitleArray = ["Title1","title2"];
+$pSubtitleArray = ["Subtitle1","subtitle2"];
 
 webParagraph($pTitleArray, $pSubtitleArray);
 ```
@@ -97,12 +97,11 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$aImageArray = ["https://imageurl.com"];
 $aTitleArray = ["Title"];
-$aSubitleArray = ["Subtitle"];
+$aSubtitleArray = ["Subtitle"];
 $aTextArray = ["Subtitle"];
 
-webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
+webCard($aTitleArray, $aSubtitleArray, $aTextArray);
 ```
 
 </TabItem>
@@ -118,18 +117,17 @@ ALPHA
 </TabItem>
 <TabItem value="complex" label="Two or More Cards">
 
-![Example of Two Cards](./../../../static/img/blocks/wb/card.jpg)
+![Example of Two Cards](./../../../static/img/blocks/wb/cards.png)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$aImageArray = ["https://imageurl.com"];
-$aTitleArray = ["Title"];
-$aSubitleArray = ["Subtitle"];
-$aTextArray = ["Subtitle"];
+$aTitleArray = ["Title1","title2"];
+$aSubtitleArray = ["Subtitle1","subtitle2"];
+$aTextArray = ["text1","text 2"];
 
-webAccordeon($aImageArray, $aTitleArray, $aSubtitleArray, $aTextArray);
+webCard($aTitleArray, $aSubtitleArray, $aTextArray);
 ```
 
 </TabItem>
@@ -164,10 +162,10 @@ ALPHA
 <TabItem value="php" label="PHP">
 
 ```php
-$bTitleArray = ["Button Title 1", "Buttton with Link 2"];
-$bCustomArray = ["eventName","https://google.com"];
-$bIconArray = ["home","arrow_forward"];
-$bColorArray = ["$red","$blue"];
+$bTitleArray = ["Button Title 1"];
+$bCustomArray = ["eventName"];
+$bIconArray = ["home"];
+$bColorArray = ["#F08080"];
 
 webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
 ```
@@ -185,7 +183,7 @@ ALPHA
 </TabItem>
 <TabItem value="complex" label="Two or More Buttons">
 
-![Example of One Button](./../../../static/img/blocks/wb/button.jpg);
+![Example of One Button](./../../../static/img/blocks/wb/buttons.png);
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -194,7 +192,7 @@ ALPHA
 $bTitleArray = ["Button Title 1", "Buttton with Link 2"];
 $bCustomArray = ["eventName","https://google.com"];
 $bIconArray = ["home","arrow_forward"];
-$bColorArray = ["$red","$blue"];
+$bColorArray = ["#F08080","#F08080"];
 
 webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
 ```
@@ -221,17 +219,17 @@ ALPHA
 <Tabs>
 <TabItem value="simple" label="One Reply">
 
-![Example of One Reply](./../../../static/img/blocks/wb/chips.jpg)
+![Example of One Reply](./../../../static/img/blocks/wb/reply.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$cTitleArray = ["Chip Title1","Chips title 2"];
-$cImageArray = ["https://chipsImageURl.com","https://chipsImageURl.com"];
-$cCustomArray = ["Chip Text","https://chips.com"];
+$cTitleArray = ["Chip Title1"];
+$cImageArray = ["https://chipsImageURl.com"];
+$cCustomArray = ["Chip Text"];
 
-webChips($cTitleArray, $cImageArray, $cCustomArray);
+webReply($cTitleArray, $cImageArray, $cCustomArray);
 ```
 
 </TabItem>
@@ -247,7 +245,7 @@ ALPHA
 </TabItem>
 <TabItem value="complex" label="Two or More Replies">
 
-![Example of One Reply](./../../../static/img/blocks/wb/chips.jpg)
+![Example of One Reply](./../../../static/img/blocks/wb/reply.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -257,7 +255,7 @@ $cTitleArray = ["Chip Title1","Chips title 2"];
 $cImageArray = ["https://chipsImageURl.com","https://chipsImageURl.com"];
 $cCustomArray = ["Chip Text","https://chips.com"];
 
-webChips($cTitleArray, $cImageArray, $cCustomArray);
+webReply($cTitleArray, $cImageArray, $cCustomArray);
 ```
 
 </TabItem>
@@ -307,6 +305,28 @@ ALPHA
 </TabItem>
 <TabItem value="complex" label="Two or More Images">
 
+![Download this document](./../../../static/img/blocks/wb/images.png)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$iImageArray = ["https://imageurl.com","https://imageurl.com"];
+$iTextArray = ["Image Alt Text","Image Alt Text"];
+
+webImage($iImageArray, $iTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
 </TabItem>
 </Tabs>
 
@@ -319,7 +339,34 @@ ALPHA
 <Tabs>
 <TabItem value="simple" label="One List">
 
-![Download this document](./../../../static/img/blocks/wb/list.jpg)
+![Download this document](./../../../static/img/blocks/wb/list.png)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$lTitleArray = ["Title list"];
+$lSubtitleArray = ["Subtitle List"];
+$lImageArray = ["https://imageurl.com"];
+$lCustomArray = ["https://hyperlink.com"];
+
+webList($lTitleArray, $lSubtitleArray, $lImageArray, $lCustomArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="complex" label="Two or More Lists">
+
+![Download this document](./../../../static/img/blocks/wb/lists.jpg)
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -342,9 +389,6 @@ ALPHA
 
 </TabItem>
 </Tabs>
-
-</TabItem>
-<TabItem value="complex" label="Two or More Lists">
 
 </TabItem>
 </Tabs>
@@ -383,6 +427,28 @@ ALPHA
 
 </TabItem>
 <TabItem value="complex" label="Two or More Descriptions">
+
+![Download this document](./../../../static/img/blocks/wb/descriptions.png)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$dTitleArray = ["Title2","Title2"];
+$dTextArray = [["Text1","Text2"],["Text3","Text4"]];
+
+webDescription($dTitleArray, $dTextArray);
+```
+
+</TabItem>
+<TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
