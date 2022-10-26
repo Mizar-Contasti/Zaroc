@@ -46,10 +46,10 @@ ChatbotTemplate
 ### DB Connection and Table Preparation
 
 > - Firstly we should have a Database already connected to our bot. If not, check DB Essentials on Tutorials Section.
-> - Download [**engagements.sql**](https://google.com) and Import it on your db to create the Sessions Table.
+> - Download [**transcripts.sql**](https://google.com) and Import it on your db to create the Sessions Table.
 > - Then, we should have our Table with the following structure.
 
-## IMG
+<!-- ## IMG -->
 
 If the format doesn't fit, make sure you are importing correctly, or create the table with the structure/schema shown.
 
@@ -95,7 +95,7 @@ $sessionId = getContextParameter(0)['config']['sessionId'];     --string
 
 $source = 'user';                                               --string
 $userInput = getUserInput();                                    --string
-$intentName = array("basics_welcome");                          --array
+$intentName = ["basics_welcome"];                                --array
 $input = getInput();                                            --string
 ```
 
@@ -112,6 +112,6 @@ ALPHA
 > - Check if the Transcript was inserted successfully on our DB with an If Statement, if the Transcript wasn't added, check your SQL query.
 > - Remember to use this Transcript function for each intent, when there are errors and correct responses from your Chatbot.
 
-## IMG
+<!-- ## IMG -->
 
 ##### For each message that the user sends a new Transcript will be added with the current sessionId from the user.

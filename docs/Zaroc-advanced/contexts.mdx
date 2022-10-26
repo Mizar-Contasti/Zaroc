@@ -74,13 +74,13 @@ ALPHA
 ```php
 $sessionId = getSessionId();
 
-$contextIndex = array(0);
-$parameters = array(
-    "config" => array(
+$contextIndex = [];
+$parameters = [
+    "config" => [
         "sessionID" => "$sessionId",
         "variable2" => "valor2"
-    )
-);
+    ]
+];
 
 $contextBody = setContextParameters($contextIndex, $parameters);
 ```
@@ -103,12 +103,29 @@ ALPHA
 
 ```php
 $context = true;
-$webTitle = array("intentName");
+$webTitle = ["intentName"];
 
-$pTitleArray = array("Title1");
-$pSubtitleArray = array("Subtitle1");
+$imageArray = ["imageurl"];
+$aTitleArray = ["Card Title"];
+$aSubtitleArray = ["Card Subtitle"];
+$aTextArray = ["Card Accordeon Text"];
 
-webParagraphTemplate($context,$contextBody,$webTitle,$pTitleArray,$pSubtitleArray);
+$bTitleArray = ["Button Title 1","ButtonTitle2"];
+$bCustomArray = ["button Custom 1","button Custom 2"];
+$bIconArray = ["Button Icon","Button Icon 2"];
+$bColorArray = ["#00efff","#000fff"];
+
+
+$structure = ['image','comma','card','superDivider','button'];
+$components = [
+    [$imageArray,$webTitle],
+    [],
+    [$imageArray,$aTitleArray,$aSubtitleArray,$aTextArray],
+    [],
+    [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
+];
+
+webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
 ```
 
 </TabItem>
@@ -121,5 +138,5 @@ ALPHA
 </TabItem>
 </Tabs>
 
-> - We are using this simple structure to send a Paragraph and our new context that has the sessionId, try triggering this intent and then look at the response, you should be able to see that our context has been changed to the values we setted.
+> - We are using this simple structure to send a image + button + card and our new context that has the sessionId, try triggering this intent and then look at the response, you should be able to see that our context has been changed to the values we setted.
 > - I strongly recommend you to try this exercise in more than 1 intent, just to see how Contexts lives and works.
