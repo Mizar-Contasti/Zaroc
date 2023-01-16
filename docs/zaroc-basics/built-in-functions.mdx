@@ -118,21 +118,34 @@ parameterValue = getIntentParameter(body)["parameterName"];
 
 #### getContextParameter
 
+:::tip Keep in Mind
+
+When going deep into context, check Contexts section in Zaroc Advanced
+
+:::
+
 > - Returns the value of the specified Parameter and Context
 > - Receives a Number as the index of the specified Context when the variable is living
+> - You can pass "auto" as parameter to retrieve the main context if you are not able to retrieve correctly your context: Example ( getContextParameter(auto)['parameterName']; )
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Pass context index as a number if you want that specific context and you know how contexts works Ex: 0
 $parameterValue = getContextParameter(0)['parameterName'];
+// Pass context index as "auto" to retrieve your context
+$parameterValue = getContextParameter("auto")['parameterName'];
 ```
 
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
 ```js
+// Pass context index as a number if you want that specific context and you know how contexts works Ex: 0
 parameterValue = getContextParameter(body, 0)["parameterName"];
+// Pass context index as "auto" to retrieve your context
+parameterValue = getContextParameter(body, "auto")["parameterName"];
 ```
 
 </TabItem>
@@ -154,8 +167,8 @@ These functions help us to Trigger Special Behaviors on our Chatbot from the Bac
 <TabItem value="php" label="PHP">
 
 ```php
-$eventName = array("event1");
-$params = array();
+$eventName = ["event1"];
+$params = [];
 
 triggerEvent($eventName,$params);
 ```
@@ -185,10 +198,10 @@ result = triggerEvent(eventName, params);
 
 ```php
 $context = false;
-$contextBody = array();
-$intentName = array("intent1");
-$errorMessage = array("Query wasnt executed 💥");
-$params = array();
+$contextBody = [];
+$intentName = ["intent1"];
+$errorMessage = ["Query wasnt executed 💥"];
+$params = [];
 
 triggerError($context,$contextBody,$intentName,$errorMessage,$params);
 ```
@@ -222,8 +235,8 @@ result = triggerError(context, contextBody, intentName, errorMessage, params);
 
 ```php
 $context = false;
-$contextbody = array();
-$prompt = array("Whats your favourite food");
+$contextbody = [];
+$prompt = ["Whats your favourite food"];
 
 triggerPropmt($context,$contextBody,$prompt);
 ```
@@ -256,14 +269,15 @@ Context help us to save information, with these backend functions we can create 
 #### setContextParameter
 
 > - This Function allow us to add a Parameter to the Selected Context.
+> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and create new parameters on it
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = array(0);
-$variableName = array("fruit");
-$variableValue = array("coco");
+$contextIndex = [0];
+$variableName = ["fruit"];
+$variableValue = ["coco"];
 
 $contextBody = setContextParameter($contextIndex,$variableName,$variableValue);
 ```
@@ -290,14 +304,15 @@ contextBody = setContextParameter(
 #### updateContextParameter
 
 > - This functions allow us to update the value of a parameter inside of the selected context.
+> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and update it
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = array(0);
-$variableName = array("fruit");
-$variableValue = array("Banana");
+$contextIndex = [0];
+$variableName = ["fruit"];
+$variableValue = ["Banana"];
 
 $contextBody = updateContextParameter($contextIndex,$variableName,$variableValue);
 ```
@@ -324,18 +339,19 @@ contextBody = updateContextParameter(
 #### setContextParameters
 
 > - Creates multiple values on the selected Context.
+> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and create new parameters inside of it
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = array(0);
+$contextIndex = [0];
 
-$parameters = array(
+$parameters = [
     'color' => 'white',
     'animal' => 'bird',
     'coffee' => 'expresso'
-);
+];
 
 $contextBody = setContextParameters($contextIndex, $parameters);
 ```
@@ -361,19 +377,20 @@ contextBody = setContextParameters(body,parameters,contextIndex);
 #### updateContextParameters
 
 > - Updates multiples values on the selected context.
+> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and create new parameters inside of it
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = array(0);
+$contextIndex = [0];
 
-$parameters = array(
+$parameters = [
     'color' => 'black',
     'fruit' => 'apple',
     'coffee' => 'capuccinno',
     'animal' => 'gorilla'
-);
+];
 
 $contextBody = updateContextParameters($contextIndex, $parameters);
 ```
@@ -401,7 +418,7 @@ contextBody = updateContextParameters(body,parameters,contextIndex);
 
 ### Troubleshoot
 
-In order to Troubleshoot we can use some functions.
+In order to Troubleshoot we can use some functions. (Check troubleshoot section for more info)
 
 #### getInput
 
@@ -436,7 +453,7 @@ result = getInput(data);
 <TabItem value="php" label="PHP">
 
 ```php
-$fileName = array("request");
+$fileName = ["request"];
 createInput($fileName);
 ```
 
@@ -462,7 +479,7 @@ createInput(data, fileName);
 <TabItem value="php" label="PHP">
 
 ```php
-$fileName = array("request");
+$fileName = ["request"];
 getSourceData($fileName);
 ```
 
@@ -482,7 +499,7 @@ getSourceData(data, fileName);
 #### getTimeOut
 
 > - Returns the time in ms that took all code execution to be done.
-> - getTimeOut can't take ms that cost the request in being proccesed by Dialogflow.
+> - getTimeOut can't take ms that cost the request in being proccesed by Dialogflow (**4000 ms**).
 
 <Tabs>
 <TabItem value="php" label="PHP">
