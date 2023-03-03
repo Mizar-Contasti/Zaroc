@@ -11,12 +11,12 @@ wsTemplates are used to build nice structures in a WhatsApp Environment. These t
 
 ### wsParagraphTemplate
 
-**wsParagraphTemplate help us to create a custom Structure**
+**wsStructureTemplate help us to create a custom Structure**
 
 > - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
 > - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
-> - wsBlocks just works with Text
+> - wsBlocks are on development so keep in touch to use them all.
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -25,10 +25,15 @@ wsTemplates are used to build nice structures in a WhatsApp Environment. These t
 $context = false;
 $contextBody = [];
 
-$wsTitle = ["Your Title"];
-$wsTextArray = ["Your Text"];
+$wsTitle = ["test"];
+$wsTextArray = ["Paragraph Title1","Paragraph Title2"];
 
-wsParagraphTemplate($context, $contextBody, $wsTitle, $wsTextArray);
+$structure = ['paragraph'];
+$components = [
+    [$wsTextArray]
+];
+
+wsStructureTemplate($context,$contextBody,$wsTitle,$structure,$components);
 ```
 
 </TabItem>
