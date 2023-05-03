@@ -78,7 +78,7 @@ this function receives a name (name of the intent) and If you trigger that inten
 
 **For more information about Intent function check documentation**
 
-Right now if the user trigger this intent, we want to prepare a response from our backend. For this case we are going to use the funcion 'wsParagraphTemplate' these function that ends in Template are Template functions and help us sending data in specific formats. For this example just copy the code below.
+Right now if the user trigger this intent, we want to prepare a response from our backend. For this case we are going to use the funcion 'wsStructureTemplate' these function that ends in Template are Template functions and help us sending data in specific formats. For this example just copy the code below.
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -86,10 +86,16 @@ Right now if the user trigger this intent, we want to prepare a response from ou
 ```php
 $context = false;
 $contextBody = [];
-$wsTitle = ["basics_welcome"];
-$wsTextArray = ["Message from the backend"];
 
-wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
+$wsTitle = ["test"];
+$wsTextArray = ["Paragraph Title1","Paragraph Title2"];
+
+$structure = ['paragraph'];
+$components = [
+    [$wsTextArray]
+];
+
+wsStructureTemplate($context,$contextBody,$wsTitle,$structure,$components);
 ```
 
 </TabItem>
@@ -108,7 +114,7 @@ This code is creating some Variables and Arrays.'$context' is a variable that is
 
 '$wsTextArray' must be an Array (Required) here we are going to set a message, you can use text and emojis by the moment. Put whatever you like.
 
-And at the end we have 'wsParagraphTemplate'
+And at the end we have 'wsStructureTemplate'
 
 **This function creates an Structure that dialogflow can understand (Template) and is sent as a Response to dialogflow**
 

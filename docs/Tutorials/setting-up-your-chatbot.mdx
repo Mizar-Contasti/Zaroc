@@ -110,7 +110,7 @@ Right now Zaroc is connected to our Chatbot that is connected to Dialogflow, we 
 ```php
 <?php
 if(intent('test')){
-  triggerError('test','Message from the Backend');
+  triggerError(false,[], ['test'],['Message from the backend'],[]);
 }
 ?>
 ```

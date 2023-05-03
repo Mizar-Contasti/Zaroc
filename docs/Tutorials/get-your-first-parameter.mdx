@@ -56,7 +56,7 @@ This parameter lives in the contexts of the intent that is storing it. These par
 <TabItem value="php" label="PHP">
 
 ```php
-$value = getContextParameter(0)['variableName'];
+$value = getContextParameter("auto")['variableName'];
 ```
 
 </TabItem>
@@ -69,7 +69,7 @@ ALPHA
 </TabItem>
 </Tabs>
 
-We storing a variable in $value, this variable is retrieved from a Zaroc function 'getContextParameter' after that you will see a number, this number is referencing to the index of the contexts (cause they start from 0 as an array does), and finally insert in the single quotes the keyname(name) of the parameter
+We storing a variable in $value, this variable is retrieved from a Zaroc function 'getContextParameter' after that you will see an "auto" word (anyway you can use a number), this is referencing to the index of the contexts (cause they start from 0 as an array does), and finally insert in the single quotes the keyname(name) of the parameter
 
 So with this explanation let's do a quick tutorial over these two functions.
 
@@ -97,13 +97,18 @@ Your code to get the parameter of asking_coffee should look as this.
 if(intent('asking_coffee')){
 
     $coffee = getIntentParameter()['coffee'];
-
     $context = false;
-    $contextBody;
+    $contextBody = [];
     $wsTitle = ["asking_coffee"];
     $wsTextArray = ["The coffee you choose is $coffee"];
 
-    wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
+    $structure = ['paragraph'];
+    $components = [
+        [$wsTextArray]
+    ];
+
+    wsStructureTemplate($context,$contextBody,$wsTitle,$structure,$components);
+
 }
 ```
 
@@ -162,7 +167,7 @@ Do the same that we did in our Backend, then use the function of
 <TabItem value="php" label="PHP">
 
 ```php
-$coffee = getContextParameter(0)['coffee'];
+$coffee = getContextParameter("auto")['coffee'];
 ```
 
 </TabItem>
@@ -189,14 +194,21 @@ Your code should look at this now
 ```php
 if(intent('asking_coffee')){
 
-    $coffee = getContextParameter(0)['coffee'];
-
+    $coffee = getContextParameter("auto")['coffee'];
     $context = false;
     $contextBody = [];
     $wsTitle = ["asking_coffee"];
     $wsTextArray = ["The coffee you choose is $coffee"];
 
-    wsParagraphTemplate($context,$contextBody, $wsTitle, $wsTextArray);
+    $structure = ['paragraph'];
+    $components = [
+        [$wsTextArray]
+    ];
+
+    wsStructureTemplate($context,$contextBody,$wsTitle,$structure,$components);
+
+
+
 }
 ```
 
