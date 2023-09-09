@@ -7,22 +7,27 @@ sidebar_position: 10
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-It's time to TroubleShoot, if you have gotten Errors From Dialogflow or from our Backend. But Before we start is very important to recognize when an error is appearing and where the Errors comes from so.
+It's time to TroubleShoot, if you have gotten any Errors when using your chatbot, or you arent just getting a response, this is your section.
 
-### Is this an Error?
+But Before we start is very important to recognize when an error is appearing and where the Errors comes from so.
+
+## Is this an Error?
+
+When Dialogflow doesnt respond, with anything (or displays the default message), then we have an error.
 
 Mostly of the times you could recognize an error for these patterns.
 
+> - Your bot isn't responding
 > - If your default message gets triggered instead of the message displayed from our backend code.
-> - If your **Fulfillment response** doesnt have the correct structure on JSON (make sure the characters are on orange/brown color)
+> - If your **Fulfillment response** doesnt have the correct structure on JSON (the characters are not on orange/brown color)
 > - If your **Fulfillment Status** says Webhook Error/ Execution Error
 
-### Where's the Origin of the Error?
+## Where's is the Error?
 
-> - If you get a ErrorLog in your chatbot folder, the error mostly is from our **(BACKEND)**.
-> - If your chatbot displays the default message instead of the backend output, its from the **(BACKEND)**.
-> - If in **Fulfillment Response** you see a wrong JSON format (make sure the characters are on orange/brown color) the Error is from the **(BACKEND)**.
-> - If you got any warning from the console, any orangeRed warning, its from Dialogflow.
+> - If you get a ErrorLog in your chatbot folder (on your code), the error mostly is from your **(Backend)**.
+> - If your chatbot displays the default message instead of the backend output, its from the **(Backend)**.
+> - If in **Fulfillment Response** you see a wrong JSON format (make sure the characters are on orange/brown color) the Error is from **(Zaroc)**.
+> - If you got any warning from the console, any orangeRed warning, its from **(Dialogflow)**.
 
 .
 :::tip Keep in Mind
@@ -31,24 +36,35 @@ You have to Require all the Utilities (Intents/Classes) before, most of the time
 
 :::
 
-<!-- :::danger Take care
+## Fixing Errors
 
-This action is dangerous
+### Errors from **Backend**
 
-::: -->
+Mostly of these problems becomes for a fault in the code that you have developed, so I encourage you to review your code, check stack overflow or some AI tool for a code workaround or the error itself, this is the easiest error to solve.
 
-### Fixing Errors
+> - Open Log Error
+> - Check the line
+> - Check the error
+> - Search for Error
+> - Fix it and iterate till you dont get more errors
 
-#### Errors from the Log
+### Errors from **Zaroc**
 
-Mostly of these problems becomes for a fault in the code that you have developed, so I encourage you to review your code, check stack overflow, and there you will fix it.
+Most of these Errors comes when we are not sending the correct Data in the expected format (JSON) From Zaroc part, this kind of error is the most uncommon error.
 
-#### Errors from the Fulfillment Response
+> - Make sure you are using the newest Zaroc Library without any changes from yourself (Keep in mind that this library was made in a way you dont need to change anything, because json format that dialogflow receives is very sensitive.)
+> - I recommend you to check open/close brackets for your intent, and scope of functions.
+> - Comment all the other intents that are not essential for the current user story, leave the intent you are testing.
 
-Most of these Errors comes when we are not sending the correct Data in the expected format (JSON), I recommend you to check open/close brackets for your intent. If its necessary try to comment all the other intents, leave the intent you are testing. Try it and look at the format that comes from **Fullfilment Response**, also you can use a JsonFormaterOnline [**HERE**](https://jsoneditoronline.org/) to check for inconsistencies.
+**If you didnt find the resolution of this issue please:**
 
-#### Errors from Dialogflow
+> - send us a copy of your exported bot, code and testing guide in order to troubleshoot [**HERE**](mailto:contasti.mizar@gmail.com)
+
+> - Try it and look at the format that comes from **Fullfilment Response** and use JsonFormaterOnline [**HERE**](https://jsoneditoronline.org/) to check for inconsistencies.
+
+### Errors from **Dialogflow**
 
 Most of the times could be Errors that happen when you dont save correctly the changes or you have deleted some feature.
 
-Try to LogOut and LogIn again. If you get errors that are related to your GoogleCloud, Payments or specific behavior. Check at the Community for Dialogflow [**HERE**](https://groups.google.com/g/dialogflow-essentials-edition-users)
+> - Try to LogOut and LogIn again.
+> - If you get errors that are related to your GoogleCloud, Payments or specific behavior check at the Community for Dialogflow [**HERE**](https://groups.google.com/g/dialogflow-essentials-edition-users)
