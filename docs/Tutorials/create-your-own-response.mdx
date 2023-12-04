@@ -35,8 +35,8 @@ Each Parameter has to be filled with an Array, take care of the array structure 
 <TabItem value="php" label="PHP">
 
 ```php
-$pTitleArray = ["Title1"];
-$pSubtitleArray = ["Subtitle1"];
+$pTitleArray = ["Title1"];                                #array
+$pSubtitleArray = ["Subtitle1"];                          #array
 
 webParagraph($pTitleArray, $pSubtitleArray);
 ```
@@ -69,12 +69,12 @@ So lets do an Example using our webParagraph Block.
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextBody = [];
-$webTitle = ["intentName"];
+$context = false;                                                     #string
+$contextBody = [];                                                    #array
+$webTitle = ["intentName"];                                           #array
 
-$structure = ['image','comma','accordeon','comma','button'];
-$components = [
+$structure = ['image','comma','accordeon','comma','button'];          #array
+$components = [                                                       #array-multi
     [$imageArray,$webTitle],
     [],
     [$imageArray,$titleArray,$aSubtitleArray,$aTextArray],
@@ -148,12 +148,12 @@ Last two are:
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextBody = [];
-$webTitle = [];
+$context = false;                                          #string
+$contextBody = [];                                         #array
+$webTitle = [];                                            #array
 
-$structure = [];
-$components = [];
+$structure = [];                                           #array
+$components = [];                                          #array
 
 webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
 ```
@@ -197,9 +197,9 @@ You can Copy Code Snipets just by hovering in the up right corner of the code Sn
 <TabItem value="php" label="PHP">
 
 ```php
-$webTitle = ["exampleIntentName"];
+$webTitle = ["exampleIntentName"];                                        #array
 
-$structure = ['image','comma','accordeon','comma','button'];
+$structure = ['image','comma','accordeon','comma','button'];              #array
 
 ```
 
@@ -221,7 +221,7 @@ structure = ["image", "comma", "accordeon", "comma", "button"];
 <TabItem value="php" label="PHP">
 
 ```php
-$components = []
+$components = []                               #array-multi
     [],
     [],
     [],
@@ -247,7 +247,7 @@ components = [[], [], [], [], []];
 <TabItem value="php" label="PHP">
 
 ```php
-$components = [
+$components = [                                                  #array-multi
     [$imageArray,$webTitle],
     [],
     [$imageArray,$titleArray,$aSubtitleArray,$aTextArray],

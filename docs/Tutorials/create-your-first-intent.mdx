@@ -84,14 +84,14 @@ Right now if the user trigger this intent, we want to prepare a response from ou
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextBody = [];
+$context = false;                                               #string
+$contextBody = [];                                              #array
 
-$wsTitle = ["test"];
-$wsTextArray = ["Paragraph Title1","Paragraph Title2"];
+$wsTitle = ["test"];                                            #array
+$wsTextArray = ["Paragraph Title1","Paragraph Title2"];         #array
 
-$structure = ['paragraph'];
-$components = [
+$structure = ['paragraph'];                                     #array
+$components = [                                                 #array-multi
     [$wsTextArray]
 ];
 

@@ -58,7 +58,7 @@ In the way that I use to build the mails in PHP I created a way to change some T
 <TabItem value="php" label="PHP">
 
 ```php
-$variables = [
+$variables = [                                      #array-multi
     'user_name' => "$name",
     'user_secretCode' => "$secretCode",
     'company_name' => "$companyName",
@@ -75,7 +75,7 @@ $variables = [
     'company_instagramSite' => "$instagramLink"
 ];
 
-$emailUrl = "emails/testmail.html";
+$emailUrl = "emails/testmail.html";                           #string
 
 $message = prepareEmail($variables, $emailUrl);
 ```

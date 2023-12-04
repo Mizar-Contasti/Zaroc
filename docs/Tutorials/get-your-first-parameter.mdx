@@ -96,14 +96,14 @@ Your code to get the parameter of asking_coffee should look as this.
 ```php
 if(intent('asking_coffee')){
 
-    $coffee = getIntentParameter()['coffee'];
-    $context = false;
-    $contextBody = [];
-    $wsTitle = ["asking_coffee"];
-    $wsTextArray = ["The coffee you choose is $coffee"];
+    $coffee = getIntentParameter()['coffee'];                             #array
+    $context = false;                                                     #string
+    $contextBody = [];                                                    #array
+    $wsTitle = ["asking_coffee"];                                         #array
+    $wsTextArray = ["The coffee you choose is $coffee"];                  #array
 
-    $structure = ['paragraph'];
-    $components = [
+    $structure = ['paragraph'];                                           #array
+    $components = [                                                       #array-multi
         [$wsTextArray]
     ];
 
@@ -194,14 +194,14 @@ Your code should look at this now
 ```php
 if(intent('asking_coffee')){
 
-    $coffee = getContextParameter("auto")['coffee'];
-    $context = false;
-    $contextBody = [];
-    $wsTitle = ["asking_coffee"];
-    $wsTextArray = ["The coffee you choose is $coffee"];
+    $coffee = getContextParameter("auto")['coffee'];                                 #array
+    $context = false;                                                                #strubg
+    $contextBody = [];                                                               #array
+    $wsTitle = ["asking_coffee"];                                                    #array
+    $wsTextArray = ["The coffee you choose is $coffee"];                             #array
 
-    $structure = ['paragraph'];
-    $components = [
+    $structure = ['paragraph'];                                                      #array
+    $components = [                                                                  #array-multi
         [$wsTextArray]
     ];
 

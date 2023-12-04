@@ -167,8 +167,8 @@ These functions help us to Trigger Special Behaviors on our Chatbot from the Bac
 <TabItem value="php" label="PHP">
 
 ```php
-$eventName = ["event1"];
-$params = [];
+$eventName = ["event1"];             #array
+$params = [];                        #array
 
 triggerEvent($eventName,$params);
 ```
@@ -197,11 +197,11 @@ result = triggerEvent(eventName, params);
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextBody = [];
-$intentName = ["intent1"];
-$errorMessage = ["Query wasnt executed 💥"];
-$params = [];
+$context = false;                                          #string
+$contextBody = [];                                         #array
+$intentName = ["intent1"];                                 #array
+$errorMessage = ["Query wasnt executed 💥"];              #array
+$params = [];                                              #array
 
 triggerError($context,$contextBody,$intentName,$errorMessage,$params);
 ```
@@ -234,9 +234,9 @@ result = triggerError(context, contextBody, intentName, errorMessage, params);
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextbody = [];
-$prompt = ["Whats your favourite food"];
+$context = false;                                           #string
+$contextbody = [];                                          #array
+$prompt = ["Whats your favourite food"];                    #array
 
 triggerPropmt($context,$contextBody,$prompt);
 ```
@@ -275,9 +275,9 @@ Context help us to save information, with these backend functions we can create 
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = [0];
-$variableName = ["fruit"];
-$variableValue = ["coco"];
+$contextIndex = [0];                                      #array
+$variableName = ["fruit"];                                #array
+$variableValue = ["coco"];                                #array
 
 $contextBody = setContextParameter($contextIndex,$variableName,$variableValue);
 ```
@@ -310,9 +310,9 @@ contextBody = setContextParameter(
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = [0];
-$variableName = ["fruit"];
-$variableValue = ["Banana"];
+$contextIndex = [0];                             #array
+$variableName = ["fruit"];                       #array
+$variableValue = ["Banana"];                     #array
 
 $contextBody = updateContextParameter($contextIndex,$variableName,$variableValue);
 ```
@@ -345,9 +345,9 @@ contextBody = updateContextParameter(
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = [0];
+$contextIndex = [0];                        #array
 
-$parameters = [
+$parameters = [                             #associative-array
     'color' => 'white',
     'animal' => 'bird',
     'coffee' => 'expresso'
@@ -383,9 +383,9 @@ contextBody = setContextParameters(body,parameters,contextIndex);
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = [0];
+$contextIndex = [0];                        #array
 
-$parameters = [
+$parameters = [                             #associative-array
     'color' => 'black',
     'fruit' => 'apple',
     'coffee' => 'capuccinno',
@@ -453,7 +453,7 @@ result = getInput(data);
 <TabItem value="php" label="PHP">
 
 ```php
-$fileName = ["request"];
+$fileName = ["request"];                             #array
 createInput($fileName);
 ```
 
@@ -479,7 +479,7 @@ createInput(data, fileName);
 <TabItem value="php" label="PHP">
 
 ```php
-$fileName = ["request"];
+$fileName = ["request"];                                    #array
 getSourceData($fileName);
 ```
 
