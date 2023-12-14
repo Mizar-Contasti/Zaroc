@@ -12,8 +12,8 @@ module.exports = function () {
             <df-messenger
               intent="WELCOME"
               chat-icon="https://codexceleste.com/chatbotsOld/core/images/zaroc1.png"
-              chat-title="Zaroc"
-              agent-id="7f37a296-936b-4e34-93ce-10b50bdb8b97"
+              chat-title="Kael"
+              agent-id="03eb8eef-4f03-4286-aa95-ce979ff4c3a3"
               language-code="es"
             ></df-messenger>
               `,
