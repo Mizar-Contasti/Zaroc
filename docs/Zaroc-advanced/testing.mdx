@@ -10,3 +10,84 @@ import TabItem from "@theme/TabItem";
 Testing, test a chatbot from start to end and measure, we have a 100% functional product.
 
 ## Why Testing?
+
+Testing is an important part of software(chatbot) development to ensure that the software(chatbot) is working as expected.
+Testing is important because software bugs could be expensive or even dangerous.
+Software bugs can potentially cause monetary and human loss, history is full of such examples.
+
+## Types of Testing
+
+There are different types of testing that you can use to make sure that changes to your code are working as expected.
+
+> - Unit tests are used to test isolated software components, such as individual functions, classes, or modules.
+> - Integration tests check if components interact with each other in accordance with a given scenario.
+> - Functional tests verify a slice of functionality in the system as a whole, by testing a complete “user flow” through the application.
+> - End-to-end tests test complete functionality of a web application including server communication, user interface, and browser compatibility.
+
+## Testing a Chatbot
+
+Testing a chatbot is a bit different from testing a web application or a mobile application.
+Chatbots are conversational interfaces, so the testing of chatbots is more conversational.
+
+### Unit Testing
+
+Unit testing is a type of testing where individual components of a software are tested. In the case of chatbots lets mention an API call or certain behavior on an specific intent.
+
+This is the common way of testing, due a bot is compound by multiple services, behaviors and integrations, is important to test each one of them.
+
+In order to do that we have 2 ways of doing unitary testing.
+
+#### Testing intent
+
+Used to check Bot Beharior.
+
+Every bot should have test intent, this can be used to measure we are tracking all data needed to measure the bot performance.
+
+Testing intent can be used to test the bot behavior, for example, if the bot is asking for the user name, we can test if the bot is asking for the name, and if the user is answering with the name.
+
+Things like:
+
+> - Checking if context information is being created from Backend.
+> - Taking data from the user.
+> - Slotfilling Measurement.
+
+Just make sure, you understand how intents deeply work in order to have a worthy test intent.
+
+#### Testing from Open File
+
+Used to check Code Beharior.
+
+This is a more advanced way of testing, but its only for code things and chatbot environment without taking anything from Intents in General.
+
+This open file is loaded at the root of the chatbot, and can be used to test things like:
+
+> - Session and Transcripts functionalities.
+> - API Calls and how to take data from them.
+> - DB Calls and how to take data from them.
+> - Code things like, if a variable is being created, or if a function is working as expected.
+> - Testing if a specific behavior is working as expected.
+
+### Integration Testing
+
+Integration testing is a type of testing where multiple components of a software are tested together.
+In the case of chatbots lets mention an API call or certain behavior on an specific intent.
+
+Its the compound behavior of an intent that contains Bot and Code functionality.
+
+This is the next level of testing after we have checked the bot behavior and the code behavior isolated, now we need to check if both are working at same time.
+
+### Functional Testing
+
+Use this test to Quality a Chatbot Demo.
+
+Functional testing is a type of testing where a slice of functionality in the system as a whole, by testing a complete “user flow” through the application.
+
+In the case of Selling chatbots, this is the most important type of testing, because we are testing the whole bot functionality that the user will see. So this testing is more oriented to sell Chatbots.
+
+### End-to-end Testing
+
+End-to-end testing is a type of testing where a complete functionality including server communication, user interface, and compatibility.
+
+In the case of Bigger and Complex chatbots, this is the most important type of testing.
+
+This testing requires extensive knowledge of the Chatbot, Zaroc Library, Integration, Programming Thinking, APIs, DBs, User Experience and Entire Funcional Flow.

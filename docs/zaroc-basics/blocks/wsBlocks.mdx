@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# wsBlocks (BETA)
+# wsBlocks
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -10,54 +10,69 @@ import TabItem from "@theme/TabItem";
 WhatsApp Blocks help us to display Information on WhatsApp
 
 Whatsapp Environment has big differences and its blocks depend of what partner you have.
+Whatspp blocks works differently as another blocks, due whatsapp complexity we had just 2 ways of sending whatsapp components with its own explanation.
 
-### wsParagraph
+### wsButton
 
-> - You can use emojis and linespaces to create a space between texts.
-
-<Tabs>
-<TabItem value="simple" label="One Paragraph">
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$wsTextArray = ["Paragraph 1"];
-
-wsParagraph($wsTextArray);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="complex" label="Two or More Paragraphs">
+> - Button block is every component that uses buttons, you can use image, text, files, videos on header.
+> - button can contain postback text as customButton, we can't have links due we need to create a whatsapp template (Costs Depend of the region).
+> - We can have up to 3 buttons, if we add more than 3 we will receive an error from whatsapp that wont populate on the chatbot.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$wsTextArray = ["Paragraph 1","Paragraph 2"];
+$wsHeaderType = ["image"];                            // image - text - file - video on header
+$wsHeaderContent = ["$welcomeImg"];                   // text -  image/file/video url with extension
+$wsBodyContent = ["body text"];                       // this refers the body message
+$wsFooterContent = ["footer text"];                   // this refers the footer content
+$wsButtonTitleArray = ["button1", "button2"];         // button text up to 3 buttons with up to 20 characters
+$wsButtonCustomArray = ["postback1", "postback2"];    // same as button text
 
-wsParagraph($wsTextArray);
+wsButton($wsHeaderType, $wsHeaderContent, $wsBodyContent, $wsFooterContent, $wsButtonTitleArray, $wsButtonCustomArray);
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
+{/* <TabItem value="nodejs" label="Node.js">
 
 ```nodejs
 ALPHA
 ```
 
-</TabItem>
+</TabItem> */}
 </Tabs>
 
+### wsList
+
+> - List block is every component that uses lists, you can only use text on header.
+> - Lists can provide a link, they work as button with postback text inside.
+> - Lists are the correlational way of using quick replies on another platforms
+> - You can use lot of rows with lot of items per row
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$wsHeaderType = ["image"];                            // text
+$wsHeaderContent = ["$welcomeImg"];                   // only text available as header for lists
+$wsBodyContent = ["body text"];                       // this refers the body message
+$wsFooterContent = ["footer text"];                   // this refers the footer content
+$wsButtonTitle = ["button that opens lists"];
+$sectionTitle = ["title of the button when list open"];
+
+$rowTitle = [["title 1 row 1","title 2 row 1"],["title 1 row 2","title 2 row 2"]];
+$rowId = [["id 1 row 1","id 2 row 1"],["id 1 row 2","id 2 row 2"]];
+$rowDescription = [["description 1 row 1","description 2 row 1"],["description 1 row 2","description 2 row 2"]]
+
+wsList($wsHeaderType,$wsHeaderContent,$wsBodyContent,$wsFooterContent,$wsButtonTitle,$sectionTitle,$rowId,$rowTitle,$rowDescription);
+```
+
 </TabItem>
+{/* <TabItem value="nodejs" label="Node.js">
+
+```nodejs
+ALPHA
+```
+
+</TabItem> */}
 </Tabs>
