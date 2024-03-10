@@ -26,7 +26,14 @@ I encourage you to check Zaroc Doc, give a look at the Tutorials and lets go.
 
 ### Requirements
 
+> - Website that runs html, css, js.
+
 ### Steps
+
+> - Create your bot (you dont need to create an amazing bot, you only need to have it created like the default bot)
+> - Go to integration section
+> - Select Dialogflow Messenger and enable the integration.
+> - Copy the html code and paste it on a url (On this url the bot will live)
 
 </TabItem>
 <TabItem value="facebook" label="Facebook">
@@ -41,7 +48,20 @@ After that, when being in control of this part of DF and FM, check some provider
 
 ### Requirements
 
+> - Facebook Account
+> - Page Account on Facebook
+> - Facebook Developers account
+
 ### Steps
+
+> - Create your bot (you dont need to create an amazing bot, you only need to have it created like the default bot)
+> - Access Facebook Developers and create an app (the name of this app can be the name o your bot)
+> - This app will be another app, go to messages permissions and select only **Messages input** and **Messages output**
+> - Go to Dialogflow Integration tab and click on Facebook, here you will need to type a prefered password
+> - On Facebook Developers, go to webhook tab, then link a page.
+> - Then in webhook tag start the webhook integration, copy the webhook url that facebook provides and paste the password you typed on dialogflow
+> - Paste the webhook url in dialogflow. Click on connect on facebook first, then on dialogflow.
+> - Talk to your page and your bot will respond.
 
 </TabItem>
 
@@ -51,7 +71,17 @@ After that, when being in control of this part of DF and FM, check some provider
 
 Telegram has by far more functionalities than Facebook, not more than web but have specific facilities that makes it an amazing platform where a Chatbot could live.
 
-Currently Zaroc is on BETA for Telegram.
+### Requirements
+
+> - Telegram Account
+
+### Steps
+
+> - Create your bot (you dont need to create an amazing bot, you only need to have it created like the default bot)
+> - Go to telegram and search for BotFather (real bot father has the blue checkmark)
+> - Inside of the chat of the bot, select the option /create new bot, then provide the some information about name, nameid
+> - BotFather will send you a token API, on Dialogflow Integration on Telegram, you will need to put this token.
+> - BotFather also provide the chanel to talk to your bot, also Botfather helps you to customize their image, description, etc.
 
 </TabItem>
 
@@ -59,11 +89,28 @@ Currently Zaroc is on BETA for Telegram.
 
 ## WhatsApp Integration (WhatsApp Cloud API)
 
-WhatsApp has a hard environment cause of high prices to use API, at the first time I recommend you to use simple Apps that can help us to connect WhatsApp with Dialogflow only for Text.
+:::tip Keep in Mind
 
-AutoResponder can help you to make this connection.
+WhatsApp has a hard environment (and deployment) cause of **high prices to use API**, at the first time I recommend you to use simple Apps that can help us to connect WhatsApp with Dialogflow only for Text.
+
+AutoResponder (APK) can help you to make this connection.
 
 Currently you can use a Paragraph Block that is avaiable for Zaroc right now, in addition you can get Parameters, values from the Request, use fallbacks and implement contexts. With these tools you can create an Amazing bot in the meantime.
+
+:::
+
+For direct Whatsapp API
+
+### Requirements
+
+> - Meta Account Verified
+> - Meta Business Account Verified
+> - Meta Facebook Developers Account
+> - SimCard (Once you use a number for a Chatbot youll lose the ability to use on your phone for common messaging)
+
+### Steps
+
+> - Current on BETA
 
 </TabItem>
 
@@ -74,6 +121,18 @@ Currently you can use a Paragraph Block that is avaiable for Zaroc right now, in
 Create your Chatbot in Dialogflow Messenger, after that you can create a APP with a WebView from Android Studio (for example). Then install on your Phone and there you got. You have a chatbot on your Phone as APP.
 
 Check how to do That [**HERE**](https://google.com)
+
+### Requirements
+
+> - Dialogflow Bot Deployed on Dialogflow Messenger
+> - Android Studio installed
+
+### Steps
+
+> - Create a Project, add only a webview on it.
+> - Add your Dialogflow Messenger bot url on the webview
+> - Make JavaScript available for use
+> - Deploy your app, download your apk and install on your phone.
 
 </TabItem>
 
