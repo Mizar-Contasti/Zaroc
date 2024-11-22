@@ -53,13 +53,6 @@ Class Connection{
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 To test the connection I recommend you to use the example commented code that we have bellow of this class.
@@ -74,13 +67,6 @@ if($conn){
 } else {
  echo("Conection Failed");
 }
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -114,13 +100,6 @@ require_once("connection.php");
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 > - Inside of the file create the class Products, do it as I shown bellow.
@@ -131,13 +110,6 @@ ALPHA
 ```php
 Class Products {
 }
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -160,13 +132,6 @@ static public function getProducts(){
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 As you see we are using a simple **SQL SELECT** to get all the products.
@@ -185,13 +150,6 @@ require_once("classes/Products.php");
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 > - Right now we have created a method of Products that retrieves all the products. Let's use on our chatbot!
@@ -202,13 +160,6 @@ ALPHA
 
 ```php
 $products = Products::getProducts();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -225,13 +176,6 @@ $product = $products[0];
 $product_name = $product['product_name'];
 $product_description = $product['product_description'];
 $product_price = $product['product_price'];
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -273,13 +217,6 @@ static public function createProduct($product_name,$product_description,$product
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 As you see we are creating another static public function/method to Insert a Product, we are doing in a PDO way that help us to avoid SQL inyection. We are preparing the SQL string, then we add variables to it with PDO::PARAM_STR that removes all the wrong special characters that can execute SQL by itself.
@@ -295,13 +232,6 @@ Then we return the result of the execution of the SQL, if the **INSERT** was suc
 
 ```php
 $createdProduct = Products::createProduct($product_name,$product_description,$product_price);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -335,13 +265,6 @@ Let's Update our records!!! (Check SELECT and INSERT first to have enough contex
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 With this Query we are updating a product's description where its name is equal to "example", we are using PDO way to avoid SQL inyection
@@ -355,13 +278,6 @@ With this Query we are updating a product's description where its name is equal 
 
 ```php
 $updatedProduct = Products::updateProduct($product_name,$product_description);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -394,13 +310,6 @@ Let's Delete records! (Check SELECT and INSERT first to have enough context)
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 With this Query we are deleting a product where its name is equal to "example", we are using PDO way to avoid SQL inyection
@@ -414,13 +323,6 @@ With this Query we are deleting a product where its name is equal to "example", 
 
 ```php
 $deletedProduct = Products::deleteProduct($product_name);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>

@@ -29,40 +29,6 @@ if(intent('intentName')){
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-- Js works in a different Way, so we need to use a different workaround to handle it.
-- In App.js we got the current intentName and then we use it on our basics handler function.
-
-```js
-const intentName = getIntentName(body);
-
-if (basics(body, intentName) && basics(body, intentName)?.trim !== "") {
-  res.send(basics(body, intentName));
-}
-```
-
-> - Basics file will receive these two params and will switch depending if the intent name is inside here, if that happens a case will be triggered
-> - If the intent is not inside here, it will return false and the code will be skipped next to the other handler function like (info, test)
-> - Inside of the case of every intent the dialog will be implemented.
-
-```js
-const basics = (body, intentName) => {
-  lang = getContextParameter(body, 0)["basics_language"];
-
-  switch (intentName) {
-    case "basics_fallback":
-      result = triggerEvent("basics_start");
-      return result;
-
-    default:
-      // return `basics module break, ${intentName} was expected 💥`;
-      break;
-  }
-};
-```
-
-</TabItem>
 </Tabs>
 
 #### Action
@@ -77,13 +43,6 @@ const basics = (body, intentName) => {
 if(action('actionName')){
     //Do some code
 }
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-ALPHA;
 ```
 
 </TabItem>
@@ -104,13 +63,6 @@ These functions are used to handle Parameters
 
 ```php
 $parameterValue = getIntentParameter()['parameterName'];
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-parameterValue = getIntentParameter(body)["parameterName"];
 ```
 
 </TabItem>
@@ -139,16 +91,6 @@ $parameterValue = getContextParameter("auto")['parameterName'];
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-// Pass context index as a number if you want that specific context and you know how contexts works Ex: 0
-parameterValue = getContextParameter(body, 0)["parameterName"];
-// Pass context index as "auto" to retrieve your context
-parameterValue = getContextParameter(body, "auto")["parameterName"];
-```
-
-</TabItem>
 </Tabs>
 
 .
@@ -174,18 +116,6 @@ triggerEvent($eventName,$params);
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-> - Result statement have to be returned in the current switch case
-
-```js
-eventName = ["event1"];
-params = [];
-
-result = triggerEvent(eventName, params);
-```
-
-</TabItem>
 </Tabs>
 
 #### triggerError
@@ -204,21 +134,6 @@ $errorMessage = ["Query wasnt executed 💥"];              #array
 $params = [];                                              #array
 
 triggerError($context,$contextBody,$intentName,$errorMessage,$params);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-- Result statement have to be returned in the current switch case
-
-```js
-context = false;
-contextBody = [];
-intentName = ["intent1"];
-errorMessage = ["Query wasnt executed 💥"];
-params = [];
-
-result = triggerError(context, contextBody, intentName, errorMessage, params);
 ```
 
 </TabItem>
@@ -242,19 +157,6 @@ triggerPropmt($context,$contextBody,$prompt);
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-- Remember to Return the result in the current switch case
-
-```js
-context = false;
-contextbody = false;
-prompt = ["Whats your favourite food"];
-
-result = triggerPropmt(context, contextBody, prompt);
-```
-
-</TabItem>
 </Tabs>
 
 .
@@ -265,76 +167,6 @@ Context help us to save information, with these backend functions we can create 
 
 > - Be noticed that we cant delete variables neither contexts. Just create and update.
 > - To have a whole picture of how Context works, check Context on Zaroc's Advanced.
-
-#### setContextParameter
-
-> - This Function allow us to add a Parameter to the Selected Context.
-> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and create new parameters on it
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$contextIndex = [0];                                      #array
-$variableName = ["fruit"];                                #array
-$variableValue = ["coco"];                                #array
-
-$contextBody = setContextParameter($contextIndex,$variableName,$variableValue);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-contextIndex = [0];
-variableName = ["fruit"];
-variableValue = ["coco"];
-
-contextBody = setContextParameter(
-  body,
-  variableName,
-  variableValue
-  contextIndex,
-);
-```
-
-</TabItem>
-</Tabs>
-
-#### updateContextParameter
-
-> - This functions allow us to update the value of a parameter inside of the selected context.
-> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and update it
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$contextIndex = [0];                             #array
-$variableName = ["fruit"];                       #array
-$variableValue = ["Banana"];                     #array
-
-$contextBody = updateContextParameter($contextIndex,$variableName,$variableValue);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-contextIndex = [0];
-variableName = ["fruit"];
-variableValue = ["Banana"];
-
-contextBody = updateContextParameter(
-  body,
-  variableName,
-  variableValue,
-  contextIndex
-);
-```
-
-</TabItem>
-</Tabs>
 
 #### setContextParameters
 
@@ -357,63 +189,7 @@ $contextBody = setContextParameters($contextIndex, $parameters);
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-contextIndex = [0];
-
-parameters = [
-    'color' => 'white',
-    'animal' => 'bird',
-    'coffee' => 'expresso'
-];
-
-contextBody = setContextParameters(body,parameters,contextIndex);
-```
-
-</TabItem>
 </Tabs>
-
-#### updateContextParameters
-
-> - Updates multiples values on the selected context.
-> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and create new parameters inside of it
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$contextIndex = [0];                        #array
-
-$parameters = [                             #associative-array
-    'color' => 'black',
-    'fruit' => 'apple',
-    'coffee' => 'capuccinno',
-    'animal' => 'gorilla'
-];
-
-$contextBody = updateContextParameters($contextIndex, $parameters);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-contextIndex = [0];
-
-parameters = [
-    'color' => 'black',
-    'fruit' => 'apple',
-    'coffee' => 'capuccinno',
-    'animal' => 'gorilla'
-];
-
-contextBody = updateContextParameters(body,parameters,contextIndex);
-```
-
-</TabItem>
-</Tabs>
-
 .
 
 ### Troubleshoot
@@ -433,15 +209,6 @@ $input = getInput();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-- Result statement have to be returned in the current switch case
-
-```js
-result = getInput(data);
-```
-
-</TabItem>
 </Tabs>
 
 #### createInput
@@ -455,16 +222,6 @@ result = getInput(data);
 ```php
 $fileName = ["request"];                             #array
 createInput($fileName);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-- This function doesnt need to be returned or catched, just do this in case you would like to see if worked
-
-```js
-fileName = ["request"];
-createInput(data, fileName);
 ```
 
 </TabItem>
@@ -484,16 +241,6 @@ getSourceData($fileName);
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-- This function doesnt need to be returned or catched, just do this in case you would like to see if worked
-
-```js
-fileName = ["request"];
-getSourceData(data, fileName);
-```
-
-</TabItem>
 </Tabs>
 
 #### getTimeOut
@@ -506,13 +253,6 @@ getSourceData(data, fileName);
 
 ```php
 $time = getTimeOut();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-ALPHA;
 ```
 
 </TabItem>
@@ -536,13 +276,6 @@ $userInput = getUserInput();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-ALPHA;
-```
-
-</TabItem>
 </Tabs>
 
 #### getSessionID
@@ -558,13 +291,6 @@ $sessionId = getSessionId();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-sessionId = getSessionId(body);
-```
-
-</TabItem>
 </Tabs>
 
 #### getProjectName
@@ -576,13 +302,6 @@ sessionId = getSessionId(body);
 
 ```php
 $projectName = getProjectName();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-ALPHA;
 ```
 
 </TabItem>
@@ -601,13 +320,6 @@ $phoneNumber = getWhatsAppPhoneNumber();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-ALPHA;
-```
-
-</TabItem>
 </Tabs>
 
 #### getTelegramChatId
@@ -621,14 +333,7 @@ ALPHA;
 ```php
 $chatID = getTelegramChatId();
 ```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-ALPHA;
-```
-
+  
 </TabItem>
 </Tabs>
 
@@ -642,13 +347,6 @@ ALPHA;
 
 ```php
 $callbackQueryId = getTelegramCallbackQueryId();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-callbackQueryId = getTelegramCallbackQueryId(body);
 ```
 
 </TabItem>

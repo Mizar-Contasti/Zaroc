@@ -39,13 +39,6 @@ $headers .= 'X-Mailer: PHP/' . phpversion();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 Most of the headers are optional, just take care of the first 4 declared and use the optional as much as you need/want.
@@ -81,13 +74,6 @@ $message = prepareEmail($variables, $emailUrl);
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 These Variables help the structure of the email, if you want to use feel free. Then I get the email Url, this URL and the Emails that the Chatbot send (In general), should be inside of a folder called **emails** on your chatbot corefolder. After that we use a Function that help us replacing these keywords for Variagles instead, finally we got a long string called **message** which is the entire structure HTML of the mail, ready to be sent.
@@ -107,13 +93,6 @@ PHP has this Mail function predefined
 
 ```php
 mail($to,$subject,$message,$headers);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>

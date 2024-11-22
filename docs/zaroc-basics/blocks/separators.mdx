@@ -7,145 +7,8 @@ sidebar_position: 2
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-<!-- Separators are used for all Templates, these blocks represent specific little structures like (commas, bracket commas, parenthesis commas), open/close structures and more. -->
-
-<!--
-## Open/Close Blocks
-
-These blocks are used to open and close structures.
-
-#### dfOpen/Close
-
-**Are the first and last part of our entire template**
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-dfOpen();
-
-dfClose();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-dfOpen();
-
-dfClose();
-```
-
-</TabItem>
-</Tabs>
-
-#### structureOpen/Close
-
-**Are the blocks that take care of the structure view or data that should be parsed as a Visual Component**
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$title = array("Title");
-structureOpen($title);
-
-structureClose();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-title = ["Title"];
-structureOpen(title);
-
-structureClose();
-```
-
-</TabItem>
-</Tabs>
-
-#### contextOpen/Close
-
-**Are the blocks that take care of the context or data available behind scenes**
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-contextOpen();
-
-contextClose();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-contextOpen();
-
-contextClose();
-```
-
-</TabItem>
-</Tabs>
-
-#### open/closePayload
-
-**Are used when you want to create a response that comes inside of a payload**
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-openPayload();
-
-closePayload();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-openPayload();
-
-closePayload();
-```
-
-</TabItem>
-</Tabs>
-
-##### open/closeWeb
-
-**Are used for DialogflowMessenger**
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-openWeb();
-
-closeWeb();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-openWeb();
-
-closeWeb();
-```
-
-</TabItem>
-</Tabs>
-
-## Separators -->
 
 Separators are used to separate blocks. There are multiple ways to separate, depending of the integrations one or more are allowed.
-
-<!-- </Tabs> -->
 
 <Tabs>
 <TabItem value="wb" label="Web">
@@ -156,13 +19,6 @@ Separators are used to separate blocks. There are multiple ways to separate, dep
 <TabItem value="php" label="PHP">
 
 ```php
-comma();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
 comma();
 ```
 
@@ -179,13 +35,6 @@ basicDivider();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-basicDivider();
-```
-
-</TabItem>
 </Tabs>
 
 #### Comma Divider
@@ -198,13 +47,6 @@ basicDivider();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-basicDivider();
-```
-
-</TabItem>
 </Tabs>
 
 #### Super Divider
@@ -213,13 +55,6 @@ basicDivider();
 <TabItem value="php" label="PHP">
 
 ```php
-superDivider();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
 superDivider();
 ```
 
@@ -239,13 +74,6 @@ comma();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-comma();
-```
-
-</TabItem>
 </Tabs>
 
 </TabItem>
@@ -261,13 +89,6 @@ comma();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-comma();
-```
-
-</TabItem>
 </Tabs>
 
 </TabItem>
@@ -279,13 +100,6 @@ comma();
 <TabItem value="php" label="PHP">
 
 ```php
-comma();
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
 comma();
 ```
 

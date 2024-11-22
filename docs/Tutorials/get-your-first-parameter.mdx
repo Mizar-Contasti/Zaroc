@@ -35,13 +35,6 @@ $value = getIntentParameter()['variableName'];
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 As you see we are storing a variable from the intent with the nameFrom the variable. If you develop enough you will find not to much uses for this type of parameter. For most only use cases we use...
@@ -57,13 +50,6 @@ This parameter lives in the contexts of the intent that is storing it. These par
 
 ```php
 $value = getContextParameter("auto")['variableName'];
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -113,13 +99,6 @@ if(intent('asking_coffee')){
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 Then use this variable on your response function.
@@ -129,13 +108,6 @@ Then use this variable on your response function.
 
 ```php
 $coffee = getIntentParameter()['coffee'];
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -171,13 +143,6 @@ $coffee = getContextParameter("auto")['coffee'];
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 :::tip Keep In MIND
@@ -210,13 +175,6 @@ if(intent('asking_coffee')){
 
 
 }
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>

@@ -68,13 +68,6 @@ $sessionId = id2();
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 > - Then we have to use a method located in our Session class, use createSession and give the sessionId we have already created as a parameter.
@@ -84,13 +77,6 @@ ALPHA
 
 ```php
 $session = Sessions::createSession($sessionId);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -115,13 +101,6 @@ $parameters = [
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 > - Set in what context Index we are going to set these parameters and use the setContextParameters function to create a brand new contextBody.
@@ -132,13 +111,6 @@ ALPHA
 ```php
 $contextIndex = [0];
 $contextBody = setContextParameters($contextIndex, $parameters);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>
@@ -153,13 +125,6 @@ ALPHA
 $context = true;
 
 webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
 ```
 
 </TabItem>

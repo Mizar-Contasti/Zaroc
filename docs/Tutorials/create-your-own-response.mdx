@@ -42,13 +42,6 @@ webParagraph($pTitleArray, $pSubtitleArray);
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```nodejs
-ALPHA
-```
-
-</TabItem>
 </Tabs>
 
 As you see, we are creating 2 arrays and using it on the webParagraph Block.
@@ -83,32 +76,6 @@ $components = [                                                       #array-mul
 ];
 
 webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-context = false;
-contextBody = [];
-webTitle = ["intentName"];
-
-structure = ["image", "comma", "accordeon", "comma", "button"];
-components = [
-  [imageArray, webTitle],
-  [],
-  [imageArray, titleArray, aSubtitleArray, aTextArray],
-  [],
-  [bTitleArray, bCustomArray, bIconArray, bColorArray],
-];
-
-result = webStructureTemplate(
-  context,
-  contextBody,
-  webTitle,
-  structure,
-  components
-);
 ```
 
 </TabItem>
@@ -159,26 +126,6 @@ webStructureTemplate($context, $contextBody, $webTitle, $structure, $components)
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-context = false;
-contextBody = [];
-webTitle = [];
-
-structure = [];
-components = [];
-
-result = webStructureTemplate(
-  context,
-  contextBody,
-  webTitle,
-  structure,
-  components
-);
-```
-
-</TabItem>
 </Tabs>
 
 .
@@ -204,15 +151,6 @@ $structure = ['image','comma','accordeon','comma','button'];              #array
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-webTitle = ["intentName"];
-
-structure = ["image", "comma", "accordeon", "comma", "button"];
-```
-
-</TabItem>
 </Tabs>
 
 > - Now fill Components array with the arrays needed, in this case we are going to have just 5 elements so will be an array containing 5 arrays.
@@ -231,13 +169,6 @@ $components = []                               #array-multi
 ```
 
 </TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-components = [[], [], [], [], []];
-```
-
-</TabItem>
 </Tabs>
 
 > - Now fill each component array with their respective needed data, remember that separators as comma, superDivider etc have its component array empty.
@@ -253,19 +184,6 @@ $components = [                                                  #array-multi
     [$imageArray,$titleArray,$aSubtitleArray,$aTextArray],
     [],
     [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
-];
-```
-
-</TabItem>
-<TabItem value="nodejs" label="Node.js">
-
-```js
-components = [
-  [imageArray, webTitle],
-  [],
-  [imageArray, titleArray, aSubtitleArray, aTextArray],
-  [],
-  [bTitleArray, bCustomArray, bIconArray, bColorArray],
 ];
 ```
 
