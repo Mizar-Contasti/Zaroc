@@ -15,7 +15,7 @@ fbTemplates are used to build nice structures in a Facebook Messenger Environmen
 
 > - You can use whatever block you want but take in mind that you have to separate it with a separator (comma).
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array.
-> - If you dont know already what to do with context please make it false and just declare contextBody as null. (You can find Context in doc).
+> - If you dont know already what to do with session please make it false and just declare session as empty array. (You can find Context in doc).
 > - External or Generic Blocks should be used inside of open/close Payloads.
 > - Available fbBlocks are **image paragraph reply card** for native, and **generic media receipt** for external. These can be located in blocks -> fbBlocks.
 
@@ -31,9 +31,7 @@ Native and External Blocks cant be used in the same structure, if so, Native Blo
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextBody = [];
-$fbTitle = ["test"];
+$session = [];
 
 $fbTitleArray = ["card1 intentName","card2 intentName"];
 $fbImageArray = ["https://imageCardurl1.com","https://imageCardurl2.com"];
@@ -49,14 +47,19 @@ $bCustomArray = [
   ["Card2 Button 1 postback","https://Card2button2url.com"]
 ];
 
-$structure = ['openPayload','generic','closePayload'];
-$components = [
-    [],
-    [$fbTitleArray,  $fbImageArray,  $fbSubtitleArray,  $fbLinkArray,  $fbStyleArray   , $bTitleArray, $bCustomArray],
-    []
-];
+$structure = [
+              'openPayload',
+              'generic',
+              'closePayload'
+            ];
 
-fbStructureTemplate($context,$contextBody,$fbTitle,$structure,$components);
+$components = [
+                [],
+                [$fbTitleArray,  $fbImageArray,  $fbSubtitleArray,  $fbLinkArray,  $fbStyleArray   , $bTitleArray, $bCustomArray],
+                []
+              ];
+
+fbStructureTemplate($session,$structure,$components);
 ```
 
 </TabItem>

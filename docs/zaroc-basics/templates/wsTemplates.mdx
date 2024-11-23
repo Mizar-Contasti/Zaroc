@@ -15,17 +15,14 @@ wsTemplates are used to build nice structures in a WhatsApp Environment. These t
 
 > - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
-> - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+> - If you dont know already what to do with session please make it false and just declare session as empty array. (You can find Context in doc).
 > - wsBlocks are just 2 ( **button** / **list** ), check ws blocks to understand how they work.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextBody = [];
-
-$wsTitle = ["basics_welcome"];
+$session = [];
 
 $wsHeaderType = ["image"];
 $wsHeaderContent = ["https://picsum.photos/500"];
@@ -35,15 +32,14 @@ $wsButtonTitleArray = ["button1", "button2"];
 $wsButtonCustomArray = ["button1", "button2"];
 
 $structure = [
-    'button',
-];
+                'button',
+            ];
 
 $components = [
-    [$wsHeaderType, $wsHeaderContent, $wsBodyContent, $wsFooterContent, $wsButtonTitleArray, $wsButtonCustomArray],
-];
+                [$wsHeaderType, $wsHeaderContent, $wsBodyContent, $wsFooterContent, $wsButtonTitleArray, $wsButtonCustomArray],
+            ];
 
-wsStructureTemplate($context, $contextBody, $wsTitle, $structure, $components);
-
+wsStructureTemplate($session, $structure, $components);
 
 ```
 

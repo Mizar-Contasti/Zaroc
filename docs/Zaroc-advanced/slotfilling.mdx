@@ -55,7 +55,7 @@ Right now lets do the backend side
 <TabItem value="php" label="PHP">
 
 ```php
-$fruitType = getContextParameter(0)['fruit'];
+$fruitType = getContextParameter()['fruit'];
 ```
 
 </TabItem>
@@ -85,11 +85,10 @@ if($fruitType){
 <TabItem value="php" label="PHP">
 
 ```php
+$session = [];
 $prompt = ["Tell me your favourite fruit"];
-$context = false;
-$contextbody = [];
 
-triggerPropmt($context,$contextBody,$prompt);
+triggerPropmt($session, $prompt);
 ```
 
 </TabItem>
@@ -101,6 +100,6 @@ If you got your fruit you are good to go.
 
 :::tip Keep in Mind
 
-Structure Templates can be used for slotfilling prompts, so dont hesitate to use it if you want to offer some chips to the user :)
+Structure Templates can be used for slotfilling prompts, so dont hesitate to use it if you want to offer some reply to the user :)
 
 :::

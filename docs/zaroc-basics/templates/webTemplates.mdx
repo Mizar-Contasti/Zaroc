@@ -15,7 +15,7 @@ WebTemplates are used to build nice structures in a Web Environment. These templ
 
 > - You can use whatever block you want but take in mind that you have to separate it with a separator (Choose what best fits to you).
 > - In order to make structure work, you can paste all the name's structures inside of structure, and the components required in the component array
-> - If you dont know already what to do with context please make it false and just declare contextBody as nothing. (You can find Context in doc)
+> - If you dont know already what to do with session please make it false and just declare session as empty array. (You can find Context in doc).
 > - Available webBlocks are **card button reply description image list paragraph** These can be located in blocks -> webBlocks
 > - Available separators are **comma basicDivider commaDivider superDivider**
 
@@ -25,9 +25,7 @@ WebTemplates are used to build nice structures in a Web Environment. These templ
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;
-$contextBody = [];
-$webTitle = ["intentName"];
+$session = [];
 
 $imageArray = ["imageurl"];
 $aTitleArray = ["Card Title"];
@@ -40,16 +38,23 @@ $bIconArray = ["Button Icon","Button Icon 2"];
 $bColorArray = ["#00efff","#000fff"];
 
 
-$structure = ['image','comma','card','superDivider','button'];
-$components = [
-    [$imageArray,$webTitle],
-    [],
-    [$aTitleArray,$aSubtitleArray,$aTextArray],
-    [],
-    [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
-];
+$structure = [
+                'image',
+                'comma',
+                'card',
+                'superDivider',
+                'button'
+            ];
 
-webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
+$components = [
+                [$imageArray,$webTitle],
+                [],
+                [$aTitleArray,$aSubtitleArray,$aTextArray],
+                [],
+                [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
+            ];
+
+webStructureTemplate($session, $structure, $components);
 ```
 
 </TabItem>

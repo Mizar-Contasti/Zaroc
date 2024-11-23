@@ -77,26 +77,27 @@ Right now if the user trigger this intent, we want to prepare a response from ou
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;                                               #string
-$contextBody = [];                                              #array
+$session = [];                                              #array
 
-$wsTitle = ["test"];                                            #array
-$wsTextArray = ["Paragraph Title1","Paragraph Title2"];         #array
+$wsTextArray = [                                          #array
+                "Paragraph Title1",
+                "Paragraph Title2"
+                ];         
 
-$structure = ['paragraph'];                                     #array
+$structure = [
+            'paragraph'
+            ];                                     #array
 $components = [                                                 #array-multi
     [$wsTextArray]
 ];
 
-wsStructureTemplate($context,$contextBody,$wsTitle,$structure,$components);
+wsStructureTemplate($session,$structure,$components);
 ```
 
 </TabItem>
 </Tabs>
 
-This code is creating some Variables and Arrays.'$context' is a variable that isnt important right now, the same with '$contextBody' just copy and paste as you see above.
-
-'$wsTitle' must be an Array (required), here we are going to set an specific title of the Intent Response, so I recommend here use the same name as the intent name.
+This code is creating some Variables and Arrays.'$session' is a variable that isnt important right now
 
 '$wsTextArray' must be an Array (Required) here we are going to set a message, you can use text and emojis by the moment. Put whatever you like.
 

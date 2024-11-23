@@ -49,13 +49,13 @@ This parameter lives in the contexts of the intent that is storing it. These par
 <TabItem value="php" label="PHP">
 
 ```php
-$value = getContextParameter("auto")['variableName'];
+$value = getContextParameter()['variableName'];
 ```
 
 </TabItem>
 </Tabs>
 
-We storing a variable in $value, this variable is retrieved from a Zaroc function 'getContextParameter' after that you will see an "auto" word (anyway you can use a number), this is referencing to the index of the contexts (cause they start from 0 as an array does), and finally insert in the single quotes the keyname(name) of the parameter
+We save a variable in $value, this variable is retrieved from a Zaroc function 'getContextParameter', then insert in the single quotes and the keyname of the parameter
 
 So with this explanation let's do a quick tutorial over these two functions.
 
@@ -83,9 +83,7 @@ Your code to get the parameter of asking_coffee should look as this.
 if(intent('asking_coffee')){
 
     $coffee = getIntentParameter()['coffee'];                             #array
-    $context = false;                                                     #string
-    $contextBody = [];                                                    #array
-    $wsTitle = ["asking_coffee"];                                         #array
+    $session = [];                                                        #array
     $wsTextArray = ["The coffee you choose is $coffee"];                  #array
 
     $structure = ['paragraph'];                                           #array
@@ -93,7 +91,7 @@ if(intent('asking_coffee')){
         [$wsTextArray]
     ];
 
-    wsStructureTemplate($context,$contextBody,$wsTitle,$structure,$components);
+    wsStructureTemplate($session,$structure,$components);
 
 }
 ```
@@ -139,17 +137,11 @@ Do the same that we did in our Backend, then use the function of
 <TabItem value="php" label="PHP">
 
 ```php
-$coffee = getContextParameter("auto")['coffee'];
+$coffee = getContextParameter()['coffee'];
 ```
 
 </TabItem>
 </Tabs>
-
-:::tip Keep In MIND
-
-Remember that the number inside the parenthesys should be the index of the context, starting from Zero, if your intent just have one context, use zero.
-
-:::
 
 Your code should look at this now
 
@@ -159,10 +151,9 @@ Your code should look at this now
 ```php
 if(intent('asking_coffee')){
 
-    $coffee = getContextParameter("auto")['coffee'];                                 #array
-    $context = false;                                                                #strubg
-    $contextBody = [];                                                               #array
-    $wsTitle = ["asking_coffee"];                                                    #array
+    $coffee = getContextParameter()['coffee'];                                       #array
+    $session = [];                                                                   #array
+
     $wsTextArray = ["The coffee you choose is $coffee"];                             #array
 
     $structure = ['paragraph'];                                                      #array
@@ -170,9 +161,7 @@ if(intent('asking_coffee')){
         [$wsTextArray]
     ];
 
-    wsStructureTemplate($context,$contextBody,$wsTitle,$structure,$components);
-
-
+    wsStructureTemplate($session,$structure,$components);
 
 }
 ```

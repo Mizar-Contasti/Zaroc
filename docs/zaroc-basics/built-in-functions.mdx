@@ -76,18 +76,13 @@ When going deep into context, check Contexts section in Zaroc Advanced
 
 :::
 
-> - Returns the value of the specified Parameter and Context
-> - Receives a Number as the index of the specified Context when the variable is living
-> - You can pass "auto" as parameter to retrieve the main context if you are not able to retrieve correctly your context: Example ( getContextParameter(auto)['parameterName']; )
+> - Returns the value of the specified Parameter in the main context
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-// Pass context index as a number if you want that specific context and you know how contexts works Ex: 0
-$parameterValue = getContextParameter(0)['parameterName'];
-// Pass context index as "auto" to retrieve your context
-$parameterValue = getContextParameter("auto")['parameterName'];
+$parameterValue = getContextParameter()['parameterName'];
 ```
 
 </TabItem>
@@ -121,19 +116,16 @@ triggerEvent($eventName,$params);
 #### triggerError
 
 > - Displays an Error, works for all the integrations.
-> - Receives as Array, the name of the intent and the message of the error to trigger.
+> - Receives as Array, session (optional) if needed to change context values/variables, and the error message. (Check Context section if any doubt)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;                                          #string
-$contextBody = [];                                         #array
-$intentName = ["intent1"];                                 #array
-$errorMessage = ["Query wasnt executed 💥"];              #array
-$params = [];                                              #array
+$session = [];                                         #array
+$errorMessage = ["Query wasnt executed 💥"];           #array
 
-triggerError($context,$contextBody,$intentName,$errorMessage,$params);
+triggerError($session, $errorMessage);
 ```
 
 </TabItem>
@@ -143,17 +135,16 @@ triggerError($context,$contextBody,$intentName,$errorMessage,$params);
 
 > - Triggers a Prompt when needed, has the same format as the default required parameters that dialogflow has.
 > - Its used in Addition with SlotFilling (Check Documentation for SlotFilling).
-> - context and contextBody are optional. (Remember to check Doc for Context if you wanna use it).
+> - Receives as Array, session (optional) if needed to change context values/variables, and the prompt message. (Check Context section if any doubt)
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;                                           #string
-$contextBody = [];                                          #array
-$prompt = ["Whats your favourite food"];                    #array
+$session = [];                                          #array
+$prompt = ["Whats your favourite food"];                #array
 
-triggerPropmt($context,$contextBody,$prompt);
+triggerPropmt($session, $prompt);
 ```
 
 </TabItem>
@@ -170,22 +161,21 @@ Context help us to save information, with these backend functions we can create 
 
 #### setContextParameters
 
-> - Creates multiple values on the selected Context.
-> - You can pass "auto" as a replace of the contextIndex number you want to retrieve the main context and create new parameters inside of it
+> - Creates a new context based in the old one, that you can use them into session to apply the changes.
+> - If the parameter exists, only changes value, if not then the parameter is created with the value.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = [0];                        #array
 
-$parameters = [                             #associative-array
+$parameters = [                             #associative-array (could be an arrays of arrays of arrays)
     'color' => 'white',
     'animal' => 'bird',
     'coffee' => 'expresso'
 ];
 
-$contextBody = setContextParameters($contextIndex, $parameters);
+$contextBody = setContextParameters($parameters);
 ```
 
 </TabItem>
@@ -211,6 +201,22 @@ $input = getInput();
 </TabItem>
 </Tabs>
 
+
+#### getIntent
+
+> - Returns the current intent that has been triggered.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$intent = getIntent();
+```
+
+</TabItem>
+</Tabs>
+
+
 #### createInput
 
 > - This function allow us to create a file.txt on ourServer with all the Request.
@@ -222,6 +228,22 @@ $input = getInput();
 ```php
 $fileName = ["request"];                             #array
 createInput($fileName);
+```
+
+</TabItem>
+</Tabs>
+
+
+#### getTimeOut
+
+> - Returns the time in ms that took all code execution to be done.
+> - As webhook has a limit of 5 miliseconds, you only can timeout till that maximum time minus the time that takes your code to be proccesed.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$time = getTimeOut();
 ```
 
 </TabItem>
@@ -243,26 +265,19 @@ getSourceData($fileName);
 </TabItem>
 </Tabs>
 
-#### getTimeOut
+#### getPlatform
 
-> - Returns the time in ms that took all code execution to be done.
-> - getTimeOut can't take ms that cost the request in being proccesed by Dialogflow (**4000 ms**).
+> - This function retrieves the current platform that was used for the current request.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$time = getTimeOut();
+$platform = getPlatform();
 ```
 
 </TabItem>
 </Tabs>
-
-.
-
-### Miscelaneous
-
-These functions are not commonly used, but sometimes are helpfull.
 
 #### getUserInput
 
@@ -277,6 +292,23 @@ $userInput = getUserInput();
 
 </TabItem>
 </Tabs>
+
+
+#### getBotInput
+
+> - Returns the Input from the bot, or the response that the bot gived to the user
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$botInput = getBotInput();
+```
+
+</TabItem>
+</Tabs>
+
+
 
 #### getSessionID
 
@@ -307,6 +339,12 @@ $projectName = getProjectName();
 </TabItem>
 </Tabs>
 
+.
+
+### Miscelaneous
+
+These functions are not commonly used, but sometimes are helpfull.
+
 #### getWhatsAppPhoneNumber
 
 > - Retrieves a WhatsApp PhoneNumber if you are in Session VIA whatsApp
@@ -321,6 +359,22 @@ $phoneNumber = getWhatsAppPhoneNumber();
 
 </TabItem>
 </Tabs>
+
+
+#### getContactId
+
+> - Retrieves facebook contact id used for the user that is chatting with the bot
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$contactId = getContactId();
+```
+
+</TabItem>
+</Tabs>
+
 
 #### getTelegramChatId
 

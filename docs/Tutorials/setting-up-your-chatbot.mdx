@@ -17,7 +17,7 @@ Or **Look at these 2 Tutorials in Spanish** with Mizar **[Tutorial 1](https://ww
 First Lets Create our Chatbot on Dialogflow [**HERE**](https://dialogflow.cloud.google.com/)
 
 > - When entering you should Create an Account on Google (If you don't have), after that you'll be moved to the Dialogflow Platform
-> - If you are new in Dialogflow I recommend this Youtube Channel that have good to know Tutorials from zero to Hero [**HERE**](https://zaroc.netlify.app)
+> - If you are new in Dialogflow I recommend this Youtube Channel that have good to know Tutorials from zero to Hero [**HERE**](https://www.youtube.com/@m1zar)
 > - Then you Should create an Agent (Chatbot)
 > - Type a Simple Hello on the Console (Right panel) and Wait for the response
 
@@ -104,7 +104,7 @@ Right now Zaroc is connected to our Chatbot that is connected to Dialogflow, we 
 ```php
 <?php
 if(intent('test')){
-  triggerError(false,[], ['test'],['Message from the backend'],[]);
+  triggerError([],['Message from the backend']);
 }
 ?>
 ```

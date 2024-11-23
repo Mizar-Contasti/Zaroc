@@ -62,9 +62,7 @@ So lets do an Example using our webParagraph Block.
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;                                                     #string
-$contextBody = [];                                                    #array
-$webTitle = ["intentName"];                                           #array
+$session = [];                                                    #array
 
 $structure = ['image','comma','accordeon','comma','button'];          #array
 $components = [                                                       #array-multi
@@ -75,21 +73,15 @@ $components = [                                                       #array-mul
     [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
 ];
 
-webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
+webStructureTemplate($session, $structure, $components);
 ```
 
 </TabItem>
 </Tabs>
 
-As you see we have 5 arrays, the first three are not too much important but the last two.
+As you see we have  arrays, the first three are not too much important but the last two.
 
-**context** can be true or false depending if you are looking to change something inside context with code.
-
-**contextBody** will be the change that we are going to implement if context is true, if not, leave as a blank array.
-
-**webTitle** references the name of the intent.
-
-Last two are:
+**session** can be true or false depending if you are looking to change something inside context with code, leave empty by now.
 
 **Structure** which is an Array that contains the order of the element that the structure will have, the structure follow the order of **Element + Separator + Element**.
 
@@ -115,14 +107,12 @@ Last two are:
 <TabItem value="php" label="PHP">
 
 ```php
-$context = false;                                          #string
-$contextBody = [];                                         #array
-$webTitle = [];                                            #array
+$session = [];                                         #array
 
 $structure = [];                                           #array
 $components = [];                                          #array
 
-webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
+webStructureTemplate($session, $structure, $components);
 ```
 
 </TabItem>
@@ -138,16 +128,13 @@ You can Copy Code Snipets just by hovering in the up right corner of the code Sn
 
 .
 
-> - Then we have to fill webTitle (or Integration title), also do it with structure array with the structure we are doing to have.
+> - Then we have to fill structure array with the structure we are doing to have.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$webTitle = ["exampleIntentName"];                                        #array
-
 $structure = ['image','comma','accordeon','comma','button'];              #array
-
 ```
 
 </TabItem>
@@ -159,7 +146,7 @@ $structure = ['image','comma','accordeon','comma','button'];              #array
 <TabItem value="php" label="PHP">
 
 ```php
-$components = []                               #array-multi
+$components = [                               #array-multi
     [],
     [],
     [],

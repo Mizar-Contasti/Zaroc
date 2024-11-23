@@ -29,9 +29,9 @@ Or **Look at this Tutorial in Spanish** with **[Mizar](https://www.youtube.com/w
 ### Context Functions
 
 > - These functions create a Copy of the Actual context, (As you see we are not updating it, we are just creating a copy of the actual context).
-> - Most of the functions add an aditional variable, or updates a new one and save the entire context in a variable called **contextBody**
-> - This variable is sent in addition of **context** = True.
-> - This context/context body is sent with a Structure/Template.
+> - After updates, we just have decided to keep 1 function and make it simpler.
+> - For all structures and triggers, we would need to fill a $session = [], if the array is empty nothing will happen.
+> - If we fill it, with the context function, so then we will be able to alter context.
 
 #### Why creating a Copy of the Actual context, append variable(s) and sent again ?
 
@@ -65,6 +65,7 @@ if(intent('start')){
 
 > - Right now lets think that we want to store some information on the context that we created, I want to use a function to get a sessionId and then store on the context inside of a variable named **config**
 > - Inside of our intent brackets use the function shown bellow.
+> - The function setContextParameters will return an array with the correct context to set in session.
 
 <Tabs>
 <TabItem value="php" label="PHP">
@@ -72,15 +73,14 @@ if(intent('start')){
 ```php
 $sessionId = getSessionId();
 
-$contextIndex = [];
 $parameters = [
     "config" => [
         "sessionID" => "$sessionId",
-        "variable2" => "valor2"
+        "variable2" => "value2"
     ]
 ];
 
-$contextBody = setContextParameters($contextIndex, $parameters);
+$contextBody = setContextParameters($parameters);    #returns array
 ```
 
 </TabItem>
@@ -93,8 +93,7 @@ $contextBody = setContextParameters($contextIndex, $parameters);
 <TabItem value="php" label="PHP">
 
 ```php
-$context = true;
-$webTitle = ["intentName"];
+$session = $contextBody;                    #array 
 
 $imageArray = ["imageurl"];
 $aTitleArray = ["Card Title"];
@@ -107,16 +106,23 @@ $bIconArray = ["Button Icon","Button Icon 2"];
 $bColorArray = ["#00efff","#000fff"];
 
 
-$structure = ['image','comma','card','superDivider','button'];
+$structure = [
+                'image',
+                'comma',
+                'card',
+                'superDivider',
+                'button'
+            ];
+            
 $components = [
-    [$imageArray,$webTitle],
-    [],
-    [$imageArray,$aTitleArray,$aSubtitleArray,$aTextArray],
-    [],
-    [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
-];
+                [$imageArray,$webTitle],
+                [],
+                [$imageArray,$aTitleArray,$aSubtitleArray,$aTextArray],
+                [],
+                [$bTitleArray,$bCustomArray,$bIconArray,$bColorArray]
+            ];
 
-webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
+webStructureTemplate($session, $structure, $components);
 ```
 
 </TabItem>

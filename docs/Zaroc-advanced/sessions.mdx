@@ -23,6 +23,7 @@ Sessions help us to manage features on User Conversations. By itself sessions fu
 > - Sessions can be implemented with Classes and Methods.
 > - These Classes and Methods are inside of Chatbot Core folder.
 > - Sessions are stored on Sesions Class
+> - For these examples we will use Mysql as a Database.
 
 :::
 
@@ -32,13 +33,14 @@ Sessions help us to manage features on User Conversations. By itself sessions fu
 
 ### Adding Session class to Chatbot
 
-> - Download Session Class File [**HERE**](https://google.com). (If you dont have it already on your Chatbot Classes folder...)
+> - Download Session Class File [**HERE**](https://drive.google.com/drive/folders/1iUspe1KPWw_DdjPN4oLRnS0JWtTEeIkk?usp=sharing). (If you dont have it already on your Chatbot Classes folder...)
 > - Add to your Classes Folder inside of your Chatbot Template Folder.
 
 ```shell
 ChatbotTemplate
-    └─── classes
-          | Transcripts
+        └─── functionalities
+            └─── classes
+                | Transcripts
 ```
 
 > - Make sure you are requiring correctly these files.
@@ -47,7 +49,7 @@ ChatbotTemplate
 ### DB Connection and Table Preparation
 
 > - Firstly we should have a Database already connected to our bot. If not, check DB Essentials on Tutorials Section.
-> - Download [**session.sql**](https://google.com) and Import it on your db to create the Transcripts Table.
+> - Download [**session.sql**](https://drive.google.com/drive/folders/1iUspe1KPWw_DdjPN4oLRnS0JWtTEeIkk?usp=sharing) and Import it on your db to create the Transcripts Table.
 > - Then, we should have our Table with the following structure.
 
 ## IMG
@@ -109,8 +111,7 @@ $parameters = [
 <TabItem value="php" label="PHP">
 
 ```php
-$contextIndex = [0];
-$contextBody = setContextParameters($contextIndex, $parameters);
+$contextBody = setContextParameters($parameters);
 ```
 
 </TabItem>
@@ -122,9 +123,9 @@ $contextBody = setContextParameters($contextIndex, $parameters);
 <TabItem value="php" label="PHP">
 
 ```php
-$context = true;
+$session = $contextBody;                    #array
 
-webStructureTemplate($context, $contextBody, $webTitle, $structure, $components);
+webStructureTemplate($session, $structure, $components);
 ```
 
 </TabItem>

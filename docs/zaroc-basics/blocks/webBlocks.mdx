@@ -66,6 +66,102 @@ webParagraph($pTitleArray, $pSubtitleArray);
 </TabItem>
 </Tabs>
 
+
+### webImage
+
+**Displays a simple image**
+
+> - Images can be stacked indifinelty, but only one can be used for an Accordeon
+
+<Tabs>
+<TabItem value="simple" label="One Image">
+
+![Download this document](./../../../static/img/blocks/wb/image.jpg)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$iImageArray = ["https://imageurl.com"];
+$iTextArray = ["Image Alt Text"];
+
+webImage($iImageArray, $iTextArray);
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="complex" label="Two or More Images">
+
+![Download this document](./../../../static/img/blocks/wb/images.png)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$iImageArray = ["https://imageurl.com","https://imageurl.com"];
+$iTextArray = ["Image Alt Text","Image Alt Text"];
+
+webImage($iImageArray, $iTextArray);
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+
+### webReply
+
+> Displays one title and multiple options to choose
+> They can work on two different ways depending what you put on their customArray, if you put a link (They will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on that specific chip.
+> Replies Stacks indefinitely and are separed in a Flexbox Css way.
+
+<Tabs>
+<TabItem value="simple" label="One Reply">
+
+![Example of One Reply](./../../../static/img/blocks/wb/reply.jpg)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$cTitleArray = ["Chip Title1"];
+$cImageArray = ["https://chipsImageURl.com"];
+$cCustomArray = ["Chip Text"];
+
+webReply($cTitleArray, $cImageArray, $cCustomArray);
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="complex" label="Two or More Replies">
+
+![Example of One Reply](./../../../static/img/blocks/wb/reply.jpg)
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$cTitleArray = ["Chip Title1","Chips title 2"];
+$cImageArray = ["https://chipsImageURl.com","https://chipsImageURl.com"];
+$cCustomArray = ["Chip Text","https://chips.com"];
+
+webReply($cTitleArray, $cImageArray, $cCustomArray);
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
+
+
+
 ### webCard
 
 > Displays a Card and doesnt have any behavior like triggering events, texts or links. This block is strongly recommended to use with webImage in order to provide a image.
@@ -117,8 +213,6 @@ webCard($aTitleArray, $aSubtitleArray, $aTextArray);
 
 ### webButton
 
-<!-- **Is used to display a Button** -->
-
 > - Displays a Button that can be stacked indefinitely with other buttons.
 > - Button works in two ways depending what you pass on **customArray** if you pass a link (you will get a redirection with target blank) if just text, a Event with this text as name will be triggered.
 > - Buttons can be used with all blocks but the most recommended is the webCard block
@@ -168,97 +262,6 @@ webButton($bTitleArray, $bCustomArray, $bIconArray, $bColorArray);
 </TabItem>
 </Tabs>
 
-### webReply
-
-> Displays one title and multiple options to choose
-> They can work on two different ways depending what you put on their customArray, if you put a link (They will work as an a Hyperlink) if you put a word, this will be the default message outputted if the user press on that specific chip.
-> Replies Stacks indefinitely and are separed in a Flexbox Css way.
-
-<Tabs>
-<TabItem value="simple" label="One Reply">
-
-![Example of One Reply](./../../../static/img/blocks/wb/reply.jpg)
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$cTitleArray = ["Chip Title1"];
-$cImageArray = ["https://chipsImageURl.com"];
-$cCustomArray = ["Chip Text"];
-
-webReply($cTitleArray, $cImageArray, $cCustomArray);
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="complex" label="Two or More Replies">
-
-![Example of One Reply](./../../../static/img/blocks/wb/reply.jpg)
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$cTitleArray = ["Chip Title1","Chips title 2"];
-$cImageArray = ["https://chipsImageURl.com","https://chipsImageURl.com"];
-$cCustomArray = ["Chip Text","https://chips.com"];
-
-webReply($cTitleArray, $cImageArray, $cCustomArray);
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
-
-### webImage
-
-**Displays a simple image**
-
-> - Images can be stacked indifinelty, but only one can be used for an Accordeon
-
-<Tabs>
-<TabItem value="simple" label="One Image">
-
-![Download this document](./../../../static/img/blocks/wb/image.jpg)
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$iImageArray = ["https://imageurl.com"];
-$iTextArray = ["Image Alt Text"];
-
-webImage($iImageArray, $iTextArray);
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="complex" label="Two or More Images">
-
-![Download this document](./../../../static/img/blocks/wb/images.png)
-
-<Tabs>
-<TabItem value="php" label="PHP">
-
-```php
-$iImageArray = ["https://imageurl.com","https://imageurl.com"];
-$iTextArray = ["Image Alt Text","Image Alt Text"];
-
-webImage($iImageArray, $iTextArray);
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
 
 ### webList
 
