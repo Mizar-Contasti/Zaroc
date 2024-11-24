@@ -49,10 +49,10 @@ ChatbotTemplate
 ### DB Connection and Table Preparation
 
 > - Firstly we should have a Database already connected to our bot. If not, check DB Essentials on Tutorials Section.
-> - Download [**session.sql**](https://drive.google.com/drive/folders/1iUspe1KPWw_DdjPN4oLRnS0JWtTEeIkk?usp=sharing) and Import it on your db to create the Transcripts Table.
+> - Download [**session.sql**](https://drive.google.com/file/d/1mcIN_D3SwQ87eHE8-WhhIhx_DTsjaHAK/view?usp=sharing) and Import it on your db to create the Transcripts Table.
 > - Then, we should have our Table with the following structure.
 
-## IMG
+![Download this document](./../../static/img/sql/sessions-db.png)
 
 If the format doesn't fit, make sure you are importing correctly, or create the table with the structure/schema shown.
 
@@ -86,9 +86,6 @@ $session = Sessions::createSession($sessionId);
 
 > - Check if the Session was inserted successfully on our DB with an If Statement, if the Session wasn't added, check your SQL query.
 > - Create a non-required parameter on Dialogflow console inside of the intent which is starting the conversation, this parameter has to be a array named config.
-
-## IMG
-
 > - Inicialize the corresponding parameters to set inside of the context, we are going to create an Associative array where our sessionId will be used, with the following format.
 
 <Tabs>

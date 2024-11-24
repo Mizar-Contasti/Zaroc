@@ -46,10 +46,11 @@ ChatbotTemplate
 ### DB Connection and Table Preparation
 
 > - Firstly we should have a Database already connected to our bot. If not, check DB Essentials on Tutorials Section.
-> - Download [**transcripts.sql**](https://drive.google.com/file/d/1EKIRdqhJ3uGhLJgboveBrgMljGuHmqNj/view?usp=sharing) and Import it on your db to create the Sessions Table.
+> - Download [**transcripts.sql**](https://drive.google.com/file/d/1xdWZ0NFD0j6iiChylciEw1eMjzNWz4zS/view?usp=sharing) and Import it on your db to create the Sessions Table.
 > - Then, we should have our Table with the following structure.
 
-<!-- ## IMG -->
+![Download this document](./../../static/img/sql/transcript_db.png)
+
 
 If the format doesn't fit, make sure you are importing correctly, or create the table with the structure/schema shown.
 
@@ -99,7 +100,5 @@ $input = getInput();                                            #string
 > - Check if the Transcript was inserted successfully on our DB with an If Statement, if the Transcript wasn't added, check your SQL query.
 > - Remember to use this Transcript function for each intent, when there are errors and correct responses from your Chatbot.
 > - For more tracking you can create one row for customer question and another row for bot response.
-
-<!-- ## IMG -->
 
 ##### For each message that the user sends a new Transcript will be added with the current sessionId from the user.
