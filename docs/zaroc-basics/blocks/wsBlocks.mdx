@@ -14,7 +14,7 @@ Whatspp blocks works differently as another blocks, due whatsapp complexity we h
 
 ### wsButton
 
-> - Button block is every component that uses buttons, you can use image, text, files, videos on header.
+> - Button block is every component that uses buttons, you can use image, text, documents, videos on header.
 > - button can contain postback text as customButton, we can't have links due we need to create a whatsapp template (Costs Depend of the region).
 > - We can have up to 3 buttons, if we add more than 3 we will receive an error from whatsapp that wont populate on the chatbot.
 
@@ -22,8 +22,8 @@ Whatspp blocks works differently as another blocks, due whatsapp complexity we h
 <TabItem value="php" label="PHP">
 
 ```php
-$wsHeaderType = ["image"];                            // image - text - file - video on header
-$wsHeaderContent = ["$welcomeImg"];                   // text -  image/file/video url with extension
+$wsHeaderType = ["image"];                            // image - text - document - video on header
+$wsHeaderContent = ["$welcomeImg"];                   // text -  image/document/video url with extension
 $wsBodyContent = ["body text"];                       // this refers the body message
 $wsFooterContent = ["footer text"];                   // this refers the footer content
 $wsButtonTitleArray = ["button1", "button2"];         // button text up to 3 buttons with up to 20 characters
