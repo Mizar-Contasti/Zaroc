@@ -7,24 +7,28 @@ sidebar_position: 4
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Zaroc has many useful Functions that can help us handle Dialogflow's Request in our backend and provide a good response.
+Zaroc 1.5 (final version) includes numerous useful functions that facilitate the handling of Dialogflow requests in our backend and provide optimized responses.
 
 ## Zaroc Functions
 
 ### Intents
 
-These Functions help us to handle Intents
+These functions help us handle Dialogflow intents efficiently.
 
 #### Intent
+
+> - Returns true if the current intent matches the provided name.
+> - In version 1.5, includes improved validation of the input structure to prevent errors.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
-- Receives the name of the intent and returns true or false, is used in IF statements to do an specific behavior for an intent in our code
-
 ```php
-if(intent('intentName')){
-    //Do some code
+// Check if the current intent is "Welcome"
+if(intent('Welcome')){
+    // Process welcome intent
+} else {
+    // Process other intents
 }
 ```
 
@@ -33,15 +37,18 @@ if(intent('intentName')){
 
 #### Action
 
-> - Receives the name of an action and returns true or false, is used in IF statements to filter intents.
-> - You can use action as other filter to work with specific rules for some intents.
+> - Returns true if the current action matches the provided name.
+> - Can be used as an additional filter to work with specific rules for some intents.
+> - In version 1.5, includes improved validation to handle cases where the input structure does not contain the expected action.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Check if the current action is "actionName"
 if(action('actionName')){
-    //Do some code
+    // Process specific code for this action
+    // This function safely checks if the current action matches 'actionName'
 }
 ```
 
@@ -52,17 +59,28 @@ if(action('actionName')){
 
 ### Parameters
 
-These functions are used to handle Parameters
+These functions are used to handle intent and context parameters.
 
 #### getIntentParameter
 
-> - Returns the value of the specified Parameter in the living Intent
+> - Returns all parameters of the current intent as an associative array.
+> - In version 1.5, includes improved error handling and logging.
+> - Returns an empty array in case of error to prevent execution interruptions.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get all parameters
+$allParameters = getIntentParameter();
+
+// Get a specific parameter
 $parameterValue = getIntentParameter()['parameterName'];
+
+// Safe usage with verification
+if (isset(getIntentParameter()['parameterName'])) {
+    $parameterValue = getIntentParameter()['parameterName'];
+}
 ```
 
 </TabItem>
@@ -70,19 +88,30 @@ $parameterValue = getIntentParameter()['parameterName'];
 
 #### getContextParameter
 
-:::tip Keep in Mind
+:::tip Note
 
-When going deep into context, check Contexts section in Zaroc Advanced
+For in-depth context handling, refer to the Contexts section in Zaroc Advanced
 
 :::
 
-> - Returns the value of the specified Parameter in the main context
+> - Returns all parameters of the main context as an associative array.
+> - In version 1.5, implements robust error handling and improved context ordering.
+> - Includes warning logging when no parameters are found in the context.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get all context parameters
+$allContextParameters = getContextParameter();
+
+// Get a specific context parameter
 $parameterValue = getContextParameter()['parameterName'];
+
+// Safe usage with verification
+if (isset(getContextParameter()['parameterName'])) {
+    $parameterValue = getContextParameter()['parameterName'];
+}
 ```
 
 </TabItem>
@@ -92,22 +121,34 @@ $parameterValue = getContextParameter()['parameterName'];
 
 ### Triggers
 
-These functions help us to Trigger Special Behaviors on our Chatbot from the Backend
+These functions help us activate special behaviors in our chatbot from the backend.
 
 #### triggerEvent
 
-- Triggers the Intent that has the event typed as argument
-- Receives the Event name and Params as Array
-- Params are optional, these params helps to send data to the context from the current intent to the nextIntent that is being trigger by this Function
+- Activates the intent that has the specified event as an argument.
+- Receives the event name and parameters as arrays.
+- Parameters are optional and allow sending data to the context from the current intent to the next intent activated with this function.
+- In version 1.5, includes improved parameter validation and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$eventName = ["event1"];             #array
-$params = [];                        #array
+// Basic example
+$eventName = ["event1"];             // array with the event name
+$params = [];                        // array of parameters (optional)
 
-triggerEvent($eventName,$params);
+triggerEvent($eventName, $params);
+
+// Example with parameters
+$eventName = ["purchase_completed"];
+$params = [
+    "product_id" => "ABC123",
+    "quantity" => 2,
+    "total_price" => 199.99
+];
+
+triggerEvent($eventName, $params);
 ```
 
 </TabItem>
@@ -115,15 +156,26 @@ triggerEvent($eventName,$params);
 
 #### triggerError
 
-> - Displays an Error, works for all the integrations.
-> - Receives as Array, session (optional) if needed to change context values/variables, and the error message. (Check Context section if any doubt)
+> - Displays an error message, works for all integrations.
+> - Receives as arrays: the session (optional) if you need to change context values/variables, and the error message.
+> - In version 1.5, includes the intent name in the error message for easier debugging.
+> - Implements exception handling to ensure a response is always sent, even in case of failure.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$session = [];                                         #array
-$errorMessage = ["Query wasnt executed 💥"];           #array
+$session = [];                                         // array (optional)
+$errorMessage = ["The query could not be executed"];  // array with the error message
+
+triggerError($session, $errorMessage);
+
+// Example with custom session
+$session = setContextParameters([
+    'error_code' => 'DB_CONNECTION_FAILED',
+    'retry_count' => 3
+]);
+$errorMessage = ["Database connection error"];
 
 triggerError($session, $errorMessage);
 ```
@@ -133,18 +185,28 @@ triggerError($session, $errorMessage);
 
 #### triggerPrompt
 
-> - Triggers a Prompt when needed, has the same format as the default required parameters that dialogflow has.
-> - Its used in Addition with SlotFilling (Check Documentation for SlotFilling).
-> - Receives as Array, session (optional) if needed to change context values/variables, and the prompt message. (Check Context section if any doubt)
+> - Activates a prompt when necessary, has the same format as the parameters required by default in Dialogflow.
+> - Used in combination with SlotFilling (refer to the SlotFilling documentation for more details).
+> - Receives as arrays: the session (optional) if you need to change context values/variables, and the prompt message.
+> - In version 1.5, includes improved parameter validation and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$session = [];                                          #array
-$prompt = ["Whats your favourite food"];                #array
+$session = [];                                          // array (optional)
+$prompt = ["What is your favorite food?"];             // array with the prompt message
 
-triggerPropmt($session, $prompt);
+triggerPrompt($session, $prompt);  // Note: corrected function name
+
+// Example with custom session
+$session = setContextParameters([
+    'attempts' => 1,
+    'last_prompt' => 'food_preference'
+]);
+$prompt = ["Please tell me your favorite food"];
+
+triggerPrompt($session, $prompt);
 ```
 
 </TabItem>
@@ -154,25 +216,44 @@ triggerPropmt($session, $prompt);
 
 ### Context
 
-Context help us to save information, with these backend functions we can create and update variables on an specific context.
+Contexts help us store information. With these backend functions, we can create and update variables in a specific context.
 
-> - Be noticed that we cant delete variables neither contexts. Just create and update.
-> - To have a whole picture of how Context works, check Context on Zaroc's Advanced.
+> - Note that we cannot delete variables or contexts, only create and update them.
+> - For a comprehensive understanding of how contexts work, refer to the Context section in Zaroc Advanced.
+> - In version 1.5, the context structure has been improved to facilitate migration to Dialogflow CX.
 
 #### setContextParameters
 
-> - Creates a new context based in the old one, that you can use them into session to apply the changes.
-> - If the parameter exists, only changes value, if not then the parameter is created with the value.
+> - Creates a new context based on the previous one, which you can use in the session to apply changes.
+> - If the parameter exists, only changes its value; if it does not exist, creates the parameter with the specified value.
+> - In version 1.5, includes type validation and improved error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-
-$parameters = [                             #associative-array (could be an arrays of arrays of arrays)
+// Basic example
+$parameters = [                             // associative array (can contain nested arrays)
     'color' => 'white',
     'animal' => 'bird',
     'coffee' => 'expresso'
+];
+
+$contextBody = setContextParameters($parameters);
+
+// Example with nested structure
+$parameters = [
+    'user' => [
+        'name' => 'John',
+        'preferences' => [
+            'theme' => 'dark',
+            'notifications' => true
+        ]
+    ],
+    'session_data' => [
+        'last_interaction' => date('Y-m-d H:i:s'),
+        'interaction_count' => 5
+    ]
 ];
 
 $contextBody = setContextParameters($parameters);
@@ -180,70 +261,106 @@ $contextBody = setContextParameters($parameters);
 
 </TabItem>
 </Tabs>
+
 .
 
 ### Troubleshoot
 
-In order to Troubleshoot we can use some functions. (Check troubleshoot section for more info)
+For troubleshooting, we can use some functions. (Refer to the Troubleshooting section for more information)
 
 #### getInput
 
-> - Returns the Entire input Request that Dialogflow has sent
-> - This input helps you to look at the body and troubleshoot.
+> - Returns the entire input request that Dialogflow has sent.
+> - This input helps you examine the request body and troubleshoot issues.
+> - In version 1.5, includes improved JSON validation and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the entire input
 $input = getInput();
+
+// Example usage for debugging
+if (intent('problematic')) {
+    $inputData = getInput();
+    createOutput(['debug_input'], [$inputData]);
+    // Process the problematic intent...
+}
 ```
 
 </TabItem>
 </Tabs>
-
 
 #### getIntent
 
-> - Returns the current intent that has been triggered.
+> - Returns the name of the current intent that has been activated.
+> - In version 1.5, includes improved validation and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the current intent
 $intent = getIntent();
+
+// Example usage
+if ($intent[0] === 'welcome') {
+    // Process welcome intent
+} else {
+    // Process other intents
+}
 ```
 
 </TabItem>
 </Tabs>
-
 
 #### createInput
 
-> - This function allow us to create a file.txt on ourServer with all the Request.
-> - Receives an array with the name of the file that you would like to create.
+> - This function allows us to create a .txt file on our server with the entire request.
+> - It receives an array with the name of the file you want to create.
+> - In version 1.5, includes write permission validation and improved error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$fileName = ["request"];                             #array
+$fileName = ["request"];                             // array with the file name
 createInput($fileName);
+
+// Example with timestamp to avoid overwriting
+$fileName = ["request_" . time()];
+createInput($fileName);
+
+// Example with error handling
+if (createInput(["debug_log"])) {
+    // The file was created successfully
+} else {
+    // There was a problem creating the file
+}
 ```
 
 </TabItem>
 </Tabs>
 
-
 #### getTimeOut
 
-> - Returns the time in ms that took all code execution to be done.
-> - As webhook has a limit of 5 miliseconds, you only can timeout till that maximum time minus the time that takes your code to be proccesed.
+> - Returns the time in milliseconds that the entire code execution took.
+> - Since the webhook has a 5-second limit, you can only wait up to that maximum time minus the time it takes to process your code.
+> - In version 1.5, includes rounding to 2 decimal places for greater precision and handling of cases where time is not available.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the execution time
 $time = getTimeOut();
+
+// Example for performance monitoring
+if ($time > 3000) {
+    // Log a warning if execution time is high
+    createOutput(['performance_warning'], ["High execution time: {$time}ms"]);
+}
 ```
 
 </TabItem>
@@ -251,15 +368,27 @@ $time = getTimeOut();
 
 #### getSourceData
 
-> - This function allow us to create file with the data that comes from a Different Source that isnt Dialogflow.
-> - Receives an array with the name of the file that you would like to create.
+> - This function allows us to create a file with data from a source other than Dialogflow.
+> - Receives an array with the name of the file you want to create.
+> - In version 1.5, includes improved source data validation and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$fileName = ["request"];                                    #array
+$fileName = ["external_request"];                        // array with the file name
 getSourceData($fileName);
+
+// Example with timestamp for unique files
+$fileName = ["whatsapp_data_" . date('Y-m-d_H-i-s')];
+getSourceData($fileName);
+
+// Example with error handling
+if (getSourceData(["integration_data"])) {
+    // The file was created successfully
+} else {
+    // There was a problem creating the file
+}
 ```
 
 </TabItem>
@@ -267,13 +396,34 @@ getSourceData($fileName);
 
 #### getPlatform
 
-> - This function retrieves the current platform that was used for the current request.
+> - This function retrieves the current platform used for the current request.
+> - In version 1.5, includes better platform detection and support for new integrations.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the current platform
 $platform = getPlatform();
+
+// Example usage for platform-specific behavior
+switch ($platform) {
+    case 'DIALOGFLOW_MESSENGER':
+        // Logic specific to Dialogflow Messenger
+        break;
+    case 'FACEBOOK':
+        // Logic specific to Facebook
+        break;
+    case 'WHATSAPP':
+        // Logic specific to WhatsApp
+        break;
+    case 'TELEGRAM':
+        // Logic specific to Telegram
+        break;
+    default:
+        // Logic for other platforms
+        break;
+}
 ```
 
 </TabItem>
@@ -281,45 +431,75 @@ $platform = getPlatform();
 
 #### getUserInput
 
-> - Returns the Input from the user that Triggered the intent
+> - Returns the user's input text that activated the intent.
+> - In version 1.5, includes improved handling for different input formats and validation.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the user's input
 $userInput = getUserInput();
+
+// Example usage for text analysis
+if (strpos(strtolower($userInput), 'help') !== false) {
+    // The user is asking for help
+    triggerEvent(['help_event'], []);
+}
+
+// Example for conversation logging
+createOutput(['user_messages'], ["User: {$userInput}"]);
 ```
 
 </TabItem>
 </Tabs>
-
 
 #### getBotInput
 
-> - Returns the Input from the bot, or the response that the bot gived to the user
+> - Returns the bot's response text, or the response the bot gave to the user.
+> - In version 1.5, includes handling of cases where the response is not available and provides a default message.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the bot's response
 $botInput = getBotInput();
+
+// Example usage for conversation logging
+createOutput(['bot_responses'], ["Bot: {$botInput}"]);
+
+// Example for response analysis
+if (strpos($botInput, 'error') !== false) {
+    // The response contains the word 'error'
+    createOutput(['error_responses'], ["Response with error: {$botInput}"]);
+}
 ```
 
 </TabItem>
 </Tabs>
 
+#### getSessionId
 
-
-#### getSessionID
-
-> - Returns the sessionId of the current chat/session
-> - Id format changes depending of the platform/integration
+> - Returns the sessionId of the current conversation/session.
+> - The format of the ID changes depending on the platform/integration.
+> - In version 1.5, includes improved session handling to facilitate migration to Dialogflow CX.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the session ID
 $sessionId = getSessionId();
+
+// Example usage for conversation tracking
+if ($sessionId) {
+    // Log activity for the session
+    createOutput(['session_activity'], ["Activity in session: {$sessionId}"]);
+    
+    // Use the sessionId for database operations
+    // $db->logActivity($sessionId, 'intent_triggered', getIntent()[0]);
+}
 ```
 
 </TabItem>
@@ -327,13 +507,24 @@ $sessionId = getSessionId();
 
 #### getProjectName
 
-> - Retrieves the name of the project
+> - Retrieves the name of the Dialogflow project.
+> - In version 1.5, includes improved validation and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the project name
 $projectName = getProjectName();
+
+// Example usage for dynamic configuration
+if ($projectName) {
+    // Load project-specific configuration
+    // $config = loadProjectConfig($projectName);
+    
+    // Log activity for the project
+    createOutput(['project_activity'], ["Activity in project: {$projectName}"]);
+}
 ```
 
 </TabItem>
@@ -341,35 +532,62 @@ $projectName = getProjectName();
 
 .
 
-### Miscelaneous
+### Miscellaneous
 
-These functions are not commonly used, but sometimes are helpfull.
+These functions are not commonly used, but are sometimes useful for specific cases.
 
 #### getWhatsAppPhoneNumber
 
-> - Retrieves a WhatsApp PhoneNumber if you are in Session VIA whatsApp
-> - This data is provided for mostly wWhatsApp Providers
+> - Retrieves the WhatsApp phone number if you are in a WhatsApp session.
+> - This data is primarily provided by WhatsApp providers.
+> - In version 1.5, includes improved extraction of the last 10 digits and validation.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the WhatsApp phone number
 $phoneNumber = getWhatsAppPhoneNumber();
+
+// Example usage for personalization
+if ($phoneNumber) {
+    // Check if the user exists in the database
+    // $user = $db->getUserByPhone($phoneNumber);
+    
+    // Personalize response based on the phone number
+    $contextBody = setContextParameters([
+        'user_phone' => $phoneNumber,
+        'is_whatsapp_user' => true
+    ]);
+}
 ```
 
 </TabItem>
 </Tabs>
 
-
 #### getContactId
 
-> - Retrieves facebook contact id used for the user that is chatting with the bot
+> - Retrieves the Facebook contact ID used by the user who is chatting with the bot.
+> - In version 1.5, includes improved validation of the input structure and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the Facebook contact ID
 $contactId = getContactId();
+
+// Example usage for Facebook integration
+if ($contactId) {
+    // Save the contact ID in the context
+    $contextBody = setContextParameters([
+        'fb_contact_id' => $contactId,
+        'platform' => 'facebook'
+    ]);
+    
+    // Use the ID to get additional user information
+    // $userData = getFacebookUserData($contactId);
+}
 ```
 
 </TabItem>
@@ -378,29 +596,110 @@ $contactId = getContactId();
 
 #### getTelegramChatId
 
-> - Returns the ChatId of a Telegram Chat
-> - Only obtainable if you are chatting via Telegram
+> - Returns the ChatId of a Telegram chat.
+> - Can only be obtained if you are chatting through Telegram.
+> - In version 1.5, includes better validation of the input structure and data type handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
+// Get the Telegram chat ID
 $chatID = getTelegramChatId();
+
+// Example usage for Telegram-specific functionality
+if ($chatID) {
+    // Save the chat ID in the context
+    $contextBody = setContextParameters([
+        'telegram_chat_id' => $chatID,
+        'platform' => 'telegram'
+    ]);
+    
+    // Use the ID to send additional messages
+    // sendTelegramMessage($chatID, 'Additional message');
+}
 ```
-  
+
 </TabItem>
 </Tabs>
 
 #### getTelegramCallbackQueryId
 
-> - Returns callbackqueryId of Telegram if exists
-> - Only obtainable if you are chatting via Telegram
+> - Returns the Telegram callbackQueryId if it exists.
+> - Can only be obtained if you are chatting through Telegram and have interacted with an inline button.
+> - In version 1.5, includes improved validation and error handling.
 
 <Tabs>
 <TabItem value="php" label="PHP">
 
 ```php
-$callbackQueryId = getTelegramCallbackQueryId();
+// Get the Telegram callback ID
+$callbackQueryId = getTelegramCallbackId();  // Note: corrected function name
+
+// Example usage for responding to button interactions
+if ($callbackQueryId) {
+    // Save the callback ID in the context
+    $contextBody = setContextParameters([
+        'telegram_callback_id' => $callbackQueryId,
+        'interaction_type' => 'button_click'
+    ]);
+    
+    // Respond to the callback to remove the button's "loading" state
+    // answerTelegramCallbackQuery($callbackQueryId);
+}
+```
+
+</TabItem>
+</Tabs>
+
+### New Functions in Zaroc 1.5
+
+#### triggerPhoneMessage
+
+> - Sends a text message for telephony in Dialogflow format.
+> - Receives as arrays: the session (optional) and the text message.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$session = [];                                         // array (optional)
+$message = ["Thank you for calling. How can I help you?"];  // array with the message
+
+triggerPhoneMessage($session, $message);
+
+// Example with custom session
+$session = setContextParameters([
+    'call_id' => 'C123456',
+    'call_duration' => 45
+]);
+$message = ["Your reference number is C123456"];
+
+triggerPhoneMessage($session, $message);
+```
+
+</TabItem>
+</Tabs>
+
+#### triggerSSML
+
+> - Sends an SSML (Speech Synthesis Markup Language) message for telephony in Dialogflow format.
+> - Allows more precise control over how words are pronounced in phone calls.
+> - Receives as arrays: the session (optional) and the SSML content.
+
+<Tabs>
+<TabItem value="php" label="PHP">
+
+```php
+$session = [];                                         // array (optional)
+$ssml = ["<speak>Welcome to <emphasis>our</emphasis> service. Your number is <say-as interpret-as=\"characters\">ABC123</say-as>.</speak>"];
+
+triggerSSML($session, $ssml);
+
+// Example with pause and intonation
+$ssml = ["<speak>Your order has been <break time=\"0.5s\"/> confirmed. <prosody rate=\"slow\" pitch=\"+2st\">Thank you for your purchase.</prosody></speak>"];
+
+triggerSSML($session, $ssml);
 ```
 
 </TabItem>
